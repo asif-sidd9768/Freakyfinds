@@ -1,0 +1,38 @@
+.notification-container {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: max-content;
+  padding: 10px 20px 10px 8px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  display: flex;
+  z-index: 1;
+  justify-content: start;
+}
+
+.notification-text-icon-success {
+  color: white;
+  padding: 6px 8px;
+  margin: 0 0.2rem 0 0;
+  background-color: rgb(134, 187, 150);
+}
+
+.notification-text-icon-error {
+  color: white;
+  padding: 6px 8px;
+  margin: 0 0.5rem 0 0;
+  background-color: rgb(170, 138, 132);
+}
+
+.notification-success {
+  background-color: rgb(182, 216, 192);
+}
+
+.notification-error {
+  background-color: rgb(206, 172, 166);
+}
+
+
+.notification-text {
+
+}

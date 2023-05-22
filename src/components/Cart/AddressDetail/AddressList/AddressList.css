@@ -1,0 +1,16 @@
+.address-list-container  {
+  margin: 0 0 1rem 0;
+}
+
+.address-list-item {
+  margin: 0 0;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-color);
+}
+
+.address-list-title {
+  font-size: 0.8rem;
+  color: var(--text-color);
+}

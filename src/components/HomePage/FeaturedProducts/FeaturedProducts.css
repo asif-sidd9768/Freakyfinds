@@ -1,0 +1,109 @@
+.featured-products-title {
+  text-align: center;
+  /* background-color: var(--text-color); */
+  color: var(--text-color);
+  padding: 1rem 0 0 0;
+  margin: 2rem 0 0 0;
+  font-size: 1.3rem;
+}
+
+.featured-products-tagline {
+  color: var(--text-secondary-color);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.featured-products-container {
+  text-align: center;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem 0 0 0;
+}
+
+.featured-product {
+  height: max-content;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem 0 0.5rem 0;
+  transition: 0.2s;
+}
+
+.featured-product p {
+  margin: 0.5rem auto;
+  width: 70%;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.featured-product span {
+  color: var(--text-secondary-color);
+}
+
+.featured-product img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.featured-product-extra{
+  opacity: 0;
+  display: none;
+}
+
+.featured-product:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.featured-product:hover .featured-product-extra {
+  opacity: 1;
+  display: block;
+}
+
+.featured-product-btn {
+  background: none;
+  border: 1px solid var(--text-color);
+  padding: 8px 20px;
+  transition: 0.2s;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.featured-product-added-btn {
+  background-color: rgb(57, 57, 54);
+  padding: 8px 20px;
+  transition: 0.2s;
+  text-decoration: none;
+  color: beige;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+}
+
+.featured-product-added-btn:hover {
+  background-color: rgb(30, 30, 28);
+}
+
+.featured-product-btn-container {
+  margin: 0.5rem 0;
+}
+
+.featured-product-btn:hover {
+  background-color: var(--text-color);
+  color: beige;
+}
+
+@media screen and (width >= 1024px) {
+  .featured-products-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

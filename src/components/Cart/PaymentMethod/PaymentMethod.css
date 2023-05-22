@@ -1,0 +1,21 @@
+.payment-method-container {
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);;
+  padding: 1rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.payment-method-title {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+}
+
+.payment-method-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.payment-method-options span {
+  color: var(--text-color);
+  font-size: 0.8rem;
+}

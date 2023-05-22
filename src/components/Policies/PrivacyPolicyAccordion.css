@@ -1,0 +1,37 @@
+.privacy-policy-accordion-toggle {
+  float: right;
+}
+
+.privacy-policy-accordion-title {
+  max-width: 90%;
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+  font-family: Quicksand;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.privacy-policy-accordion-data {
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  text-align: justify;
+  font-size: 0.95rem;
+  max-width: 90%;
+}
+
+@media screen and (width >= 576px) {
+  .privacy-policy-accordion-title {
+    max-width: 70%;
+    font-size: 1.25rem;
+  }
+
+  .privacy-policy-accordion-data {
+    max-width: 70%;
+  }
+}
+
+.policy-divider {
+  margin: 1rem 0 0.5rem 0;
+  border-color: beige;
+}

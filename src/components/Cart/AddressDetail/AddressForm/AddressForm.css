@@ -1,0 +1,111 @@
+.address-detail-label {
+  font-size: 12px;
+  margin: 0.5rem 0.5rem 0 0;
+  color: #666666;
+}
+.address-detail-label::before {
+  content: "*";
+  color: crimson;
+}
+
+.address-detail-input {
+  padding: 8px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid gray;
+  outline: none;
+  transition: 0.2s;
+  min-width: 90%;
+}
+
+.address-detail-input:focus {
+  border-bottom: 1px solid rgb(30, 29, 29);
+}
+
+.address-detail-name {
+  grid-area: address-name;
+}
+
+.address-detail-mobile {
+  grid-area: address-mobile;
+}
+.address-detail-email {
+  grid-area: address-email;
+}
+.address-detail-city {
+  grid-area: address-city;
+}
+
+.address-detail-state {
+  grid-area: address-state;
+}
+
+.address-detail-zip {
+  grid-area: address-zip;
+}
+
+.address-detail-line {
+  grid-area: address-line;
+}
+
+.address-detail-line input {
+  min-width: 90%;
+}
+
+.address-detail-fields input::placeholder {
+  color: rgb(164, 164, 159);
+  font-size: 0.8rem;
+}
+
+.address-detail-fields {
+  display: grid;
+  grid-template-areas: 
+  "address-name"
+  " address-mobile"
+  "address-email "
+  "address-city"
+  "address-state "
+  "address-zip"
+  "address-line "
+  "address-line"
+  ;
+}
+
+.address-detail-add-btn {
+  margin: 1rem 0 0 0;
+  padding: 8px 4px;
+  background-color: var(--bg-dark-color);
+  color: beige;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+
+.address-detail-add-btn:hover {
+  background-color: rgb(59, 59, 55);
+}
+
+.error-message {
+  color: crimson;
+  font-size: 0.7rem;
+  margin: 0 0.5rem;
+}
+
+@media screen and (width >= 576px) {
+  .address-detail-container {
+    margin: 1rem 0 0 0;
+  }
+  .address-detail-fields {
+    display: grid;
+    grid-template-areas: 
+    "address-name address-mobile"
+    "address-email address-city"
+    "address-state address-zip"
+    "address-line address-line"
+    ;
+  }
+
+  .address-detail-input {
+    min-width: 80%;
+  }
+}

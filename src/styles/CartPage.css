@@ -1,0 +1,13 @@
+.cart-page-container {
+  display: grid;
+  grid-template-areas: 
+  "products"
+  "details";
+}
+
+@media screen and (width >= 768px) {
+  .cart-page-container {
+    grid-template-areas: 
+      "products products products products  details details";
+  } 
+}

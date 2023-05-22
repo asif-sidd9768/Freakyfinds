@@ -1,0 +1,32 @@
+.privacy-policy-container {
+  padding: 2rem 4rem;
+  width: 100%;
+  min-height: 75vh;
+}
+
+.privacy-policy-title-divider {
+  margin: 1rem 0;
+  max-width: 80% ;
+  border-color: var(--bg-color);
+}
+
+.privacy-policy-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.privacy-policy-update-date {
+  margin: 1rem 0;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.privacy-policy-contact-container {
+  margin: 2rem 0;
+}
+
+@media screen and (width >= 576px) {
+  .privacy-policy-title {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,27 @@
+.address-detail-container {
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);;
+  padding: 1rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.address-detail-title {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+}
+
+.address-detail-shipping-add-btn {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.address-detail-shipping-add-btn i {
+  margin: 0 0.5rem;
+}
+
+.address-detail-or-text {
+  margin: 0 0 1rem 0;
+  text-align: center;
+  color: var(--text-color);
+}
