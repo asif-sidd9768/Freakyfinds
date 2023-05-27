@@ -13,7 +13,8 @@
   flex-direction: row;
   flex-direction: column;
   min-height: max-content;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
+  white-space: nowrap;
 }
 
 .left-side-text {
