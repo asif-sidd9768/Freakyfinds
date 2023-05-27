@@ -15,8 +15,7 @@
 
 .product-list-card-image {
   max-width: 50%;
-  max-height: max-content;
-  height: max-content;
+  max-height: 100%;
   padding: 1rem 1rem 2rem 1rem;
   display: block;
   margin: 0 auto;
