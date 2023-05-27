@@ -44,7 +44,6 @@ export const CartProvider = ({children}) => {
 
   const handleQuantityChange = async (userState, productQuantity, cartItemId, change, showNotification) => {
     cartDispatch(cartItemQuantityChangeRequestAction())
-    console.log(productQuantity, change)
     try {
       if(change === "decrease" && productQuantity === 1) {
         await deleteCartProduct(userState?.user?.user?.id, cartItemId, userState.user.token) 
