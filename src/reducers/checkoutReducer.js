@@ -5,12 +5,14 @@ export const initialStateCheckout = {
   shippingAddress: {},
   shippingMethod: 'standard',
   paymentMethod: "",
+  checkoutTotal: 0,
+  checkoutSuccess: {}
 }
 
 export const checkoutReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEMS":
-      return {...state, cartItems: [...state.cartItems, ...action.payload]}
+      return {...state, cartItems: [...action.payload]}
     case 'ADD_ITEM':
       // Adds an item to the cart
       return { 
@@ -51,7 +53,7 @@ export const checkoutReducer = (state, action) => {
       };
     case 'CHECKOUT_SUCCESS':
       // Resets the checkout state back to the initial state after a successful checkout
-      return initialState;
+      return initialStateCheckout;
     default:
       return state;
   }

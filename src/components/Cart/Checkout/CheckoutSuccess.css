@@ -1,0 +1,104 @@
+.checkout-success-container {
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+.checkout-success-message {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.checkout-success-message span {
+  font-size: 1.2rem;
+  padding: 0 0.2rem;
+  color: green;
+}
+
+.checkout-success-divider {
+  margin: 0 2rem 0 1rem;
+  border-color: var(--bg-color);
+  border-width: 0.5px;
+}
+
+.checkout-success-detail-grid {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 10px;
+}
+
+.checkout-success-detail-grid div {
+  margin: 0.5rem 1rem;
+}
+
+.checkout-success-detail-title {
+  color: var(--text-secondary-color);
+  font-size: 0.9rem;
+}
+
+.checkout-success-products-divider {
+  margin: 1.5rem 2rem 0 1rem;
+  border-color: var(--bg-color);
+  border-width: 0.5px;
+}
+
+.checkout-success-pricing-container {
+  padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.checkout-success-pricing-container div {
+  margin: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-color);
+}
+
+.checkout-success-pricing-container hr {
+  margin: 1rem 0;
+  border-color: var(--bg-color);
+  border-width: 0.5px;
+}
+
+.checkout-success-pricing-container div:last-of-type {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  font-weight: 500;
+}
+
+.checkout-success-continue-shop-btn {
+  margin: 0 2rem;
+  text-decoration: none;
+  background-color: var(--bg-dark-color);
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  color: beige;
+  transition: 0.2s;
+}
+
+.checkout-success-continue-shop-btn:hover {
+  background-color: rgb(46, 46, 44);
+}
+
+@media screen and (width >= 576px) {
+  .checkout-success-detail-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .checkout-success-detail-grid div {
+    margin: 1rem;
+  }
+}
+
+@media screen and (width >= 768px) {
+  .checkout-success-detail-grid div {
+    margin: 0;
+  }
+  
+  .checkout-success-detail-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

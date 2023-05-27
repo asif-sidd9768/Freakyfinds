@@ -21,9 +21,9 @@ export const ProductListFilter = () => {
   return (
     <div className="product-list-filter-container">
       <div className="product-list-filter-category-container">
-        <span className="product-list-filter-category-label">SHOW ME</span> <select onChange={handleCategoryChange} className="product-list-filter-category">
+        <span className="product-list-filter-category-label">SHOW ME</span> <select defaultValue={productState.filters.category} onChange={handleCategoryChange} className="product-list-filter-category">
           <option value="all" className="product-list-filter-category-item">Everything</option>
-          <option value="men" >Men's</option>
+          <option value="men"  >Men's</option>
           <option value="women">Women's</option>
           <option value="electronics">Electronics</option>
           <option value="jewelery">Jewelery</option>

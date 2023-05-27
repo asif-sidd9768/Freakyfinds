@@ -14,8 +14,8 @@ export const PaymentMethod = () => {
     <div className="payment-method-container">
       <p className="payment-method-title">Payment Method</p>
       <div className="payment-method-options">
-        <span><input onClick={handlePaymentMethodChange} value="online" type="radio" /> <span>Online Payment</span></span>
-        <span><input onClick={handlePaymentMethodChange} value="cash-on-delivery" type="radio" /> <span>Cash on Delivery</span></span>
+        <span className="payment-method-option"><input onClick={handlePaymentMethodChange} name="payment" value="online" type="radio" /> <span>Online Payment</span></span>
+        <span className="payment-method-option"><input onClick={handlePaymentMethodChange} name="payment" value="cash-on-delivery" type="radio" /> <span>Cash on Delivery</span></span>
       </div>
     </div>
   )

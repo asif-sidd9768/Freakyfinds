@@ -5,24 +5,16 @@ import { CartProduct } from "./CartProduct/CartProduct"
 import { CartContext } from "../../../contexts/CartContext"
 import { cartItemQuantityChangeAction, cartItemQuantityChangeFailureAction, cartItemQuantityChangeRequestAction, deleteCartItemAction, updateCartTotalAction } from "../../../actions/cartActions"
 import { NotificationContext } from "../../../contexts/NotificationContext"
-import { updateCartProduct } from "../../../services/products/cartService"
+import { updateCartProduct } from "../../../services/user/cartService"
 import { UserContext } from "../../../contexts/UserContext"
 import { CheckoutContext } from "../../../contexts/CheckoutContext"
 import { AddressDetail } from "../AddressDetail/AddressDetail"
 import { addCartItemsToCheckoutAction, updateShippingAddressAction } from "../../../actions/checkoutActions"
 import { PaymentMethod } from "../PaymentMethod/PaymentMethod"
+import { EmptyCart } from "../EmptyCart/EmptyCart"
 
 export const CartProductsSection = () => {
-  const { showNotification } = useContext(NotificationContext)
-  const {checkoutState, checkoutDispatch} = useContext(CheckoutContext)
-  const { userState } = useContext(UserContext)
   const { cartState, cartDispatch } = useContext(CartContext)
-
-
-  useEffect(() => {
-    console.log('run')
-    checkoutDispatch(addCartItemsToCheckoutAction(cartState.cartItems))
-  }, [cartState.cartItems])
 
   return (
     <div className="cart-products-container">

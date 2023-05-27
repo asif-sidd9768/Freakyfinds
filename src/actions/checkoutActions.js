@@ -17,3 +17,8 @@ export const updatePaymentMethodAction = (paymentMethod) => ({
   type:"UPDATE_PAYMENT_METHOD",
   payload: paymentMethod
 })
+
+export const checkoutSuccessAction = (orderData) => ({
+  type: "CHECKOUT_SUCCESS",
+  payload: orderData
+})

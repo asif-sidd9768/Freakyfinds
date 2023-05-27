@@ -12,10 +12,15 @@
 
 .payment-method-options {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .payment-method-options span {
   color: var(--text-color);
   font-size: 0.8rem;
+}
+
+.payment-method-option {
+  margin: 0 1rem;
 }

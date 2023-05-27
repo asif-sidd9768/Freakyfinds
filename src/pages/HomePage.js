@@ -1,16 +1,20 @@
 import { FeaturedProducts } from "../components/HomePage/FeaturedProducts/FeaturedProducts"
 import { MainBanner } from "../components/HomePage/MainBanner/MainBanner"
 import { MenuBar } from "../components/HomePage/MenuBar/MenuBar"
+import { NewMainBanner } from "../components/HomePage/NewMainBanner/NewMainBanner"
+import { NewProductCategories } from "../components/HomePage/NewProductCategories/NewProductCategories"
 import { ProductCategories } from "../components/HomePage/ProductCategories/ProductCategories"
 import { ShopFeatures } from "../components/HomePage/ShopFeatures/ShopFeatures"
 
 export const HomePage = () => {
   return (
     <div>
-      <MainBanner />
+      {/* <MainBanner /> */}
+      <NewMainBanner />
       <FeaturedProducts />
       <ShopFeatures />
-      <ProductCategories />
+      <NewProductCategories />
+      {/* <ProductCategories /> */}
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { addAddressService } from '../../../../services/user/addressService';
 
 import "./AddressForm.css"
-import { setUserAction } from '../../../../actions/userActions';
+import { setUserAction, setUserFailureAction, setUserRequestAction } from '../../../../actions/userActions';
 import { UserContext } from '../../../../contexts/UserContext';
 import { NotificationContext } from '../../../../contexts/NotificationContext';
 
@@ -15,21 +15,22 @@ const validationSchema = Yup.object().shape({
   city: Yup.string().required('Required'),
   state: Yup.string().required('Required'),
   zip: Yup.string().required('Required'),
-  address: Yup.string().required('Required'),
+  line: Yup.string().required('Required'),
 });
 
 export const AddressForm = () => {
   const { showNotification } = useContext(NotificationContext)
   const { userState, userDispatch } = useContext(UserContext)
-
+  
   const handleAddressSubmit = async (values, {resetForm}) => {
+    userDispatch(setUserRequestAction())
     try {
       const response = await addAddressService(userState?.user?.user?.id, values, userState?.user?.token)
-      // console.log('in ad = ', response.datas)
       userDispatch(setUserAction(response.data))
       showNotification("Address added!", "success")
       resetForm()
     }catch(error){
+      userDispatch(setUserFailureAction(error))
       console.log(error)
       resetForm()
     }
@@ -104,14 +105,14 @@ export const AddressForm = () => {
             <ErrorMessage className="error-message" name="zip" component="div" />
           </div>
           <div className="address-detail-line">
-            <p className="address-detail-label">Address</p>
+            <p className="address-detail-label">Line</p>
             <Field
               type="text"
-              name="address"
+              name="line"
               className="address-detail-input"
               placeholder="101, FreakyFinds Apartments"
             />
-            <ErrorMessage className="error-message" name="address" component="div" />
+            <ErrorMessage className="error-message" name="line" component="div" />
           </div>
           <button type="submit" className="address-detail-add-btn">Submit</button>
         </Form>

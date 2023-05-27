@@ -1,0 +1,64 @@
+.profile-menu-container {
+  background-color: #f7f7f7;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.profile-menu-btns-container {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.profile-menu-btn {
+  font-size: 1.1rem;
+  text-align: start;
+  padding: 10px 20px;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-menu-btn-active {
+  background-color: rgb(197, 197, 177);
+}
+
+.profile-menu-btn i {
+  margin: 0 0.5rem 0 0;
+}
+
+@media screen and (width >= 576px) {
+  .profile-menu-btns-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .profile-menu-btn {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+}
+
+@media screen and (width >= 768px) {
+  .profile-menu-container {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .profile-menu-btn {
+    align-items: start;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .profile-menu-container {
+    display: block;
+  }
+
+  .profile-menu-btns-container {
+    grid-template-columns: 1fr;
+    max-width: 80%;
+  }
+}

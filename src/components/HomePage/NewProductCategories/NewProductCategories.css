@@ -1,0 +1,136 @@
+.new-product-categories-main-container {
+  margin: 2rem 0 2rem 0;
+}
+
+.new-product-categories-container {
+  padding: 1rem;
+  min-height: 50vh;
+  margin: 1rem auto 0 auto;
+  max-width: 75%;
+  display: grid;
+  grid-template-areas: 
+  "women men"
+  "jewelery men"
+  "electronics men";
+}
+
+.new-product-categories-title {
+  text-align: center;
+  margin: 2rem 1rem 0 1rem;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.new-product-categories-slogan {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary-color);
+}
+
+.new-product-categories-men {
+  background-color: aliceblue;
+  background-image: url("https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80a");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  display: flex;
+  grid-area: men;
+  transition: 0.2s;
+  position: relative;
+}
+
+.new-product-categories-women {
+  background-image: url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: beige;
+  grid-area: women;
+  transition: 0.2s;
+  position: relative;
+}
+
+.new-product-categories-electronics {
+  background-color: peachpuff;
+  background-image: url("https://images.unsplash.com/photo-1515940175183-6798529cb860?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2829&q=80");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  grid-area: electronics;
+  transition: 0.2s;
+  position: relative;
+}
+.new-product-categories-jewelery {
+  background-color: teal;
+  background-image: url("https://images.unsplash.com/photo-1576723417715-6b408c988c23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  grid-area: jewelery;
+  transition: 0.2s;
+  position: relative;
+}
+
+.new-product-categories-men:hover, 
+.new-product-categories-women:hover,
+.new-product-categories-electronics:hover,
+.new-product-categories-jewelery:hover {
+  transform: scale(1.02);
+}
+
+.new-product-categories-btn{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: none;
+  padding: 12px;
+  background-color: rgba(0,0,0,0.6);
+  color: rgb(200, 200, 190);
+  font-size: 1rem;
+  font-weight: lighter;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.new-product-categories-btn:hover{
+  background-color: rgba(0,0,0,0.8);
+}
+
+@media screen and (width >= 576px) {
+  .new-product-categories-container {
+    margin: 1rem auto 0 auto;
+    min-height: 60vh;
+    max-width: 75%;
+    display: grid;
+    grid-template-areas: 
+    "women men"
+    "electronics men"
+    "jewelery men";
+  }
+}
+
+
+@media screen and (width >= 768px) {
+  .new-product-categories-main-container {
+    margin: 2rem 0 2rem 0;
+  }
+  .new-product-categories-container {
+    margin: 1rem auto 0 auto;
+    min-height: 60vh;
+    max-width: 75%;
+    display: grid;
+    grid-template-areas: 
+    "women men"
+    "electronics men"
+    "jewelery men";
+  }
+
+}
+
+@media screen and (width >= 1024px) {
+  .new-product-categories-main-container {
+    margin: 8rem 0 2rem 0;
+  }
+}

@@ -1,0 +1,9 @@
+.profile-content-container {
+  padding: 2rem 0;
+}
+
+@media screen and (width >= 576px) {
+  .profile-content-container {
+    padding: 2rem;
+  }  
+}

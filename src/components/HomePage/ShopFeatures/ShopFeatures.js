@@ -2,6 +2,7 @@ import "./ShopFeatures.css"
 
 export const ShopFeatures = () => {
   return (
+    <div className="shop-features-main-container">
     <div className="shop-features-container">
       <p className="shop-features-title">Stay In Trend With <span className="shop-feature-brand-text">FreakyFinds</span></p>
       <div className="shop-features-grid">
@@ -11,9 +12,6 @@ export const ShopFeatures = () => {
           <p className="shop-feature-description">
             Our designs follow the latest fashio styles to help you stay updated with new trends.
           </p>
-          {/* <p>hee</p><i className="fa-solid fa-box"></i> */}
-          {/* pie<i className="fa-solid fa-square-check"></i> */}
-          {/* <i className="fa-solid fa-truck-fast"></i> */}
         </div>
         <div className="shop-feature shop-feature-latest">
           <span className="shop-feature-icon"><i className="fa-solid fa-square-check"></i></span>
@@ -30,6 +28,7 @@ export const ShopFeatures = () => {
           </p>
         </div>
       </div>
+    </div>
     </div>
   )
 }
