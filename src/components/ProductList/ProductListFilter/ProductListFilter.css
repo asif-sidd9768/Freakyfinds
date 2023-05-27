@@ -20,7 +20,7 @@
 
 .product-list-filter-category-label {
   width: 85px;
-  color: rgb(148, 148, 136);
+  color: red;
   display: inline-block;
   text-align: start;
 }
@@ -30,6 +30,11 @@
   position: relative;
   /* margin: 0 1rem; */
   padding: 0.2rem 0.5rem;
+}
+
+.product-list-filter-category-item {
+  background-color: var(--bg-dark-color);
+  color: beige;
 }
 
 @media screen and (width >= 768px) {

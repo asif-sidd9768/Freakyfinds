@@ -23,10 +23,10 @@ export const ProductListFilter = () => {
       <div className="product-list-filter-category-container">
         <span className="product-list-filter-category-label">SHOW ME</span> <select defaultValue={productState.filters.category} onChange={handleCategoryChange} className="product-list-filter-category">
           <option value="all" className="product-list-filter-category-item">Everything</option>
-          <option value="men"  >Men's</option>
-          <option value="women">Women's</option>
-          <option value="electronics">Electronics</option>
-          <option value="jewelery">Jewelery</option>
+          <option value="men"  className="product-list-filter-category-item">Men's</option>
+          <option value="women" className="product-list-filter-category-item">Women's</option>
+          <option value="electronics" className="product-list-filter-category-item">Electronics</option>
+          <option value="jewelery" className="product-list-filter-category-item">Jewelery</option>
         </select>
       </div>
       <div className="product-list-filter-category-container">
