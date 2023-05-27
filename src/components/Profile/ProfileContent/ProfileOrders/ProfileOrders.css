@@ -1,0 +1,40 @@
+.profile-orders-container {
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.profile-orders-header {
+  text-align: start;
+  background-color: var(--bg-color);
+  padding: 0.5rem;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+.profile-orders-cell {
+  padding: 0.5rem;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+.profile-orders-rows {
+  display: inline;
+}
+
+.profile-orders-status-Pending {
+  background-color: orange;
+  color: white;
+}
+
+.profile-orders-status-Delivered {
+  background-color: green;
+  color: white;
+}
+
+.profile-orders-status-Failed {
+  background-color: red;
+  color: white;
+}

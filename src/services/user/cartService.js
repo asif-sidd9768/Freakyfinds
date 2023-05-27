@@ -1,4 +1,5 @@
 import axios from "axios";
+import { RESOURCE } from "../../utils/strings";
 
 export const addProductToCart = async (userId, product, token) => {
   const response = await axios.post(`/api/user/${userId}/cart`, product, {
@@ -17,5 +18,15 @@ export const updateCartProduct = async(userId, cartItemId, token, quantityAction
     }
   })
   console.log(response)
+  return response
+}
+
+export const deleteCartProduct = async (userId, cartItemId, token) => {
+  console.log('jere')
+  const response = await axios.post(`${RESOURCE.API_URL}/api/user/${userId}/cart/${cartItemId}/delete`, {},{
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
   return response
 }

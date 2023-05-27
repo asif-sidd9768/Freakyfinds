@@ -18,6 +18,9 @@ import { Notification } from "./components/Notification/Notification";
 import { NotificationContext } from "./contexts/NotificationContext";
 import { AuthenticatedRoutes } from "./components/AuthenticatedRoutes/AuthenticatedRoutes";
 import { UserContext } from "./contexts/UserContext";
+import { CheckoutSuccess } from "./components/Cart/Checkout/CheckoutSuccess";
+import { WishlistPage } from "./pages/WishlistPage";
+import { ProfilePage } from "./pages/ProfilePage";
 
 export default function App() {
   const { productState } = useContext(ProductContext)
@@ -32,15 +35,19 @@ export default function App() {
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/shop" element={<ProductList />} />
           {
-            [...productState.categories, 'shop'].map((route, index) => 
-              <Route key={index} path={`/${route}`} element={<ProductList />} />  
+            [...productState.categories].map((route, index) => 
+              <Route key={index} path={`/shop/${route}`} element={<ProductList />} />  
             )
           }
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/profile" element={<AuthenticatedRoutes isSignedIn={userState.user}><ProfilePage /></AuthenticatedRoutes>} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
+          <Route path="/success" element={<AuthenticatedRoutes isSignedIn={userState.user}> <CheckoutSuccess /></AuthenticatedRoutes>} />
           <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route path="/wishlist" element={<AuthenticatedRoutes isSignedIn={userState.user}><WishlistPage /></AuthenticatedRoutes>} />
           <Route path="/cart/:userId" element={<AuthenticatedRoutes isSignedIn={userState.user}><CartPage /></AuthenticatedRoutes>} />
         </Routes>
       </div>

@@ -26,9 +26,8 @@ export const DetailSection = ({product}) => {
         <span className="detail-section-rating-count">
           ({product.rating.count} Ratings)
         </span>
-        {/* <i className="fa-solid fa-star-half-stroke"></i> <i className="fa-solid fa-star"></i> */}
       </p>
-      <p className="detail-section-price">₹{product.price}</p>
+      <p className="detail-section-price">₹{product.price.toFixed(2)}</p>
       <div className="detail-section-btns">
         {
           isItemInWishlist(wishlistState.wishlistItems, product.id)

@@ -13,11 +13,14 @@
 .address-detail-shipping-add-btn {
   display: flex;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  color: var(--text-color);
 }
 
 .address-detail-shipping-add-btn i {
-  margin: 0 0.5rem;
+  margin: 0.5rem 0.5rem;
 }
 
 .address-detail-or-text {

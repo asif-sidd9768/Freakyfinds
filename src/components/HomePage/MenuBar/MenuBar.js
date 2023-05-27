@@ -5,10 +5,14 @@ import "./MenuBar.css"
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../../contexts/CartContext";
 import { ProductContext } from "../../../contexts/ProductContext";
+import { UserContext } from "../../../contexts/UserContext";
+import { WishlistContext } from "../../../contexts/WishlistContext";
 
 export const MenuBar = () => {
   const { cartState } = useContext(CartContext)
   const { productState } = useContext(ProductContext)
+  const { userState } = useContext(UserContext)
+  const { wishlistState } = useContext(WishlistContext)
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
 
@@ -19,12 +23,12 @@ export const MenuBar = () => {
   return (
     <div className="menubar-container">
       <div className="menubar-profile-btn"> 
-        <NavLink to="/login"><i className="fa-solid fa-user"></i></NavLink>
+        <NavLink to="/profile"><i className="fa-solid fa-user"></i></NavLink>
       </div>
       <div onClick={toggleMenu} className="menubar-button">
         {isOpen ? 
           <span className="menubar-close-btn"><i className="fa-solid fa-circle-xmark"></i></span> 
-          : <div className={`menubar-rotating-circle ${(productState.isLoading || cartState.isLoading) ? "rotate" : ""}`}>
+          : <div className={`menubar-rotating-circle ${(productState.isLoading || wishlistState.isLoading || cartState.isLoading || userState.isLoading) ? "rotate" : ""}`}>
               <img src={MenuLogo} className="menubar-logo-img" />
             </div>
           }

@@ -1,0 +1,12 @@
+.profile-page-container {
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (width >= 1024px) {
+  .profile-page-container{
+    grid-template-columns: 2fr 4fr;
+    min-height: 75vh;
+  }
+}

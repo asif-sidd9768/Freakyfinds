@@ -1,6 +1,11 @@
-.shop-features-container {
+.shop-features-main-container{
   background-color: var(--bg-color);
   padding: 0 0 1rem 0;
+}
+
+.shop-features-container {
+  max-width: 90%;
+  margin: 0 auto;
 }
 .shop-features-title {
   color: var(--bg-dark-color);

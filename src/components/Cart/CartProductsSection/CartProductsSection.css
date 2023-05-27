@@ -99,12 +99,15 @@
   top: 0;
   right: 0;
   font-size: 1.7rem;
-  margin-top: -0.5rem;
+  margin-top: -0.4rem;
+  margin-right: -0.4rem;
   transition: 0.2s;
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
-.cart-product-delete-btn:hover {
+.cart-product-delete-btn:hover:enabled {
   color: crimson;
 }
 
@@ -257,8 +260,9 @@
     font-size: 1.1rem;
   }
   .cart-product-delete-btn {
-    margin-top: -0.7rem;
-    font-size: 1.8rem;
+    margin-top: -0.4rem;
+    margin-right: -0.4rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -317,7 +321,8 @@
   }
 
   .cart-product-delete-btn {
-    margin-top: -0.7rem;
-    font-size: 2rem;
+    margin-top: -0.4rem;
+    margin-right: -0.4rem;
+    font-size: 1.7rem;
   }
 }

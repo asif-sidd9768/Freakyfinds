@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
 }
 
 .nav-logo {
-  padding: 1rem 0 1rem 2rem;
+  padding: 1rem;
 }
 
 .nav-logo-img {
@@ -35,6 +35,19 @@
 
 .nav-category-icons {
   display: none;
+}
+
+.nav-wishlist {
+  display: none;
+}
+
+@media screen and (width >= 576px) {
+  .nav-wishlist{
+    display: inline-block;
+  }
+  .nav-wishlist i {
+    margin: 0 0.5rem;
+  }
 }
 
 @media screen and (min-width: 1024px) {

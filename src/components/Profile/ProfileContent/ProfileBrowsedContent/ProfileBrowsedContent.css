@@ -1,0 +1,25 @@
+.profile-browsed-container {
+  width: 100%;
+  height: 100%;
+  /* display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-end; */
+}
+
+/* .profile-browsed-pie {
+  max-width: 200px;
+} */
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  max-width: 90%;
+  padding: 2rem 0;
+}
+
+@media screen and (width >= 768px) {
+  /* .profile-browsed-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  } */
+}

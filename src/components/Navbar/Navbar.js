@@ -34,8 +34,8 @@ export const Navbar = () => {
       </div>
       </div>
       
-      <div className="nav-details">
-        <NavLink className="nav-item" to={`/cart/sadajh21`}>cart {cartState.cartItems.length}</NavLink> <span>User</span>
+      <div className="nav-details nav-wishlist">
+        <NavLink className="nav-item" to={`/wishlist`}><i className="fa-solid fa-heart"></i>Wishlist</NavLink>
       </div>
     </div>
   )

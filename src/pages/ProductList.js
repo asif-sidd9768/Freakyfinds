@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 
 import { ProductContext } from "../contexts/ProductContext"
@@ -6,10 +6,19 @@ import { ProductListCard } from "../components/ProductList/ProductListCard/Produ
 
 import "../styles/ProductList.css"
 import { ProductListFilter } from "../components/ProductList/ProductListFilter/ProductListFilter"
+import { setProductFilterAction } from "../actions/productActions"
 
 export const ProductList =() => {
   const location = useLocation()
-  const { productState } = useContext(ProductContext)
+  const { productState, productDispatch } = useContext(ProductContext)
+
+  // 
+  // productDispatch(setProductFilterAction(event.target.value))  
+  // const productsToFilterFrom = location.pathname === "/shop" ? productState.state productState.products
+
+  // useEffect(() => {
+  //   location.pathname === "/shop" ? productDispatch(setProductFilterAction("all")) : productDispatch(setProductFilterAction(location.pathname.split("/")[2]))
+  // }, [])
 
   let filteredProducts = productState.filters.category === "all" ? 
   productState.products : 
