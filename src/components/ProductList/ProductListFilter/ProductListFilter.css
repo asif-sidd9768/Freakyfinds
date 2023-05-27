@@ -20,7 +20,7 @@
 
 .product-list-filter-category-label {
   width: 85px;
-  color: red;
+  color: rgb(148, 148, 136);
   display: inline-block;
   text-align: start;
 }
@@ -33,8 +33,7 @@
 }
 
 .product-list-filter-category-item {
-  background-color: var(--bg-dark-color);
-  color: beige;
+  background-color: aqua;
 }
 
 @media screen and (width >= 768px) {
