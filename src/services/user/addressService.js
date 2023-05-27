@@ -1,7 +1,8 @@
 import axios from "axios";
+import { RESOURCE } from "../../utils/strings";
 
 export const addAddressService = async (userId, addressData, token) => {
-  const response = await axios.post(`/api/user/${userId}/address`, addressData, {
+  const response = await axios.post(`${RESOURCE.API_URL}/api/user/${userId}/address`, addressData, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -10,7 +11,7 @@ export const addAddressService = async (userId, addressData, token) => {
 }
 
 export const deleteAddressService = async (userId, addressData, token) => {
-  const response = await axios.post(`/api/user/${userId}/address/${addressData.id}/delete`, addressData, {
+  const response = await axios.post(`${RESOURCE.API_URL}/api/user/${userId}/address/${addressData.id}/delete`, addressData, {
     headers: {
       Authorization: `Bearer ${token}`
     }

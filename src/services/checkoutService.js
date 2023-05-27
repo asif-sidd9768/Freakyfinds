@@ -1,7 +1,8 @@
 import axios from "axios";
+import { RESOURCE } from "../utils/strings";
 
 export const createOrderService = async (token, checkoutData) => {
-  const response = await axios.post(`/api/checkout/orders`, {checkoutData}, {
+  const response = await axios.post(`${RESOURCE.API_URL}/api/checkout/orders`, {checkoutData}, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -15,7 +16,7 @@ export const loadScript = async () => {
 }
 
 export const successOrderService = async (token, checkoutData) => {
-  const response = await axios.post("/api/checkout/success", {checkoutData},{
+  const response = await axios.post(`${RESOURCE.API_URL}/api/checkout/success`, {checkoutData},{
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -25,7 +26,7 @@ export const successOrderService = async (token, checkoutData) => {
 }
 
 export const codOrderService = async (token, checkoutData) => {
-  const response = await axios.post("/api/checkout/cod-order", {checkoutData}, {
+  const response = await axios.post(`${RESOURCE.API_URL}/api/checkout/cod-order`, {checkoutData}, {
     headers: {
       Authorization: `Bearer ${token}`
     }
