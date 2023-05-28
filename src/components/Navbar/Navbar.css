@@ -41,12 +41,53 @@
   display: none;
 }
 
+.mobile-menu-item {
+  font-size: 1.2rem;
+  margin: 4px;
+  display: block;
+  padding: 0 1rem;
+}
+
+.menu-mobile-container {
+  position: absolute;
+  z-index: 2;
+  padding: 1rem 0;
+  left:20px;
+  top:65px;
+  width: 250px;
+  background-color: rgb(244, 244, 235);
+  display: inline-block;
+  transition: 0.2s;
+  box-shadow: 2px 4px 4px rgba(0,0,0,0.3);
+}
+
+.mobile-menu-show {
+  display: inline;
+}
+
+.mobile-menu-hide {
+  display: none;
+}
+
+
 @media screen and (width >= 576px) {
   .nav-wishlist{
     display: inline-block;
   }
   .nav-wishlist i {
     margin: 0 0.5rem;
+  }
+
+  .mobile-menu-show {
+    display: none;
+  }
+  
+  .mobile-menu-hide {
+    display: inline;
+  }
+
+  .menu-mobile-container {
+    display: none;
   }
 }
 
@@ -56,3 +97,4 @@
   }
 
 }
+

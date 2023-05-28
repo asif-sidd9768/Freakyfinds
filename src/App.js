@@ -21,6 +21,9 @@ import { UserContext } from "./contexts/UserContext";
 import { CheckoutSuccess } from "./components/Cart/Checkout/CheckoutSuccess";
 import { WishlistPage } from "./pages/WishlistPage";
 import { ProfilePage } from "./pages/ProfilePage";
+import { ContactPage } from "./pages/ContactPage";
+import { ErrorPage } from "./pages/ErrorPage";
+import { AuctionPage } from "./pages/AuctionPage";
 
 export default function App() {
   const { productState } = useContext(ProductContext)
@@ -46,9 +49,12 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
           <Route path="/success" element={<AuthenticatedRoutes isSignedIn={userState.user}> <CheckoutSuccess /></AuthenticatedRoutes>} />
+          <Route path="/contact-us" element={<ContactPage />} />
+          <Route path="/auction" element={<AuctionPage />}/>
           <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/wishlist" element={<AuthenticatedRoutes isSignedIn={userState.user}><WishlistPage /></AuthenticatedRoutes>} />
           <Route path="/cart/:userId" element={<AuthenticatedRoutes isSignedIn={userState.user}><CartPage /></AuthenticatedRoutes>} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
       <div>

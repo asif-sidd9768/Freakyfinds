@@ -1,0 +1,48 @@
+.error-bg {
+  min-height: 100%;
+  width: 100%;
+  background: rgb(106,193,194);
+  background: linear-gradient(0deg, rgba(106,193,194,1) 0%, rgba(214,211,204,1) 100%); 
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 3rem 0;
+}
+
+.error-container {
+  max-width: 60%;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 0 auto;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 1rem;
+}
+
+.error-logo {
+  max-width: 100%;
+  display: block;
+  margin: 0.5rem auto 0 auto;
+}
+
+.error-home-btn-container {
+  text-align: center;
+  margin: 0.4rem 0 2rem 0;
+}
+
+.error-home-btn{
+  text-decoration: none;
+  background-color: rgb(2, 65, 65);
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  color: beige;
+}
+
+@media screen and (width >= 576px) {
+  .error-container {
+    width: 35%;
+  }
+}
+
+@media screen and (width >= 768px) {
+  .error-container {
+    width: 30%;
+  }
+}

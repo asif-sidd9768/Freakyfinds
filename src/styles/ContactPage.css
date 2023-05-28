@@ -1,0 +1,133 @@
+.contact-bg {
+  min-height: 100%;
+  width: 100%;
+  background: rgb(106,193,194);
+  background: linear-gradient(0deg, rgba(106,193,194,1) 0%, rgba(214,211,204,1) 100%); 
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 3rem 0;
+}
+
+.contact-container {
+  max-width: 60%;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 0 auto;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  padding: 1rem;
+}
+
+.contact-form-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.contact-heading {
+  text-align: center;
+  margin: 1rem 0 1.5rem 0;
+  font-size: 1.4rem;
+  font-weight: lighter;
+}
+
+.contact-logo {
+  max-width: 100%;
+  display: block;
+  margin: 0.5rem auto 0 auto;
+}
+
+.contact-home-btn-container {
+  text-align: center;
+  margin: 0.4rem 0 2rem 0;
+}
+
+.contact-home-btn{
+  text-decoration: none;
+  background-color: rgb(2, 65, 65);
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  color: beige;
+}
+
+.contact-field-container {
+  margin: 1rem 0;
+}
+
+.contact-label {
+  font-size: 12px;
+  margin: 0.5rem 0.5rem 0 0;
+  color: #666666;
+  font-size: 0.9rem;
+}
+.contact-label::before {
+  content: "*";
+  color: crimson;
+}
+
+.contact-input {
+  padding: 8px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid gray;
+  outline: none;
+  transition: 0.2s;
+  max-width: 90%;
+}
+
+.contact-input:focus {
+  border-bottom: 1px solid rgb(30, 29, 29);
+}
+
+.contact-add-btn-container {
+  text-align: center;
+}
+
+.contact-add-btn {
+  margin: 0.5rem auto 1rem auto;
+  padding: 10px 2rem;
+  background-color: var(--bg-dark-color);
+  color: beige;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+
+.contact-add-btn:hover {
+  background-color: rgb(59, 59, 55);
+}
+
+@media screen and (width >= 576px) {
+  .contact-container {
+    width: 35%;
+  }
+
+  .contact-label {
+    font-size: 12px;
+    margin: 0.5rem 0.5rem 0 0;
+    color: #666666;
+    font-size: 0.9rem;
+  }
+  .contact-label::before {
+    content: "*";
+    color: crimson;
+  }
+  
+  .contact-input {
+    padding: 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid gray;
+    outline: none;
+    transition: 0.2s;
+    min-width: 90%;
+  }
+  
+  .contact-input:focus {
+    border-bottom: 1px solid rgb(30, 29, 29);
+  }
+  
+}
+
+@media screen and (width >= 768px) {
+  .contact-container {
+    width: 30%;
+  }
+}
