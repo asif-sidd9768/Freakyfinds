@@ -32,3 +32,8 @@ export const setProductSearchFilterAction = (searchParams) => ({
   type:"SET_PRODUCT_SEARCH_FILTER",
   payload: searchParams
 })
+
+export const productFilterRemoveAction = (filterData) => ({
+  type:"PRODUCT_FILTER_REMOVE",
+  payload: filterData
+})

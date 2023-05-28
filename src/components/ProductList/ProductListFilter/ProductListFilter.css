@@ -41,6 +41,12 @@
   background-color: aqua;
 }
 
+.product-list-filter-remove {
+  font-size: 1.3rem;
+  margin: 0 0 0 0.5rem;
+  color: crimson;
+}
+
 @media screen and (width >= 768px) {
   .product-list-filter-category-container{
     margin: 0 1rem;
