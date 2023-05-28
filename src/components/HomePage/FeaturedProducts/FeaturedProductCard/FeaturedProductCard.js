@@ -5,10 +5,15 @@ import { addToCartAction } from "../../../../actions/cartActions"
 import { isItemInCart } from "../../../../utils/products/checItemInCart"
 import { CartContext } from "../../../../contexts/CartContext"
 import { RESOURCE } from "../../../../utils/strings"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
+import { UserContext } from "../../../../contexts/UserContext"
+import { NotificationContext } from "../../../../contexts/NotificationContext"
 
 export const FeaturedProductCard = (pr) => {
-  const { cartState, cartDispatch } = useContext(CartContext)
+  const { cartState, cartDispatch, handleAddToCart } = useContext(CartContext)
+  const { userState } = useContext(UserContext)
+  const { showNotification } = useContext(NotificationContext)
+  const navigate = useNavigate()
   return (
     <div className="featured-product" key={pr.id}>
       <img src={pr.image} />
@@ -22,7 +27,7 @@ export const FeaturedProductCard = (pr) => {
             {RESOURCE.GO_TO_FINDS}
           </NavLink>
           :
-          <button onClick={() => cartDispatch(addToCartAction(pr))} className="featured-product-btn">
+          <button onClick={() => handleAddToCart(userState, showNotification, navigate, product)} className="featured-product-btn">
             {RESOURCE.ADD_TO_FINDS}
           </button>
         }

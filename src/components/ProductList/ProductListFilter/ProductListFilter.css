@@ -1,7 +1,12 @@
 .product-list-filter-container {
   text-align: center;
-  margin: 1rem 0 0 0;
+  margin: 0 0 0 0;
   display: grid;
+}
+
+.product-list-filters {
+  margin: 1rem 0 0 0;
+  text-align: center;
 }
 
 .product-list-filter-category {
@@ -58,6 +63,10 @@
 
 @media screen and (width >= 1024px) {
   .product-list-filter-container {
-    display: block;
+    display: inline-block;
+  }
+
+  .product-list-filters {
+    margin: 1rem 0.5rem 0 0.5rem;
   }
 }

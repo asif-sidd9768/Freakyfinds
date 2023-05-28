@@ -4,7 +4,9 @@ export const initialStateProducts = {
   filters: {
     price: "",
     rating: "",
-    category: "all"
+    category: "all",
+    searchParam: "",
+    sale: "no",
   },
   isLoading: true,
   error: null
@@ -22,5 +24,9 @@ export const productsReducers = (state, action) => {
       return {...state, filters: {...state.filters, price: action.payload, rating: ""}}
     case "SET_PRODUCT_RATING_FILTER":
       return {...state, filters: {...state.filters, rating: action.payload, price: ""}}
+    case "SET_PRODUCT_SALE_FILTER":
+      return {...state, filters: {...state.filters, sale: action.payload} }
+    case "SET_PRODUCT_SEARCH_FILTER":
+      return {...state, filters: {...state.filters, searchParam: action.payload}}
   }
 }

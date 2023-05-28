@@ -40,13 +40,13 @@ export const Navbar = () => {
       <div className="nav-logo">
         {/* <img className="nav-logo-img" src={logoImg} /> */}
         <div className="nav-items">
-          <span onClick={() => setIsMobileMenu(!isMobileMenu)} className="mobile-menu-item mobile-menu-show">{isMobileMenu ? <i class="fa-solid fa-xmark"></i> : <i class="fa-solid fa-bars"></i>}</span>
+          <span onClick={() => setIsMobileMenu(!isMobileMenu)} className="mobile-menu-item mobile-menu-show">{isMobileMenu ? <i className="fa-solid fa-xmark"></i> : <i className="fa-solid fa-bars"></i>}</span>
           {
             !isMobileMenu && <>
               <NavLink style={getActiveStyles} className="nav-item nav-item-home mobile-menu-hide" to="/">Home</NavLink>
               <NavLink style={getActiveStyles} className="nav-item nav-item-home mobile-menu-hide" to="/shop">Shop</NavLink>
               <NavLink style={getActiveStyles} className="nav-item nav-item-home mobile-menu-hide" to="/contact-us">Contact</NavLink>
-              <NavLink style={getActiveStyles} className="nav-item nav-item-home mobile-menu-hide" to="/auction"><i class="fa-solid fa-gavel"></i>Auction</NavLink>
+              <NavLink style={getActiveStyles} className="nav-item nav-item-home mobile-menu-hide" to="/auction"><i className="fa-solid fa-gavel"></i>Auction</NavLink>
             </>
           }
         </div>
@@ -60,7 +60,7 @@ export const Navbar = () => {
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/">Home</NavLink>
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/shop">Shop</NavLink>
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/contact-us">Contact</NavLink>
-          <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/auction"><span className="auction-icon"><i class="fa-solid fa-gavel"></i></span>Auction</NavLink>
+          <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/auction"><span className="auction-icon"><i className="fa-solid fa-gavel"></i></span>Auction</NavLink>
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to={`/wishlist`}><i className="fa-solid fa-heart"></i>Wishlist</NavLink>
         </div>
       }

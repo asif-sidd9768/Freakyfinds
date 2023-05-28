@@ -22,3 +22,13 @@ export const setProductRatingFilterAction = (filterType) => ({
   type:"SET_PRODUCT_RATING_FILTER",
   payload:filterType
 })
+
+export const setProductSaleFilterAction = (filterType) => ({
+  type:"SET_PRODUCT_SALE_FILTER",
+  payload: filterType
+})
+
+export const setProductSearchFilterAction = (searchParams) => ({
+  type:"SET_PRODUCT_SEARCH_FILTER",
+  payload: searchParams
+})

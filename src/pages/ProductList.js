@@ -9,16 +9,7 @@ import { ProductListFilter } from "../components/ProductList/ProductListFilter/P
 import { setProductFilterAction } from "../actions/productActions"
 
 export const ProductList =() => {
-  const location = useLocation()
   const { productState, productDispatch } = useContext(ProductContext)
-
-  // 
-  // productDispatch(setProductFilterAction(event.target.value))  
-  // const productsToFilterFrom = location.pathname === "/shop" ? productState.state productState.products
-
-  // useEffect(() => {
-  //   location.pathname === "/shop" ? productDispatch(setProductFilterAction("all")) : productDispatch(setProductFilterAction(location.pathname.split("/")[2]))
-  // }, [])
 
   let filteredProducts = productState.filters.category === "all" ? 
   productState.products : 
@@ -42,6 +33,14 @@ export const ProductList =() => {
         return prodB.rating.rate - prodA.rating.rate
       }
     })
+  }
+
+  if(productState.filters.sale === 'yes'){
+    filteredProducts = [...filteredProducts].filter(({sale}) => sale.onSale)
+  }
+
+  if(productState.filters.searchParam){
+    filteredProducts = [...filteredProducts].filter(({title}) => title.toLowerCase().includes(productState.filters.searchParam.toLowerCase()))
   }
 
   return (

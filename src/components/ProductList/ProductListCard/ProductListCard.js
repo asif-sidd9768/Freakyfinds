@@ -11,13 +11,15 @@ import { UserContext } from "../../../contexts/UserContext"
 
 import "./ProductListCard.css"
 import "../../../styles.css"
+import { HighlightedString } from "../../HighlightedString/HighlightedString"
+import { ProductContext } from "../../../contexts/ProductContext"
 
 export const ProductListCard = (product) => {
-  const { cartState, cartDispatch, handleAddToCart } = useContext(CartContext)
+  const { cartState, handleAddToCart } = useContext(CartContext)
+  const { productState } = useContext(ProductContext)
   const { userState } = useContext(UserContext)
   const { showNotification } = useContext(NotificationContext)
   const navigate = useNavigate()
-  const location = useLocation()
   const { wishlistState, wishlistDispatch, handleAddToWishlist, handleRemoveFromWishlist } = useContext(WishlistContext)
   const {id, title, category, price, image, rating, sale} = product
 
@@ -42,7 +44,7 @@ export const ProductListCard = (product) => {
       <div className="product-list-card-details-container">
         {sale.onSale && <span className="product-list-card-sale">Sale</span>}
         <div className="product-list-card-details">
-            <NavLink to={`/product/${id}`} className="product-list-card-name">{title}</NavLink>
+            <NavLink to={`/product/${id}`} className="product-list-card-name"><HighlightedString text={title} substring={productState.filters.searchParam} /></NavLink>
             {
               isItemInCart(cartState.cartItems, id) 
               ? 
