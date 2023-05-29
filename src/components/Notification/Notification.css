@@ -1,12 +1,14 @@
+
+
 .notification-container {
   position: absolute;
-  bottom: 2rem;
+  bottom: 15%;
   right: 2rem;
   width: max-content;
   padding: 10px 20px 10px 8px;
   box-shadow: 0 0 4px rgba(0,0,0,0.3);
   display: flex;
-  z-index: 1;
+  z-index: 3;
   justify-content: start;
 }
 
@@ -32,7 +34,8 @@
   background-color: rgb(206, 172, 166);
 }
 
-
-.notification-text {
-
+@media screen and (width >= 576px) {
+  .notification-container {
+    bottom: 2rem;
+  }  
 }
