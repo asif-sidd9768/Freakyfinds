@@ -19,7 +19,6 @@ export const MenuBar = () => {
   const { wishlistState, wishlistDispatch } = useContext(WishlistContext)
   const { checkoutState, checkoutDispatch } = useContext(CheckoutContext)
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
   const toggleMenu = () => {
@@ -59,7 +58,7 @@ export const MenuBar = () => {
         <div className="menubar-item">Item 4</div> */}
       </div>
       <div className="menubar-cart-btn">
-        <NavLink className="menubar-cart-link" to="/cart"><i className="fa-solid fa-cart-shopping"></i> <sup>{cartState.cartItems.length}</sup></NavLink>
+        <NavLink className="menubar-cart-link" to="/cart"><i className="fa-solid fa-cart-shopping"></i>  {userState.user && <sup>{cartState.cartItems.length}</sup>}</NavLink>
       </div>
     </div>
   );
