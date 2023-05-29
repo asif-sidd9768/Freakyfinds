@@ -30,9 +30,9 @@ export const MenuBar = () => {
     cartDispatch(clearCartAction())
     userDispatch(removeUserAction())
     wishlistDispatch(removeWishlistItemsAction())
-    localStorage.removeItem("user")
-    localStorage.removeItem("wishlist")
-    localStorage.removeItem("cart")
+    await localStorage.removeItem("user")
+    await localStorage.removeItem("wishlist")
+    await localStorage.removeItem("cart")
     toggleMenu()
   }
 

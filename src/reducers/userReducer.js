@@ -9,12 +9,10 @@ export const userReducer = (state, action) => {
     case "SET_USER_REQUEST":
       return {...state, isLoading: true}
     case "SET_USER":
-      console.log('setu ser= == ', action.payload)
       return {...state, user: action.payload, isLoading: false}
     case "SET_USER_FAILURE":
       return {...state, error: action.payload, isLoading: false}
     case "SUCCESS_CHECKOUT_ORDER_UPDATE":
-      // console.log('setu ser= == ', order.payload)
       const updatedUser = {...state.user, orders: [...state?.user?.orders, action.payload]}
       return {...state, user: updatedUser}
     case "UPDATE_BROWSED_ITEMS":
