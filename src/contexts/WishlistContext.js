@@ -12,18 +12,24 @@ export const WishlistProvider = ({children}) => {
   }, [wishlistState])
 
   const handleAddToWishlist = async (userState, showNotification, product) => {
-    wishlistDispatch(addToWishlistFailureAction())
+    if(wishlistState.isLoading){
+      return
+    }
+    wishlistDispatch(addToWishlistRequestAction())
     try{
       const result = await addProductToWishlistService(userState?.user?.token, userState?.user?.user?.id, product)
       wishlistDispatch(addToWishlistAction(product))
       showNotification("ITEM ADDED TO WISHLIST", "success")
     }catch(error){
-      wishlistDispatch(addToWishlistRequestAction(error))
+      wishlistDispatch(addToWishlistFailureAction(error))
       console.log(error)
     }
   }
 
   const handleRemoveFromWishlist = async (userState, showNotification, product) => {
+    if(wishlistState.isLoading){
+      return
+    }
     wishlistDispatch(deleteFromWishlistRequestAction())
     try{
       const response = await deleteProductFromWishlistService(userState?.user?.token, userState?.user?.user?.id, product.id)

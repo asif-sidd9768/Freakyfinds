@@ -2,7 +2,9 @@ import axios from "axios";
 import { RESOURCE } from "../../utils/strings";
 
 export const addProductToCart = async (userId, product, token) => {
-  const response = await axios.post(`/api/user/${userId}/cart`, product, {
+  console.log('in api call')
+  console.log(product)
+  const response = await axios.post(`${RESOURCE.API_URL}/api/user/${userId}/cart`, product, {
     headers: {
       Authorization: `Bearer ${token}` //the token is a variable which holds the token
     }
@@ -12,7 +14,7 @@ export const addProductToCart = async (userId, product, token) => {
 }
 
 export const updateCartProduct = async(userId, cartItemId, token, quantityAction) => {
-  const response = await axios.post(`/api/user/${userId}/cart/${cartItemId}`,{quantityAction}, {
+  const response = await axios.post(`${RESOURCE.API_URL}/api/user/${userId}/cart/${cartItemId}`,{quantityAction}, {
     headers: {
       Authorization: `Bearer ${token}`
     }

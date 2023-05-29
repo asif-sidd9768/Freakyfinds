@@ -18,7 +18,7 @@ export const Wishlist = () => {
             }
           </div>
         :
-        <EmptyCart />
+        <EmptyCart text={"wishlist"} />
       }
       
     </>

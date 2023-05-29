@@ -7,12 +7,14 @@ import { CartContext } from "../../../contexts/CartContext";
 import { ProductContext } from "../../../contexts/ProductContext";
 import { UserContext } from "../../../contexts/UserContext";
 import { WishlistContext } from "../../../contexts/WishlistContext";
+import { CheckoutContext } from "../../../contexts/CheckoutContext";
 
 export const MenuBar = () => {
   const { cartState } = useContext(CartContext)
   const { productState } = useContext(ProductContext)
   const { userState } = useContext(UserContext)
   const { wishlistState } = useContext(WishlistContext)
+  const { checkoutState } = useContext(CheckoutContext)
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
 
@@ -25,10 +27,10 @@ export const MenuBar = () => {
       <div className="menubar-profile-btn"> 
         <NavLink to="/profile"><i className="fa-solid fa-user"></i></NavLink>
       </div>
-      <div onClick={toggleMenu} className="menubar-button">
+      <div className="menubar-button">
         {isOpen ? 
           <span className="menubar-close-btn"><i className="fa-solid fa-circle-xmark"></i></span> 
-          : <div className={`menubar-rotating-circle ${(productState.isLoading || wishlistState.isLoading || cartState.isLoading || userState.isLoading) ? "rotate" : ""}`}>
+          : <div className={`menubar-rotating-circle ${(productState.isLoading || wishlistState.isLoading || checkoutState.isLoading || cartState.isLoading || userState.isLoading) ? "rotate" : ""}`}>
               <img src={MenuLogo} className="menubar-logo-img" />
             </div>
           }
@@ -40,7 +42,7 @@ export const MenuBar = () => {
         <div className="menubar-item">Item 4</div>
       </div>
       <div className="menubar-cart-btn">
-        <NavLink className="menubar-cart-link" to="/cart/sjdfsfds"><i className="fa-solid fa-cart-shopping"></i> <sup>{cartState.cartItems.length}</sup></NavLink>
+        <NavLink className="menubar-cart-link" to="/cart"><i className="fa-solid fa-cart-shopping"></i> <sup>{cartState.cartItems.length}</sup></NavLink>
       </div>
     </div>
   );

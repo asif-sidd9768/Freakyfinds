@@ -2,20 +2,29 @@ import { SHIPPING_FEES } from "../utils/cart/shipping"
 
 export const initialStateCart = {
   cartItems: JSON.parse(localStorage.getItem("user")) || [],
-  cartItemsTotal: 0,
+  cartItemsTotal: SHIPPING_FEES.standard,
   isLoading: false,
   error: null,
   cartShipping: SHIPPING_FEES.standard
 };
 
+const updateCartTotal = (items, shipping) => {
+  const total = items.reduce((acc, {product, quantity}) => {
+    if(product?.sale?.onSale){
+      return acc + (product.sale.salePrice * quantity)
+    }else {
+      return acc + (product?.price  * quantity)
+    }
+  } , shipping).toFixed(2)
+  console.log('total ====== ',total)
+  return total
+}
+
 let cartData = JSON.parse(localStorage.getItem("cart"));
 
 if (Array.isArray(cartData)) {
   initialStateCart.cartItems = cartData;
-  initialStateCart.cartItemsTotal = cartData.reduce(
-    (acc, { product, quantity }) => acc + product.price * quantity,
-    0
-  ).toFixed(2);
+  initialStateCart.cartItemsTotal = updateCartTotal(cartData, initialStateCart.cartShipping);
 }
 
 export const cartReducer = (state, action) => {
@@ -26,13 +35,6 @@ export const cartReducer = (state, action) => {
     case "ADD_TO_CART_REQUEST": 
       return {...state, isLoading: true}
     case "ADD_TO_CART": 
-      // const isItemExist = state.cartItems.find((cartItem) => cartItem._id === action.payload._id)
-      // let cartItemsAfterAdd
-      // if(isItemExist){
-      //   cartItemsAfterAdd = state.cartItems.map(cartItem => cartItem._id === isItemExist.id ? {...isItemExist, quantity: isItemExist.quantity+1} : cartItem)
-      // }else {
-      //   cartItemsAfterAdd = [...state.cartItems, {...action.payload, quantity: action.payload.quantity}]
-      // }
       const cartItemsAfterAdd = [...state.cartItems, action.payload]
       const cartTotalAfterAdd = updateCartTotal(cartItemsAfterAdd, state.cartShipping)
       return {...state, cartItems: [...cartItemsAfterAdd], cartItemsTotal: cartTotalAfterAdd, isLoading: false}
@@ -62,9 +64,4 @@ export const cartReducer = (state, action) => {
       const defaultTotal = updateCartTotal(state.cartItems)
       return {...state, cartItemsTotal: defaultTotal}
   }
-}
-
-const updateCartTotal = (items, shipping) => {
-  const total = items.reduce((acc, {product, quantity}) => acc + (product.price  * quantity) , shipping).toFixed(2)
-  return total
 }

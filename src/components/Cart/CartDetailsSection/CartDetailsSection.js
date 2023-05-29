@@ -3,12 +3,9 @@ import "./CartDetailsSection.css"
 import { CartContext } from "../../../contexts/CartContext"
 import { clearCartAction, updateCartShippingAction } from "../../../actions/cartActions"
 import { CheckoutContext } from "../../../contexts/CheckoutContext"
-import { addCartItemsToCheckoutAction, checkoutSuccessAction, updateShippingMethodAction } from "../../../actions/checkoutActions"
-import { createOrderService, loadScript, successOrderService } from "../../../services/checkoutService"
+import { addCartItemsToCheckoutAction, checkoutSuccessAction, checkoutSuccessFailureAction, checkoutSuccessRequestAction, updateShippingMethodAction } from "../../../actions/checkoutActions"
 import { UserContext } from "../../../contexts/UserContext"
 import logoImg from "../../../assets/images/logo-new.png"
-import axios from "axios"
-import { RESOURCE } from "../../../utils/strings"
 import { useNavigate } from "react-router-dom"
 import { NotificationContext } from "../../../contexts/NotificationContext"
 import { handleOnlineCheckout } from "../../../utils/checkout/handleOnlineCheckout"
@@ -26,7 +23,7 @@ export const CartDetailsSection = () => {
     cartDispatch(updateCartShippingAction(event.target.value))
     checkoutDispatch(updateShippingMethodAction(event.target.value))
   }
-  const cartTotalAmount = cartState.cartShipping + Number(cartState.cartItemsTotal)
+  const cartTotalAmount = Number(cartState.cartItemsTotal)
 
   const handleCheckout = async () => {
     if(Object.keys(checkoutState.shippingAddress).length === 0){
@@ -37,6 +34,7 @@ export const CartDetailsSection = () => {
       showNotification("Select payment method.", "error")
       return
     }
+    checkoutDispatch(checkoutSuccessRequestAction())
     try {
       let checkoutResult
       if(checkoutState.paymentMethod === "online"){
@@ -74,6 +72,7 @@ export const CartDetailsSection = () => {
       }
     }catch(error){
       console.log(error)
+      checkoutDispatch(checkoutSuccessFailureAction(error))
     }
   }
 

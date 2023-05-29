@@ -8,8 +8,6 @@ import "./Navbar.css"
 import { CartContext } from "../../contexts/CartContext"
 
 export const Navbar = () => {
-  const { productState } = useContext(ProductContext)
-  const { cartState } = useContext(CartContext)
   const [isMobileMenu, setIsMobileMenu] = useState(false)
 
   const handleWindowSizeChange = () => {
@@ -38,7 +36,6 @@ export const Navbar = () => {
   return (
     <div className="nav">
       <div className="nav-logo">
-        {/* <img className="nav-logo-img" src={logoImg} /> */}
         <div className="nav-items">
           <span onClick={() => setIsMobileMenu(!isMobileMenu)} className="mobile-menu-item mobile-menu-show">{isMobileMenu ? <i className="fa-solid fa-xmark"></i> : <i className="fa-solid fa-bars"></i>}</span>
           {

@@ -6,7 +6,6 @@ import { getAllProducts } from "../services/products/productService";
 export const ProductContext = createContext()
 export const ProductProvider = ({children}) => {
   const [productState, productDispatch] = useReducer(productsReducers, initialStateProducts)
-  // [...new Set(prods.map(pr => pr.category.name))] 
   useEffect(() => {
     async function loadProducts (){
       try {

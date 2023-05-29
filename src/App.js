@@ -53,7 +53,7 @@ export default function App() {
           <Route path="/auction" element={<AuctionPage />}/>
           <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/wishlist" element={<AuthenticatedRoutes isSignedIn={userState.user}><WishlistPage /></AuthenticatedRoutes>} />
-          <Route path="/cart/:userId" element={<AuthenticatedRoutes isSignedIn={userState.user}><CartPage /></AuthenticatedRoutes>} />
+          <Route path="/cart" element={<AuthenticatedRoutes isSignedIn={userState.user}><CartPage /></AuthenticatedRoutes>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

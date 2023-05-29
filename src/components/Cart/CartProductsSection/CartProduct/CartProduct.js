@@ -60,7 +60,7 @@ export const CartProduct = ({product, quantity, id}) => {
           }
         </div>
         {location.pathname !== "/profile" && <div className="cart-price">
-          <p className="cart-product-price"><span className="cart-product-base-price">₹{product?.price?.toFixed(2)} x {(location.pathname === "/success") ? quantity : quantity} = </span><span className="cart-product-total-price"> ₹{(product.price * quantity)?.toFixed(2)}</span></p>
+          <p className="cart-product-price"><span className="cart-product-base-price">{product.sale.onSale && <span className="cart-product-price-cut">₹{product?.price}</span>} ₹{product?.sale.onSale ? product?.sale?.salePrice.toFixed(2) : product?.price.toFixed(2)} x {(location.pathname === "/success") ? quantity : quantity} = </span><span className="cart-product-total-price"> ₹{((product.sale.onSale ? product.sale.salePrice*quantity : product.price*quantity))?.toFixed(2)}</span></p>
         </div>}
       </div>  
     </>

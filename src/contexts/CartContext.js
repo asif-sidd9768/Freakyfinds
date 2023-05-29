@@ -13,6 +13,9 @@ export const CartProvider = ({children}) => {
   }, [cartState.cartItems])
 
   const handleAddToCart = async (userState, showNotification, navigate, product) => {
+    if(cartState.isLoading){
+      return
+    }
     if(!userState.user){
       navigate("/login", {
         state: {from:location}
@@ -21,7 +24,7 @@ export const CartProvider = ({children}) => {
     }
     cartDispatch(addToCartRequestAction())
     try {
-      const response = await addProductToCart(userState.user.id, product, userState.user.token)
+      const response = await addProductToCart(userState?.user?.user?.id, product, userState.user.token)
       cartDispatch(addToCartAction(response.data))
       showNotification("ITEM ADDED TO FINDS", "success")
     }catch(error){
@@ -31,6 +34,9 @@ export const CartProvider = ({children}) => {
   }
 
   const handleDeleteFromCart = async (userState, showNotification, cartItemId) => {
+    if(cartState.isLoading){
+      return
+    }
     cartDispatch(deleteCartItemRequestAction())
     try {
       await deleteCartProduct(userState?.user?.user?.id, cartItemId, userState.user.token) 
@@ -43,6 +49,9 @@ export const CartProvider = ({children}) => {
   }
 
   const handleQuantityChange = async (userState, productQuantity, cartItemId, change, showNotification) => {
+    if(cartState.isLoading){
+      return
+    }
     cartDispatch(cartItemQuantityChangeRequestAction())
     try {
       if(change === "decrease" && productQuantity === 1) {

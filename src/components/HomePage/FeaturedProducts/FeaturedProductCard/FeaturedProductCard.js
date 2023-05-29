@@ -23,7 +23,7 @@ export const FeaturedProductCard = (pr) => {
         {
           isItemInCart(cartState.cartItems, pr.id) 
           ?
-          <NavLink to="/cart/sds" className="featured-product-added-btn">
+          <NavLink to="/cart" className="featured-product-added-btn">
             {RESOURCE.GO_TO_FINDS}
           </NavLink>
           :

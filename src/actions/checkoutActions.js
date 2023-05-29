@@ -18,7 +18,16 @@ export const updatePaymentMethodAction = (paymentMethod) => ({
   payload: paymentMethod
 })
 
+export const checkoutSuccessRequestAction = () => ({
+  type:"CHECKOUT_SUCCESS_REQUEST"
+})
+
 export const checkoutSuccessAction = (orderData) => ({
   type: "CHECKOUT_SUCCESS",
   payload: orderData
+})
+
+export const checkoutSuccessFailureAction = (errorData) => ({
+  type:"CHECKOUT_SUCCESS_FAILURE",
+  payload:errorData
 })

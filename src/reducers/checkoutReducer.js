@@ -6,7 +6,9 @@ export const initialStateCheckout = {
   shippingMethod: 'standard',
   paymentMethod: "",
   checkoutTotal: 0,
-  checkoutSuccess: {}
+  checkoutSuccess: {},
+  error: null,
+  isLoading: false
 }
 
 export const checkoutReducer = (state, action) => {
@@ -51,9 +53,13 @@ export const checkoutReducer = (state, action) => {
         ...state,
         cartItems: []
       };
+    case "CHECKOUT_SUCCESS_REQUEST":
+      return {...state, isLoading: true}
     case 'CHECKOUT_SUCCESS':
       // Resets the checkout state back to the initial state after a successful checkout
       return initialStateCheckout;
+    case "CHECKOUT_SUCCESS_FAILURE":
+      return {...state, isLoading: false}
     default:
       return state;
   }
