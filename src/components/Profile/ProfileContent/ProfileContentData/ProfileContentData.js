@@ -1,5 +1,6 @@
 import { AddressList } from "../../../Cart/AddressDetail/AddressList/AddressList"
 import { CartProduct } from "../../../Cart/CartProductsSection/CartProduct/CartProduct"
+import { EmptyCart } from "../../../Cart/EmptyCart/EmptyCart"
 import { ProfileOrders } from "../ProfileOrders/ProfileOrders"
 
 export const ProfileContentData = ({data: {dataContent, title}}) => {
@@ -11,9 +12,9 @@ export const ProfileContentData = ({data: {dataContent, title}}) => {
       {
         title === "wishlist" && <>
           {
-            dataContent.map(product => 
+            dataContent.length > 0 ? dataContent.map(product => 
               <CartProduct key={product.id} product={product} quantity={1} id={4} />
-            )
+            ) : <EmptyCart test="wishlist" />
           }
         </>
       }

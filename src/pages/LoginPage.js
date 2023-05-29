@@ -20,10 +20,9 @@ export const LoginPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  console.log(location)
-  const handleLogin =  async (event) => {
+  const handleLogin =  async (event, testCreds=null) => {
     event.preventDefault()
-    const creds = {
+    const creds = testCreds ? testCreds : {
       email: event.target[0].value,
       password: event.target[1].value
     }
@@ -60,7 +59,7 @@ export const LoginPage = () => {
         <form onSubmit={handleLogin} className="login-form">
           <p className="login-user-id-label">Email</p>
           <input
-            type="text"
+            type="email"
             className="login-user-id-input"
             placeholder="Enter your email"
           />
@@ -76,6 +75,9 @@ export const LoginPage = () => {
             Login
           </button>
         </form>
+        <div className="login-as-test-container">
+          <button onClick={(event) => handleLogin(event, {email:"asif@test1.com", password:"test"})} className="login-as-test-btn">Login as Test<i class="fa-solid fa-flask-vial"></i></button>
+        </div>
         <section className="login-page-register">
           <button className="login-register-btn">
             Register
