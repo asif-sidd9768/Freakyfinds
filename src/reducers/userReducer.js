@@ -19,7 +19,8 @@ export const userReducer = (state, action) => {
       return {...state, user: updatedUser}
     case "UPDATE_BROWSED_ITEMS":
       const updatedUserAfterBrowsed = {...state.user, user: {...state.user.user, browsedItems: action.payload}}
-      // return {...state, user: [...state.user, ]}
       return {...state, user: updatedUserAfterBrowsed}
+    case "REMOVE_USER":
+      return {...state, user: null}
   }
 }

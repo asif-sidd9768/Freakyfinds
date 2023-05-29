@@ -1,3 +1,6 @@
 export const isItemInWishlist = (wishlistItems, productId) => {
-  return wishlistItems.find(({id}) => id === productId)
+  if(wishlistItems){
+    return wishlistItems.find(({id}) => id === productId)
+  }
+  return 
 }

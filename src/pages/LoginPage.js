@@ -76,7 +76,7 @@ export const LoginPage = () => {
           </button>
         </form>
         <div className="login-as-test-container">
-          <button onClick={(event) => handleLogin(event, {email:"asif@test1.com", password:"test"})} className="login-as-test-btn">Login as Test<i class="fa-solid fa-flask-vial"></i></button>
+          <button onClick={(event) => handleLogin(event, {email:"asif@test1.com", password:"test"})} className="login-as-test-btn">Login as Test<i className="fa-solid fa-flask-vial"></i></button>
         </div>
         <section className="login-page-register">
           <button className="login-register-btn">

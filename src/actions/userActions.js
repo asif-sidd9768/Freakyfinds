@@ -21,3 +21,7 @@ export const updatedBrowsedItemsAction = (items) => ({
   type:"UPDATE_BROWSED_ITEMS",
   payload: items
 })
+
+export const removeUserAction = () => ({
+  type:"REMOVE_USER"
+})

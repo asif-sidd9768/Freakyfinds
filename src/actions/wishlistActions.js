@@ -30,3 +30,7 @@ export const deleteFromWishlistFailureAction = (errorData) => ({
   type:"DELETE_FROM_WISHLIST_FAILURE",
   payload: errorData
 })
+
+export const removeWishlistItemsAction = () => ({
+  type:"REMOVE_WISHLIST_ITEMS"
+})

@@ -48,6 +48,7 @@
   text-decoration: none;
   display: inline-block;
   margin: 4px 2px;
+  cursor: pointer;
   z-index: 1;
 }
 
@@ -77,12 +78,16 @@
   transition: all 0.3s;
 }
 
+.menubar-item-logout {
+  cursor: pointer;
+}
+
 .menubar-items.open .menubar-item {
   opacity: 1;
 }
 
 .menubar-items.open .menubar-item:nth-child(1) {
-  transform: translateX(-170px) rotate(0deg) translateY(-0px) rotate(0deg);
+  transform: translateX(-45px) rotate(0deg) translateY(-70px) rotate(0deg);
   transition-delay: 0.1s;
 }
 

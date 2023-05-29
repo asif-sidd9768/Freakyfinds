@@ -21,5 +21,7 @@ export const wishlistReducer = (state, action) => {
       return {...state, wishlistItems: updatedWishlistAfterDelete, isLoading: false}
     case "DELETE_FROM_WISHLIST_FAILURE":
       return {...state, error: action.payload, isLoading: false}
+    case "REMOVE_WISHLIST_ITEMS":
+      return {...state, wishlistItems: null}
   }
 }
