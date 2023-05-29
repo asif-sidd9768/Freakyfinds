@@ -16,7 +16,6 @@ const updateCartTotal = (items, shipping) => {
       return acc + (product?.price  * quantity)
     }
   } , shipping).toFixed(2)
-  console.log('total ====== ',total)
   return total
 }
 

@@ -4,14 +4,16 @@ import { useContext, useState } from 'react';
 import {UserContext} from "../../../contexts/UserContext"
 import { AddressList } from './AddressList/AddressList';
 import { AddressForm } from './AddressForm/AddressForm';
+import { useLocation } from "react-router-dom";
 
 export const AddressDetail = () => {
   const [ addNewAddress, setAddNewAddress ] = useState(false)
   const { userState } = useContext(UserContext)
+  const location = useLocation()
 
   return (
     <div className="address-detail-container">
-      <p className="address-detail-title">Delivery Information</p>
+      <p className="address-detail-title">{location.pathname === "/profile" ? "Addresses" : "Delivery Information"}</p>
       {
         userState?.user?.user?.addresses.length !== 0 && 
         <>

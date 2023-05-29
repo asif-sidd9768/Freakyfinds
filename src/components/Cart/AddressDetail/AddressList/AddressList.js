@@ -7,6 +7,7 @@ import { deleteAddressService } from "../../../../services/user/addressService"
 import { setUserAction, setUserFailureAction, setUserRequestAction } from "../../../../actions/userActions"
 import { NotificationContext } from "../../../../contexts/NotificationContext"
 import { useLocation } from "react-router-dom"
+import { AddressForm } from "../AddressForm/AddressForm"
 
 export const AddressList = ({addressData}) => {
   const { userState, userDispatch } = useContext(UserContext)
@@ -31,7 +32,7 @@ export const AddressList = ({addressData}) => {
 
   return (
     <div className="address-list-container">
-      <p className="address-list-title">Select Address</p>
+      <p className="address-list-title">{userState?.user?.user?.addresses.length === 0 ? "Add an address" : "Select Address"}</p>
       {
         userState?.user?.user?.addresses?.map(address => 
           <div className="address-list-item" key={address.id}>
@@ -45,6 +46,7 @@ export const AddressList = ({addressData}) => {
           </div>  
         )
       }
+      {/* <AddressForm /> */}
       </div>
   )
 }

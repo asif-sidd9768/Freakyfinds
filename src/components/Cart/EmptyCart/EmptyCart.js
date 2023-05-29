@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import "./EmptyCart.css"
 
 export const EmptyCart = ({text}) => {
+  const location = useLocation()
   return(
     <div className="empty-cart-container">
       <p className="empty-cart-icon"><i className="fa-solid fa-cart-plus"></i></p>

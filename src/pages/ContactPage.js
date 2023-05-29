@@ -2,6 +2,8 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import "../styles/ContactPage.css"
+import { useContext } from 'react';
+import { NotificationContext } from '../contexts/NotificationContext';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Required'),
@@ -11,9 +13,11 @@ const validationSchema = Yup.object().shape({
 
 
 export const ContactPage = () => {
+  const { showNotification } = useContext(NotificationContext)
 
   const handleContactSubmit = (values, {resetForm}) => {
-    console.log(values)
+    showNotification("Submitted your query", "success")
+    resetForm()
   }
 
   return (

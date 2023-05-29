@@ -12,6 +12,15 @@ export const setUserFailureAction = (errorData) => ({
   payload: errorData
 })
 
+export const registerUserRequestAction = () => ({
+  type:"REGISTER_USER_REQUEST"
+})
+
+export const registerUserFailureAction = (errorData) => ({
+  type:"REGISTER_USER_FAILURE",
+  payload: errorData
+})
+
 export const successCheckoutOrderUpdateAction = (orderData) => ({
   type:"SUCCESS_CHECKOUT_ORDER_UPDATE",
   payload: orderData

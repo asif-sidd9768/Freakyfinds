@@ -11,6 +11,8 @@ import { setCartItemsAction } from "../actions/cartActions"
 import { CartContext } from "../contexts/CartContext"
 import { WishlistContext } from "../contexts/WishlistContext"
 import { setWishlistAction } from "../actions/wishlistActions"
+import { LoginForm } from "../components/User/LoginForm"
+import { RegisterForm } from "../components/User/RegisterForm"
 
 export const LoginPage = () => {
   const {userState, userDispatch} = useContext(UserContext)
@@ -22,6 +24,9 @@ export const LoginPage = () => {
 
   const handleLogin =  async (event, testCreds=null) => {
     event.preventDefault()
+    if(userState.isLoading){
+      return
+    }
     const creds = testCreds ? testCreds : {
       email: event.target[0].value,
       password: event.target[1].value
@@ -56,25 +61,7 @@ export const LoginPage = () => {
       <div className="login-bg">
       <section className="login-container">
         <img src={LogoImg} className="login-logo" alt="" />
-        <form onSubmit={handleLogin} className="login-form">
-          <p className="login-user-id-label">Email</p>
-          <input
-            type="email"
-            className="login-user-id-input"
-            placeholder="Enter your email"
-          />
-          <br />
-          <br />
-          <p className="login-user-id-label">Password</p>
-          <input
-            type="password"
-            className="login-user-id-input"
-            placeholder="Enter your password"
-          />
-          <button type="submit" className="login-submit-btn">
-            Login
-          </button>
-        </form>
+        <RegisterForm handleLogin={handleLogin} />
         <div className="login-as-test-container">
           <button onClick={(event) => handleLogin(event, {email:"asif@test1.com", password:"test"})} className="login-as-test-btn">Login as Test<i className="fa-solid fa-flask-vial"></i></button>
         </div>

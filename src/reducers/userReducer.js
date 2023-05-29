@@ -20,5 +20,9 @@ export const userReducer = (state, action) => {
       return {...state, user: updatedUserAfterBrowsed}
     case "REMOVE_USER":
       return {...state, user: null}
+    case "REGISTER_USER_REQUEST":
+      return {...state, isLoading: true}
+    case "REGISTER_USER_FAILURE":
+      return {...state, isLoading: false, error:action.payload}
   }
 }

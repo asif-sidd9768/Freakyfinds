@@ -20,6 +20,10 @@
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 
+.empty-orders-container {
+  text-align: center;
+}
+
 .profile-orders-rows {
   display: inline;
 }

@@ -9,8 +9,6 @@ export const handleOnlineCheckout = async (
   checkoutState, 
   cartTotalAmount, logoImg, navigate) => {
       checkoutDispatch(addCartItemsToCheckoutAction(cartState.cartItems))
-      // await checkoutDispatch(addCartItemsToCheckoutAction(cartState.cartItems))
-      // console.log(checkoutState)
       const res = await loadScript()
       if (!res) {
         alert("Razorpay SDK failed to load. Are you online?");
@@ -45,9 +43,7 @@ export const handleOnlineCheckout = async (
               checkoutTotal: cartTotalAmount
             }
             const checkoutResult = await successOrderService(userState?.user?.token, {orderDetails, checkoutDetails: data});
-            console.log(checkoutResult.data.checkoutDetails)
             if(checkoutResult.data.msg == "successful"){
-              console.log('success is')
               navigate("/success", {
                 replace: true,
                 state: {

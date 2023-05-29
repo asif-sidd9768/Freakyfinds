@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { Pie, Bar } from 'react-chartjs-2';
 import { UserContext } from "../../../../contexts/UserContext";
 import { chartOptions, getBarChartData, getPieChartData } from "../../../../utils/chartHelper";
+import { EmptyList } from "../../EmptyList/EmptyList";
+import { RESOURCE } from "../../../../utils/strings";
 
 ChartJS.register(
   CategoryScale,
@@ -21,6 +23,10 @@ export const ProfileBrowsedContent = () => {
   const timesOpenedValues = userState?.user?.user?.browsedItems.map(({timesOpened}) => timesOpened)
   const pieChartData = getPieChartData(categoryValues, timesOpenedValues)
   const barChartData = getBarChartData(categoryValues, timesOpenedValues)
+  
+  if(categoryValues.length === 0 || timesOpenedValues.length === 0){
+    return <EmptyList text={RESOURCE.EMPTY_PROFILE_BROWSED_ITEMS} />
+  }
   
   return (
     <div className="profile-browsed-container">

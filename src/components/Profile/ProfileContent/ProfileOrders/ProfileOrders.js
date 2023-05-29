@@ -1,7 +1,8 @@
+import { NavLink } from "react-router-dom"
 import "./ProfileOrders.css"
 
 export const ProfileOrders = ({dataContent}) => {
-  console.log(dataContent)
+
   return (
     <div className="profile-orders-container">
       {
