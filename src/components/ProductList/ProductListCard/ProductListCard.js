@@ -17,8 +17,6 @@ import { ProductContext } from "../../../contexts/ProductContext"
 export const ProductListCard = (product) => {
   const { cartState, handleAddToCart } = useContext(CartContext)
   const { productState } = useContext(ProductContext)
-  const { userState } = useContext(UserContext)
-  const { showNotification } = useContext(NotificationContext)
   const navigate = useNavigate()
   const { wishlistState, wishlistDispatch, handleAddToWishlist, handleRemoveFromWishlist } = useContext(WishlistContext)
   const {id, title, category, price, image, rating, sale, stockQuantity} = product

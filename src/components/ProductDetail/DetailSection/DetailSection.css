@@ -64,10 +64,6 @@
   color: crimson;
 }
 
-.detail-section-wishlist-btn i:hover{
-  color: crimson;
-}
-
 .detail-section-wishlist-btn i {
   color: var(--text-secondary-color);
   transition: 0.2s;
@@ -103,6 +99,12 @@
   font-weight: light;
   text-decoration: none;
   margin: 0 0 0 0.5rem;
+}
+
+@media screen and (width >= 576px) {
+  .detail-section-wishlist-btn i:hover{
+    color: crimson;
+  }
 }
 
 @media screen and (width >= 768px) {

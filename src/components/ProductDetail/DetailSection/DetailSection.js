@@ -34,11 +34,7 @@ export const DetailSection = ({product}) => {
               // Half star
               starClass = "fa-solid fa-star-half detail-section-rating-checked";
             } 
-            // else {
-            //   // No star
-            //   starClass = "detail-section-rating-empty fa-solid fa-star";
-            // }
-          
+        
             return (
               <span key={i}>
                 <i className={starClass}></i>

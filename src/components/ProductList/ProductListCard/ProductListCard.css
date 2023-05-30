@@ -25,6 +25,7 @@
 .product-list-card-details-container {
   background-color: var(--bg-color);
   position: relative;
+  z-index: 0;
 }
 
 .product-list-card-sale {
