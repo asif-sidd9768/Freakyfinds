@@ -81,7 +81,7 @@ export const CartDetailsSection = () => {
       <p className="cart-details-title">Order Summary</p>
       <hr className="cart-products-title-divider" />
       <div className="cart-details-content-container">
-        <p className="cart-details-summary">Items {cartState.cartItems.length} <span className="cart-details-summary-total">₹{(cartState.cartItemsTotal - cartState.cartShipping) || 0}</span> </p>
+        <p className="cart-details-summary">Items {cartState.cartItems.length} <span className="cart-details-summary-total">₹{(cartState.cartItemsTotal - cartState.cartShipping).toFixed(2) || 0}</span> </p>
         <div className="cart-details-shipping-container">
           <p className="cart-details-shipping-title">SHIPPING</p>
           <select onChange={handleCartShippingChange} className="cart-details-shipping-menu">
