@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, ScrollRestoration } from "react-router-dom"
 
 import { ProductContext } from "./contexts/ProductContext";
 import { Navbar } from "./components/Navbar/Navbar";
@@ -24,6 +24,7 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { ContactPage } from "./pages/ContactPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { AuctionPage } from "./pages/AuctionPage";
+import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 
 export default function App() {
   const { productState } = useContext(ProductContext)
@@ -31,11 +32,12 @@ export default function App() {
   const { userState } = useContext(UserContext)
   return (
     <div className="App">
-      {notificationState.content && <Notification {...notificationState} />}
+      {notificationState.notifications.length > 0 && <Notification />}
       <div>
         <Navbar/>
       </div>
-      <div>
+      <div className="main-app-container">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ProductList />} />

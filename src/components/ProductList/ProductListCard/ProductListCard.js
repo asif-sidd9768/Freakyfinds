@@ -21,7 +21,7 @@ export const ProductListCard = (product) => {
   const { showNotification } = useContext(NotificationContext)
   const navigate = useNavigate()
   const { wishlistState, wishlistDispatch, handleAddToWishlist, handleRemoveFromWishlist } = useContext(WishlistContext)
-  const {id, title, category, price, image, rating, sale} = product
+  const {id, title, category, price, image, rating, sale, stockQuantity} = product
 
   return (
     <div className="product-list-card-container">
@@ -36,9 +36,9 @@ export const ProductListCard = (product) => {
         {
           isItemInWishlist(wishlistState.wishlistItems, id) 
           ? 
-          <span onClick={() => handleRemoveFromWishlist(userState, showNotification, product)} className="product-list-card-wishlist-added-btn"><i className="fa-solid fa-heart"></i></span>
+          <span onClick={() => handleRemoveFromWishlist(product)} className="product-list-card-wishlist-added-btn"><i className="fa-solid fa-heart"></i></span>
           :
-          <span onClick={() => handleAddToWishlist(userState, showNotification, product)} className="product-list-card-wishlist-btn"><i className="fa-solid fa-heart"></i></span>  
+          <span onClick={() => handleAddToWishlist(product)} className="product-list-card-wishlist-btn"><i className="fa-solid fa-heart"></i></span>  
         }
       </div>
       <div className="product-list-card-details-container">
@@ -48,9 +48,9 @@ export const ProductListCard = (product) => {
             {
               isItemInCart(cartState.cartItems, id) 
               ? 
-              <NavLink to="/cart/sdhsd" className="product-list-card-cart-visit-btn">{RESOURCE.GO_TO_FINDS}</NavLink>
+              <NavLink to="/cart" className="product-list-card-cart-visit-btn">{RESOURCE.GO_TO_FINDS}</NavLink>
               :
-              <button disabled={cartState.isLoading} onClick={() => handleAddToCart(userState, showNotification, navigate, product)} className="product-list-card-cart-btn">{RESOURCE.ADD_TO_FINDS}</button>
+              <button disabled={cartState.isLoading || stockQuantity < 1}  onClick={() => handleAddToCart(navigate, product)} className="product-list-card-cart-btn">{stockQuantity < 1 ? "Out of Stock" : RESOURCE.ADD_TO_FINDS}</button>
             }
         </div>
       </div>

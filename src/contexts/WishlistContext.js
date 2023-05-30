@@ -1,17 +1,22 @@
-import { createContext, useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { useReducer } from "react";
 import { initialStateWishlist, wishlistReducer } from "../reducers/wishlistReducer";
 import { addToWishlistAction, addToWishlistFailureAction, addToWishlistRequestAction, deleteFromWishlistAction, deleteFromWishlistFailureAction, deleteFromWishlistRequestAction } from "../actions/wishlistActions";
 import { addProductToWishlistService, deleteProductFromWishlistService } from "../services/user/wishlistService";
+import { NotificationContext } from "./NotificationContext";
+import { UserContext } from "./UserContext";
 
 export const WishlistContext = createContext()
 export const WishlistProvider = ({children}) => {
   const [wishlistState, wishlistDispatch] = useReducer(wishlistReducer, initialStateWishlist)
+  const {showNotification} = useContext(NotificationContext)
+  const { userState } = useContext(UserContext)
+  
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlistState.wishlistItems))
   }, [wishlistState])
 
-  const handleAddToWishlist = async (userState, showNotification, product) => {
+  const handleAddToWishlist = async (product) => {
     if(wishlistState.isLoading){
       return
     }
@@ -26,7 +31,7 @@ export const WishlistProvider = ({children}) => {
     }
   }
 
-  const handleRemoveFromWishlist = async (userState, showNotification, product) => {
+  const handleRemoveFromWishlist = async (product) => {
     if(wishlistState.isLoading){
       return
     }

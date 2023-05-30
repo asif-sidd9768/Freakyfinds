@@ -11,6 +11,7 @@ import { CheckoutContext } from "../../../contexts/CheckoutContext";
 import { clearCartAction } from "../../../actions/cartActions";
 import { removeUserAction } from "../../../actions/userActions";
 import { removeWishlistItemsAction } from "../../../actions/wishlistActions";
+import { NotificationContext } from "../../../contexts/NotificationContext";
 
 export const MenuBar = () => {
   const { cartState, cartDispatch } = useContext(CartContext)
@@ -18,6 +19,7 @@ export const MenuBar = () => {
   const { userState, userDispatch } = useContext(UserContext)
   const { wishlistState, wishlistDispatch } = useContext(WishlistContext)
   const { checkoutState, checkoutDispatch } = useContext(CheckoutContext)
+  const { showNotification } = useContext(NotificationContext)
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate()
 
@@ -33,6 +35,7 @@ export const MenuBar = () => {
     await localStorage.removeItem("wishlist")
     await localStorage.removeItem("cart")
     toggleMenu()
+    showNotification("You're logged out.", "success")
   }
 
   return (

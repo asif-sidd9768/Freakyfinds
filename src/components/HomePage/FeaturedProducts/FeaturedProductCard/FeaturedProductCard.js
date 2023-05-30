@@ -27,7 +27,7 @@ export const FeaturedProductCard = (pr) => {
             {RESOURCE.GO_TO_FINDS}
           </NavLink>
           :
-          <button onClick={() => handleAddToCart(userState, showNotification, navigate, product)} className="featured-product-btn">
+          <button onClick={() => handleAddToCart(navigate, pr)} className="featured-product-btn">
             {RESOURCE.ADD_TO_FINDS}
           </button>
         }

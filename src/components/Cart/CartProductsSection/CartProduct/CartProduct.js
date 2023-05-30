@@ -14,24 +14,6 @@ export const CartProduct = ({product, quantity, id}) => {
   const { showNotification } = useContext(NotificationContext)
   const location = useLocation()
 
-  // const handleQuantityChange = async (productQuantity, cartItemId, change) => {
-  //   cartDispatch(cartItemQuantityChangeRequestAction())
-  //   try {
-  //     if(change === "decrease" && productQuantity === 1) {
-  //       await deleteCartProduct(userState?.user?.user?.id, cartItemId, userState.user.token) 
-  //       cartDispatch(deleteCartItemAction(cartItemId))
-  //     }else{
-  //       const response = await updateCartProduct(userState?.user?.user?.id, cartItemId, userState.user.token, change) 
-  //       cartDispatch(cartItemQuantityChangeAction({cartItemId, change}))
-  //       showNotification(`${change.toUpperCase()}D QUANTITY`, "success")
-  //     }
-  //   }catch(error){
-  //     cartDispatch(cartItemQuantityChangeFailureAction(error))
-  //     showNotification(`FAIL TO ${change.toUpperCase()}D QUANTITY`, "error")
-  //     console.log(error)
-  //   }
-  // }
-
   return (
     <>
       <div className="cart-product-grid" key={product.id}>
@@ -47,13 +29,13 @@ export const CartProduct = ({product, quantity, id}) => {
         <div className="cart-quantity">
           <div className="cart-product-quantity">
             {(location.pathname !== "/success") && (location.pathname !== "/profile") && 
-            <><span onClick={() => handleQuantityChange(userState,quantity, id, "decrease", showNotification)} className="cart-product-quantity-decrease">-</span>
+            <><span onClick={() => handleQuantityChange(quantity, id, "decrease")} className="cart-product-quantity-decrease">-</span>
             <span className="cart-product-quantity-count">{quantity}</span>
-            <span onClick={() => handleQuantityChange(userState, quantity, id, "increase", showNotification)} className="cart-product-quantity-increase">+</span>
+            <span onClick={() => handleQuantityChange(quantity, id, "increase")} className="cart-product-quantity-increase">+</span>
             </>}
           </div>
           {
-            (location.pathname !== "/success") && (location.pathname !== "/profile") && <button disabled={cartState.isLoading} onClick={() => handleDeleteFromCart(userState, showNotification, id)} className="cart-product-delete-btn"><i className="fa-solid fa-delete-left"></i></button>
+            (location.pathname !== "/success") && (location.pathname !== "/profile") && <button disabled={cartState.isLoading} onClick={() => handleDeleteFromCart(id)} className="cart-product-delete-btn"><i className="fa-solid fa-delete-left"></i></button>
           }
           {
             location.pathname === "/profile" && <NavLink to="/wishlist" className="cart-product-wishlist-btn">Click to see</NavLink>

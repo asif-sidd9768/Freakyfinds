@@ -85,6 +85,13 @@
   margin: 0 0 0 0.5rem;
 }
 
+.detail-section-cart-btn:disabled{
+  cursor: auto;
+  color: black;
+  background-color: var(--bg-color);
+  font-size: 1rem;
+}
+
 .detail-section-cart-added-btn {
   padding: 9px 18px;
   box-sizing: border-box;

@@ -3,6 +3,7 @@ export const setNotificationAction = (notifData) => ({
   payload: notifData
 })
 
-export const removeNotificationAction = () => ({
-  type: "REMOVE_NOTIFICATION"
+export const removeNotificationAction = (id) => ({
+  type: "REMOVE_NOTIFICATION",
+  payload: id
 })

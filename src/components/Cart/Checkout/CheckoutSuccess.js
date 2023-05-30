@@ -15,7 +15,13 @@ export const CheckoutSuccess = () => {
     return null;
   }
 
-  const subTotal = state?.orderData?.products?.reduce((acc, {product, quantity}) => acc + (product.price * quantity), 0)
+  const subTotal = state?.orderData?.products?.reduce((acc, {product, quantity}) => {
+    if(product?.sale?.onSale){
+      return acc + (product.sale.salePrice * quantity)
+    }else {
+      return acc + (product?.price  * quantity)
+    }
+  } , 0).toFixed(2)
   return (
     <div className="checkout-success-container">
       <p className="checkout-success-message"><span><i className="fa-solid fa-circle-check"></i></span>Your order has been confirmed and will be shipping soon.</p>
@@ -39,15 +45,15 @@ export const CheckoutSuccess = () => {
         </div>
       </div>
       {
-        state?.orderData?.products?.map(({product, quantity, id}) => 
-          <CartProduct key={id} product={product} quantity={quantity} />  
+        state?.orderData?.products?.map(({product, quantity, id}, index) => 
+          <CartProduct key={index} product={product} quantity={quantity} />  
         )
       }
       <hr className="checkout-success-products-divider" />
       <div className="checkout-success-pricing-container">
         <div>
           <p>Subtotal</p>
-          <p>₹{subTotal.toFixed(2)}</p>
+          <p>₹{subTotal}</p>
         </div>
         <div>
           <p>{state.orderData?.shippingMethod} shipping</p>

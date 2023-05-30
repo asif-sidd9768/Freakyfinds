@@ -3,15 +3,16 @@ import "./DetailSection.css"
 import { CartContext } from "../../../contexts/CartContext"
 import { isItemInCart } from "../../../utils/products/checItemInCart"
 import { RESOURCE } from "../../../utils/strings"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { addToCartAction } from "../../../actions/cartActions"
 import { WishlistContext } from "../../../contexts/WishlistContext"
 import { addToWishlistAction, deleteFromWishlistAction } from "../../../actions/wishlistActions"
 import { isItemInWishlist } from "../../../utils/wishlist/checkItemInWishlist"
 
 export const DetailSection = ({product}) => {
-  const { cartState, cartDispatch } = useContext(CartContext)
-  const { wishlistState, wishlistDispatch } = useContext(WishlistContext)
+  const { cartState, handleAddToCart } = useContext(CartContext)
+  const { wishlistState, handleRemoveFromWishlist, handleAddToWishlist } = useContext(WishlistContext)
+  const navigate = useNavigate()
   return (
     <div className="detail-section-container">
       <p className="detail-section-category"><span>{product.category}</span></p>
@@ -32,16 +33,16 @@ export const DetailSection = ({product}) => {
         {
           isItemInWishlist(wishlistState.wishlistItems, product.id)
           ?
-          <button onClick={() => wishlistDispatch(deleteFromWishlistAction(product.id))} className="detail-section-wishlist-added-btn"><i className="fa-solid fa-heart"></i></button>
+          <button onClick={() => handleRemoveFromWishlist(product.id)} className="detail-section-wishlist-added-btn"><i className="fa-solid fa-heart"></i></button>
           :
-          <button onClick={() => wishlistDispatch(addToWishlistAction(product))} className="detail-section-wishlist-btn"><i className="fa-solid fa-heart"></i></button>
+          <button onClick={() => handleAddToWishlist(product)} className="detail-section-wishlist-btn"><i className="fa-solid fa-heart"></i></button>
         }
         {
           isItemInCart(cartState.cartItems, product.id)
           ?
-          <NavLink to="/cart/sfsdf" className="detail-section-cart-added-btn">{RESOURCE.GO_TO_FINDS}</NavLink>
+          <NavLink to="/cart" className="detail-section-cart-added-btn">{RESOURCE.GO_TO_FINDS}</NavLink>
           :
-          <button onClick={() => cartDispatch(addToCartAction(product))} className="detail-section-cart-btn">{RESOURCE.ADD_TO_FINDS}</button>
+          <button onClick={() => handleAddToCart(navigate, product)} disabled={product.stockQuantity < 1} className="detail-section-cart-btn">{product.stockQuantity < 1 ? "Out of Stock" : RESOURCE.ADD_TO_FINDS}</button>
         }
       </div>
       <p className="detail-section-description">{product.description}</p>

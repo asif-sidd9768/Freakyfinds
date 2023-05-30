@@ -17,3 +17,7 @@ html, body {
 *{
   margin: 0;
 }
+
+.main-app-container {
+  min-height: 60vh;
+}

@@ -1,16 +1,22 @@
 
 
 .notification-container {
-  position: absolute;
-  bottom: 15%;
-  right: 2rem;
   width: max-content;
   padding: 10px 20px 10px 8px;
   box-shadow: 0 0 4px rgba(0,0,0,0.3);
   display: flex;
-  z-index: 3;
   justify-content: start;
 }
+
+.notification-stack {
+  position: fixed;
+  bottom: 15%;
+  right: 2rem;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
+}
+
 
 .notification-text-icon-success {
   color: white;
@@ -38,4 +44,8 @@
   .notification-container {
     bottom: 2rem;
   }  
+
+  .notification-stack{
+    bottom: 2rem;
+  } 
 }

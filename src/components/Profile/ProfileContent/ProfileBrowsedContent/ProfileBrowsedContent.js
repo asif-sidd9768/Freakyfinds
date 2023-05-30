@@ -24,7 +24,7 @@ export const ProfileBrowsedContent = () => {
   const pieChartData = getPieChartData(categoryValues, timesOpenedValues)
   const barChartData = getBarChartData(categoryValues, timesOpenedValues)
   
-  if(categoryValues.length === 0 || timesOpenedValues.length === 0){
+  if(categoryValues?.length === 0 || timesOpenedValues?.length === 0){
     return <EmptyList text={RESOURCE.EMPTY_PROFILE_BROWSED_ITEMS} />
   }
   

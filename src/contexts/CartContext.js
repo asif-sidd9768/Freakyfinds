@@ -1,18 +1,22 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { cartReducer, initialStateCart } from "../reducers/CartReducer";
 import { addToCartAction, addToCartRequestAction, addToCartRequestFailure, cartItemQuantityChangeAction, cartItemQuantityChangeFailureAction, cartItemQuantityChangeRequestAction, deleteCartItemAction, deleteCartItemFailureAction, deleteCartItemRequestAction } from "../actions/cartActions";
 import { useNavigate } from "react-router-dom";
 import { addProductToCart, deleteCartProduct, updateCartProduct } from "../services/user/cartService";
+import { NotificationContext } from "./NotificationContext";
+import { UserContext } from "./UserContext";
 
 export const CartContext = createContext()
 export const CartProvider = ({children}) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, initialStateCart)
+  const { showNotification } = useContext(NotificationContext)
+  const { userState } = useContext(UserContext)
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartState.cartItems))
   }, [cartState.cartItems])
 
-  const handleAddToCart = async (userState, showNotification, navigate, product) => {
+  const handleAddToCart = async (navigate, product) => {
     if(cartState.isLoading){
       return
     }
@@ -33,7 +37,7 @@ export const CartProvider = ({children}) => {
     }
   }
 
-  const handleDeleteFromCart = async (userState, showNotification, cartItemId) => {
+  const handleDeleteFromCart = async (cartItemId) => {
     if(cartState.isLoading){
       return
     }
@@ -48,7 +52,7 @@ export const CartProvider = ({children}) => {
     }
   }
 
-  const handleQuantityChange = async (userState, productQuantity, cartItemId, change, showNotification) => {
+  const handleQuantityChange = async (productQuantity, cartItemId, change) => {
     if(cartState.isLoading){
       return
     }
@@ -64,8 +68,9 @@ export const CartProvider = ({children}) => {
         showNotification(`${change.toUpperCase()}D QUANTITY`, "success")
       }
     }catch(error){
+      console.log(error)
       cartDispatch(cartItemQuantityChangeFailureAction(error))
-      showNotification(`FAIL TO ${change.toUpperCase()}D QUANTITY`, "error")
+      showNotification(`${error?.response?.data?.message}`, "error")
       console.log(error)
     }
   }
