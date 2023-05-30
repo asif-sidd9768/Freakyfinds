@@ -23,7 +23,7 @@ export const LoginPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const handleLogin =  async (values, {resetForm}, testCreds=null) => {
+  const handleLogin =  async (values, testCreds=null) => {
     event.preventDefault()
     if(userState.isLoading){
       return
@@ -64,7 +64,7 @@ export const LoginPage = () => {
           isRegister ? <RegisterForm /> : <LoginForm handleLogin={handleLogin} />
         }
         <div className="login-as-test-container">
-          <button onClick={(event) => handleLogin(event, {email:"asif@test1.com", password:"test"})} className="login-as-test-btn">Login as Test<i className="fa-solid fa-flask-vial"></i></button>
+          <button onClick={(event) => handleLogin({email:"asif@test1.com", password:"test"})} className="login-as-test-btn">Login as Test<i className="fa-solid fa-flask-vial"></i></button>
         </div>
         <section className="login-page-register">
           <button onClick={toggleRegister} className="login-register-btn">

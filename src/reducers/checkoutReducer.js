@@ -35,6 +35,8 @@ export const checkoutReducer = (state, action) => {
           item.id === action.payload.id ? action.payload : item
         )
       };
+    case "RESET_PAYMENT_AND_SHIPPING":
+      return {...state,shippingAddress:{}, paymentMethod: ""}
     case 'UPDATE_SHIPPING_ADDRESS':
       // Updates the shipping address
       return { ...state, shippingAddress: action.payload };

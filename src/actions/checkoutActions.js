@@ -31,3 +31,7 @@ export const checkoutSuccessFailureAction = (errorData) => ({
   type:"CHECKOUT_SUCCESS_FAILURE",
   payload:errorData
 })
+
+export const resetPaymentAndShipping = () => ({
+  type:"RESET_PAYMENT_AND_SHIPPING"
+})

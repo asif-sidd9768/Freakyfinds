@@ -57,6 +57,7 @@ export const CartDetailsSection = () => {
           navigate)
       }
       if(checkoutResult.data.msg == "successful"){
+        console.log({checkoutResult})
         cartDispatch(clearCartAction())
         checkoutDispatch(checkoutSuccessAction())
         userDispatch(setUserAction(checkoutResult.data.updatedUser))
