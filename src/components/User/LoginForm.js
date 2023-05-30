@@ -32,7 +32,7 @@ export const LoginForm = ({handleLogin}) => {
               name="password"
               className="login-user-id-input"
               placeholder="******"
-              autocomplete="off"
+              autoComplete="off"
             />
             <ErrorMessage className="error-message" name="password" component="div" />
           </div>
