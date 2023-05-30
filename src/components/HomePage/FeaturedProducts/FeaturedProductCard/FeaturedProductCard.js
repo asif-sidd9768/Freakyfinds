@@ -17,7 +17,8 @@ export const FeaturedProductCard = (pr) => {
   return (
     <div className="featured-product" key={pr.id}>
       <img src={pr.image} />
-      <p className="featured-product-extra" title={pr.title}>{pr.title}</p>
+      {/* <p className="featured-product-extra" title={pr.title}>{pr.title}</p> */}
+      <NavLink to={`/product/${pr.id}`} title={pr.title} className="featured-product-extra">{pr.title}</NavLink>
       <span className="featured-product-extra">₹{pr.price.toFixed(2)}</span>
       <div className="featured-product-extra featured-product-btn-container">
         {

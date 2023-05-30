@@ -56,6 +56,13 @@
 .featured-product-extra{
   /* opacity: 0;
   display: none; */
+  text-decoration: none;
+  color: var(--text-color);
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0.3rem 0.3rem 0 0.3rem;
 }
 
 .featured-product:hover {
