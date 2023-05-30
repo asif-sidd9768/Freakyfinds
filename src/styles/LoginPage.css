@@ -34,6 +34,11 @@
   text-align: start;
 }
 
+.login-user-id-label::before {
+  content: "*";
+  color: crimson;
+}
+
 .login-user-id-input {
   padding: 8px;
   border: none;

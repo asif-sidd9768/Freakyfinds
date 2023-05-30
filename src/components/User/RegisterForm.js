@@ -1,7 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import "../../styles/LoginPage.css"
 import { registerUserFailureAction, registerUserRequestAction, setUserAction } from '../../actions/userActions';
 import { registerUser } from '../../services/user/userService';
 import { useContext } from 'react';
@@ -12,6 +11,8 @@ import { NotificationContext } from '../../contexts/NotificationContext';
 import { setCartItemsAction } from '../../actions/cartActions';
 import { setWishlistAction } from '../../actions/wishlistActions';
 import { useNavigate } from 'react-router-dom';
+
+import "../../styles/LoginPage.css"
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Required'),
@@ -102,40 +103,5 @@ export const RegisterForm = () => {
         </Form>
       )}
     </Formik>
-    // <form  className="login-form">
-    //   <p className="login-user-id-label">Name</p>
-    //   <input
-    //     type="text"
-    //     className="login-user-id-input"
-    //     placeholder="Enter your Name"
-    //   />
-    //   <br />
-    //   <br />
-    //   <p className="login-user-id-label">Email</p>
-    //   <input
-    //     type="email"
-    //     className="login-user-id-input"
-    //     placeholder="Enter your email"
-    //   />
-    //   <br />
-    //   <br />
-    //   <p className="login-user-id-label">Password</p>
-    //   <input
-    //     type="password"
-    //     className="login-user-id-input"
-    //     placeholder="Enter your password"
-    //   />
-    //   <br />
-    //   <br />
-    //   <p className="login-user-id-label">Confirm Password</p>
-    //   <input
-    //     type="password"
-    //     className="login-user-id-input"
-    //     placeholder="Enter your password"
-    //   />
-    //   <button type="submit" className="login-submit-btn">
-    //     Login
-    //   </button>
-    // </form>
   )
 }

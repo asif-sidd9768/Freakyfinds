@@ -23,18 +23,12 @@ export const LoginPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const handleLogin =  async (event, testCreds=null) => {
+  const handleLogin =  async (values, {resetForm}, testCreds=null) => {
     event.preventDefault()
     if(userState.isLoading){
       return
     }
-    const creds = testCreds ? testCreds : {
-      email: event.target[0].value,
-      password: event.target[1].value
-    }
-    if(!creds.email || !creds.password){
-      return
-    }
+    const creds = testCreds ? testCreds : values
     userDispatch(setUserRequestAction())
     try {
       const response = await loginUser(creds)
@@ -46,9 +40,11 @@ export const LoginPage = () => {
       localStorage.setItem("wishlist", JSON.stringify(response.data.user.wishlist))
       showNotification(`Welcome, ${response?.data?.user?.name}.`, "success")
       navigate(location?.state?.from?.pathname || "/")
+      resetForm()
     }catch(error){
       userDispatch(setUserFailureAction(error))
       showNotification(error.message, "error")
+      resetForm()
     }
   }
 
