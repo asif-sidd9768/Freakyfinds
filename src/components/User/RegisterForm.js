@@ -98,7 +98,7 @@ export const RegisterForm = () => {
             />
             <ErrorMessage className="error-message" name="confirmPassword" component="div" />
           </div>
-          <button type="submit" className="login-submit-btn">Submit</button>
+          <button type="submit" className="login-submit-btn">Register</button>
         </Form>
       )}
     </Formik>
