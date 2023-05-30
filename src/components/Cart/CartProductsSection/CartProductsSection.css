@@ -130,16 +130,20 @@
 .cart-product-quantity-decrease {
   cursor: pointer;
   padding: 1rem 0.2rem 1rem 0;
+  font-size: 1.5rem;
+  margin: 0 0.3rem 0 0;
 }
 
 .cart-product-quantity-increase {
   cursor: pointer;
   padding: 1rem 0 1rem 0.2rem;
+  font-size: 1.5rem;
+  margin: 0 0 0 0.3rem;
 }
 
 .cart-product-quantity-count {
   border: 1px solid rgb(210, 210, 191);
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 0.5rem;
 }
 
 .cart-product-price {
