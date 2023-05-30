@@ -57,7 +57,7 @@ export const DetailSection = ({product}) => {
           ?
           <button onClick={() => handleRemoveFromWishlist(product.id)} className="detail-section-wishlist-added-btn"><i className="fa-solid fa-heart"></i></button>
           :
-          <button onClick={() => handleAddToWishlist(product)} className="detail-section-wishlist-btn"><i className="fa-solid fa-heart"></i></button>
+          <button onClick={() => handleAddToWishlist(navigate ,product)} className="detail-section-wishlist-btn"><i className="fa-solid fa-heart"></i></button>
         }
         {
           isItemInCart(cartState.cartItems, product.id)

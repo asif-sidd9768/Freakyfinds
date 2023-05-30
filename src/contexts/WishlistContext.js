@@ -16,10 +16,18 @@ export const WishlistProvider = ({children}) => {
     localStorage.setItem("wishlist", JSON.stringify(wishlistState.wishlistItems))
   }, [wishlistState])
 
-  const handleAddToWishlist = async (product) => {
+  const handleAddToWishlist = async (navigate, product) => {
     if(wishlistState.isLoading){
       return
     }
+
+    if(!userState.user){
+      navigate("/login", {
+        state: {from:location}
+      })
+      showNotification("Login/Register to add.", "error")
+    }
+
     wishlistDispatch(addToWishlistRequestAction())
     try{
       const result = await addProductToWishlistService(userState?.user?.token, userState?.user?.user?.id, product)

@@ -38,7 +38,7 @@ export const ProductListCard = (product) => {
           ? 
           <span onClick={() => handleRemoveFromWishlist(product)} className="product-list-card-wishlist-added-btn"><i className="fa-solid fa-heart"></i></span>
           :
-          <span onClick={() => handleAddToWishlist(product)} className="product-list-card-wishlist-btn"><i className="fa-solid fa-heart"></i></span>  
+          <span onClick={() => handleAddToWishlist(navigate, product)} className="product-list-card-wishlist-btn"><i className="fa-solid fa-heart"></i></span>  
         }
       </div>
       <div className="product-list-card-details-container">
