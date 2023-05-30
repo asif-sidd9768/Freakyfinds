@@ -60,6 +60,8 @@
 .cart-quantity {
   grid-area: cart-quantity;
   padding: 0 0 0 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .cart-price {
