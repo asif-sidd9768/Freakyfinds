@@ -25,7 +25,8 @@ export const WishlistProvider = ({children}) => {
       navigate("/login", {
         state: {from:location}
       })
-      showNotification("Login/Register to add.", "error")
+      return 
+      // showNotification("Login/Register to add.", "error")
     }
 
     wishlistDispatch(addToWishlistRequestAction())
