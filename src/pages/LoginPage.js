@@ -40,11 +40,9 @@ export const LoginPage = () => {
       localStorage.setItem("wishlist", JSON.stringify(response.data.user.wishlist))
       showNotification(`Welcome, ${response?.data?.user?.name}.`, "success")
       navigate(location?.state?.from?.pathname || "/")
-      resetForm()
     }catch(error){
       userDispatch(setUserFailureAction(error))
       showNotification(error.message, "error")
-      resetForm()
     }
   }
 
