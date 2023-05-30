@@ -18,11 +18,32 @@ export const DetailSection = ({product}) => {
       <p className="detail-section-category"><span>{product.category}</span></p>
       <p className="detail-section-star-rating">
         {
-          Array.from({length: 5}, (_, i) => i + 1).map(i => 
-            <span key={i}>
-              <i className={`fa-solid fa-star ${i <= Math.round(product.rating.rate) ? "detail-section-rating-checked" : ""}`}></i>
-            </span>  
-          )
+          // Array.from({length: 5}, (_, i) => i + 1).map(i => 
+          //   <span key={i}>
+          //     <i className={`fa-solid fa-star ${i <= Math.round(product.rating.rate) ? "detail-section-rating-checked" : ""}`}></i>
+          //   </span>  
+          // )
+          Array.from({length: 5}, (_, i) => i + 1).map(i => {
+            const rating = product.rating.rate;
+            let starClass;
+          
+            if (i <= Math.floor(rating)) {
+              // Whole star
+              starClass = "fa-solid fa-star detail-section-rating-checked";
+            } else if (i - 0.5 <= rating) {
+              // Half star
+              starClass = "fa-solid fa-star-half detail-section-rating-checked";
+            } else {
+              // No star
+              starClass = "fa-solid fa-star";
+            }
+          
+            return (
+              <span key={i}>
+                <i className={starClass}></i>
+              </span>
+            );
+          })
         }
         <span className="detail-section-rating-count">
           ({product.rating.count} Ratings)
