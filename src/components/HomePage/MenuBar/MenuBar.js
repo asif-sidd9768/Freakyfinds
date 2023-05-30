@@ -36,6 +36,7 @@ export const MenuBar = () => {
     await localStorage.removeItem("cart")
     toggleMenu()
     showNotification("You're logged out.", "success")
+    navigate("/", {replace: true})
   }
 
   return (
