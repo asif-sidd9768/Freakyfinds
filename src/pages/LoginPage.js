@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import LogoImg from "../assets/images/logo-new.png"
 import "../styles/LoginPage.css"
 import { UserContext } from "../contexts/UserContext"
@@ -19,6 +19,7 @@ export const LoginPage = () => {
   const { cartDispatch } = useContext(CartContext)
   const { showNotification } = useContext(NotificationContext)
   const { wishlistState, wishlistDispatch } = useContext(WishlistContext)
+  const [isRegister, setIsRegister] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -51,6 +52,10 @@ export const LoginPage = () => {
     }
   }
 
+  const toggleRegister = () => {
+    setIsRegister(!isRegister)
+  }
+
   useEffect(() => {
     if(userState.user){
       navigate(location?.state?.from?.pathname || "/")
@@ -61,13 +66,15 @@ export const LoginPage = () => {
       <div className="login-bg">
       <section className="login-container">
         <img src={LogoImg} className="login-logo" alt="" />
-        <RegisterForm handleLogin={handleLogin} />
+        {
+          isRegister ? <RegisterForm /> : <LoginForm handleLogin={handleLogin} />
+        }
         <div className="login-as-test-container">
           <button onClick={(event) => handleLogin(event, {email:"asif@test1.com", password:"test"})} className="login-as-test-btn">Login as Test<i className="fa-solid fa-flask-vial"></i></button>
         </div>
         <section className="login-page-register">
-          <button className="login-register-btn">
-            Register
+          <button onClick={toggleRegister} className="login-register-btn">
+            {isRegister ? "Back to Login" : "Register"}
           </button>
         </section>
       </section>
