@@ -20,6 +20,9 @@ export const AddressList = ({addressData}) => {
   }
 
   const handleAddressDelete = async (addressData) => {
+    if(userState.isLoading){
+      return
+    }
     userDispatch(setUserRequestAction())
     try {
       const response = await deleteAddressService(userState.user.user.id, addressData, userState.user.token)

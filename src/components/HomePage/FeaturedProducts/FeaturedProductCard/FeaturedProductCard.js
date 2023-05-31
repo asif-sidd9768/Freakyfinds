@@ -11,13 +11,10 @@ import { NotificationContext } from "../../../../contexts/NotificationContext"
 
 export const FeaturedProductCard = (pr) => {
   const { cartState, cartDispatch, handleAddToCart } = useContext(CartContext)
-  const { userState } = useContext(UserContext)
-  const { showNotification } = useContext(NotificationContext)
   const navigate = useNavigate()
   return (
     <div className="featured-product" key={pr.id}>
       <img src={pr.image} />
-      {/* <p className="featured-product-extra" title={pr.title}>{pr.title}</p> */}
       <NavLink to={`/product/${pr.id}`} title={pr.title} className="featured-product-extra">{pr.title}</NavLink>
       <span className="featured-product-extra">₹{pr.price.toFixed(2)}</span>
       <div className="featured-product-extra featured-product-btn-container">

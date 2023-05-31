@@ -23,6 +23,9 @@ export const AddressForm = () => {
   const { userState, userDispatch } = useContext(UserContext)
   
   const handleAddressSubmit = async (values, {resetForm}) => {
+    if(userState.isLoading){
+      return 
+    }
     userDispatch(setUserRequestAction())
     try {
       const response = await addAddressService(userState?.user?.user?.id, values, userState?.user?.token)

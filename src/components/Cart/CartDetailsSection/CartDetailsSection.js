@@ -26,6 +26,9 @@ export const CartDetailsSection = () => {
   const cartTotalAmount = Number(cartState.cartItemsTotal)
 
   const handleCheckout = async () => {
+    if(checkoutState.isLoading || userState.isLoading){
+      return
+    }
     if(Object.keys(checkoutState.shippingAddress).length === 0){
       showNotification("Select shipping address.", "error")
       return 
