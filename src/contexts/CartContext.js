@@ -18,6 +18,7 @@ export const CartProvider = ({children}) => {
 
   const handleAddToCart = async (navigate, product) => {
     if(cartState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
     if(!userState.user){
@@ -39,6 +40,7 @@ export const CartProvider = ({children}) => {
 
   const handleDeleteFromCart = async (cartItemId) => {
     if(cartState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
     cartDispatch(deleteCartItemRequestAction())
@@ -54,6 +56,7 @@ export const CartProvider = ({children}) => {
 
   const handleQuantityChange = async (productQuantity, cartItemId, change) => {
     if(cartState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
     cartDispatch(cartItemQuantityChangeRequestAction())

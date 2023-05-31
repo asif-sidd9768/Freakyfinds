@@ -18,6 +18,7 @@ export const WishlistProvider = ({children}) => {
 
   const handleAddToWishlist = async (navigate, product) => {
     if(wishlistState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
 
@@ -41,6 +42,7 @@ export const WishlistProvider = ({children}) => {
 
   const handleRemoveFromWishlist = async (productId) => {
     if(wishlistState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
     wishlistDispatch(deleteFromWishlistRequestAction())

@@ -30,6 +30,7 @@ export const RegisterForm = () => {
   
   const handleUserRegister = async (values, {resetForm}) => {
     if(userState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
     userDispatch(registerUserRequestAction())

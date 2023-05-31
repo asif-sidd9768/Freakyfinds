@@ -25,6 +25,7 @@ export const LoginPage = () => {
 
   const handleLogin =  async (values) => {
     if(userState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
     const creds = values

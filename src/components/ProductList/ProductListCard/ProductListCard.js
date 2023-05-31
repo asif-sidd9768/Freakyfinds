@@ -48,7 +48,7 @@ export const ProductListCard = (product) => {
               ? 
               <NavLink to="/cart" className="product-list-card-cart-visit-btn">{RESOURCE.GO_TO_FINDS}</NavLink>
               :
-              <button disabled={cartState.isLoading || stockQuantity < 1}  onClick={() => handleAddToCart(navigate, product)} className="product-list-card-cart-btn">{stockQuantity < 1 ? "Out of Stock" : RESOURCE.ADD_TO_FINDS}</button>
+              <button disabled={stockQuantity < 1}  onClick={() => handleAddToCart(navigate, product)} className="product-list-card-cart-btn">{stockQuantity < 1 ? "Out of Stock" : RESOURCE.ADD_TO_FINDS}</button>
             }
         </div>
       </div>

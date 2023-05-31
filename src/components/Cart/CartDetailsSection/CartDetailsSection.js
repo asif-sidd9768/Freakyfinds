@@ -27,6 +27,7 @@ export const CartDetailsSection = () => {
 
   const handleCheckout = async () => {
     if(checkoutState.isLoading || userState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
     if(Object.keys(checkoutState.shippingAddress).length === 0){

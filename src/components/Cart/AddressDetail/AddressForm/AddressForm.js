@@ -24,6 +24,7 @@ export const AddressForm = () => {
   
   const handleAddressSubmit = async (values, {resetForm}) => {
     if(userState.isLoading){
+      showNotification("Some work is in progress", "error")
       return 
     }
     userDispatch(setUserRequestAction())

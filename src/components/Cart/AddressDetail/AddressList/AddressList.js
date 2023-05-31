@@ -21,6 +21,7 @@ export const AddressList = ({addressData}) => {
 
   const handleAddressDelete = async (addressData) => {
     if(userState.isLoading){
+      showNotification("Some work is in progress", "error")
       return
     }
     userDispatch(setUserRequestAction())
