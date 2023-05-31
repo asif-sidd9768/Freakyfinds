@@ -1,4 +1,6 @@
-import { addCartItemsToCheckoutAction } from "../../actions/checkoutActions";
+import { clearCartAction } from "../../actions/cartActions";
+import { addCartItemsToCheckoutAction, checkoutCancelledAction, checkoutSuccessAction } from "../../actions/checkoutActions";
+import { setUserAction } from "../../actions/userActions";
 import { createOrderService, loadScript, successOrderService } from "../../services/checkoutService";
 import { RESOURCE } from "../strings";
 
@@ -7,6 +9,8 @@ export const handleOnlineCheckout = async (
   userState, 
   cartState,
   checkoutState, 
+  userDispatch,
+  cartDispatch,
   cartTotalAmount, logoImg, navigate) => {
       checkoutDispatch(addCartItemsToCheckoutAction(cartState.cartItems))
       const res = await loadScript()
@@ -44,6 +48,9 @@ export const handleOnlineCheckout = async (
             }
             const checkoutResult = await successOrderService(userState?.user?.token, {orderDetails, checkoutDetails: data});
             if(checkoutResult.data.msg == "successful"){
+              cartDispatch(clearCartAction())
+              checkoutDispatch(checkoutSuccessAction())
+              userDispatch(setUserAction(checkoutResult.data.updatedUser))
               navigate("/success", {
                 replace: true,
                 state: {
@@ -53,8 +60,14 @@ export const handleOnlineCheckout = async (
               })
             }else {
               alert(checkoutResult.data.msg);
+              checkoutDispatch(checkoutCancelledAction())
             }
         },
+        "modal": {
+          "ondismiss": function(){
+               checkoutDispatch(checkoutCancelledAction())
+           }
+      },
         prefill: {
             name: RESOURCE.PAYMENT_NAME ,
             email: RESOURCE.PAYMENT_EMAIL,

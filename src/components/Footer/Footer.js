@@ -15,10 +15,10 @@ export const Footer = () => {
         </div>
         <div className="footer-links-container">
           <span>
-            <NavLink className="footer-link">About</NavLink>
+            <NavLink to="/auction" className="footer-link">Auction</NavLink>
             <NavLink to="/privacy-policy" className="footer-link">Privacy Policy</NavLink>
             <NavLink to="/return-policy" className="footer-link">Return/Refund Policy</NavLink>
-            <NavLink className="footer-link">Contact</NavLink>
+            <NavLink to="/contact-us" className="footer-link">Contact</NavLink>
           </span>
         </div>
         <div className="footer-payment-cards">

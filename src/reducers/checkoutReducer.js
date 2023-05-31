@@ -62,6 +62,8 @@ export const checkoutReducer = (state, action) => {
       return initialStateCheckout;
     case "CHECKOUT_SUCCESS_FAILURE":
       return {...state, isLoading: false}
+    case "CHECKOUT_CANCELLED":
+      return {...state, isLoading: false}
     default:
       return state;
   }

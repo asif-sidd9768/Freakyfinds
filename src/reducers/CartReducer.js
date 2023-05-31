@@ -56,7 +56,8 @@ export const cartReducer = (state, action) => {
     case "QUANTITY_CHANGE_CART_ITEM_FAILURE":
       return {...state, error: action.payload, isLoading:false}
     case "UPDATE_CART_SHIPPING":
-      return {...state, cartShipping: SHIPPING_FEES[action.payload]}
+      const cartTotalAfterShippingUpdate = updateCartTotal(state.cartItems, SHIPPING_FEES[action.payload])
+      return {...state, cartShipping: SHIPPING_FEES[action.payload], cartItemsTotal: cartTotalAfterShippingUpdate}
     case "CLEAR_CART":
       return {...initialStateCart}
     default:

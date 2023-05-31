@@ -20,6 +20,7 @@ export const CartDetailsSection = () => {
   const navigate = useNavigate()
   
   const handleCartShippingChange = (event) => {
+    console.log(event.target.value)
     cartDispatch(updateCartShippingAction(event.target.value))
     checkoutDispatch(updateShippingMethodAction(event.target.value))
   }
@@ -49,6 +50,9 @@ export const CartDetailsSection = () => {
           checkoutState, 
           cartTotalAmount, 
           logoImg, 
+          userDispatch,
+          cartDispatch,
+          checkoutDispatch,
           navigate)
       }else {
         checkoutResult = await handleCodCheckout(
@@ -58,26 +62,29 @@ export const CartDetailsSection = () => {
           checkoutState, 
           cartTotalAmount, 
           logoImg, 
+          cartDispatch,
+          userDispatch,
           navigate)
       }
-      if(checkoutResult.data.msg == "successful"){
-        console.log({checkoutResult})
-        cartDispatch(clearCartAction())
-        checkoutDispatch(checkoutSuccessAction())
-        userDispatch(setUserAction(checkoutResult.data.updatedUser))
-        navigate("/success", {
-          replace: true,
-          state: {
-            //...values
-            ...checkoutResult.data
-          }
-        })
-      }else {
-        alert(checkoutResult.data.msg);
-      }
+      // if(checkoutResult.data.msg == "successful"){
+      //   console.log({checkoutResult})
+      //   cartDispatch(clearCartAction())
+      //   checkoutDispatch(checkoutSuccessAction())
+      //   userDispatch(setUserAction(checkoutResult.data.updatedUser))
+      //   navigate("/success", {
+      //     replace: true,
+      //     state: {
+      //       //...values
+      //       ...checkoutResult.data
+      //     }
+      //   })
+      // }else {
+      //   alert(checkoutResult.msg);
+      // }
     }catch(error){
-      checkoutDispatch(checkoutSuccessFailureAction(error.response.data.message))
-      showNotification(error.response.data.message, "error")
+      console.log(error)
+      checkoutDispatch(checkoutSuccessFailureAction(error?.message))
+      showNotification(error?.message || "Something went wrong", "error")
     }
   }
 
