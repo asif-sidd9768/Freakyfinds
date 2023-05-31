@@ -3,6 +3,7 @@ import { addCartItemsToCheckoutAction, checkoutCancelledAction, checkoutSuccessA
 import { setUserAction } from "../../actions/userActions";
 import { createOrderService, loadScript, successOrderService } from "../../services/checkoutService";
 import { RESOURCE } from "../strings";
+import { handleSuccessfulCheckout } from "./handleSuccessfulCheckout";
 
 export const handleOnlineCheckout = async (
   userState, 
@@ -50,19 +51,11 @@ export const handleOnlineCheckout = async (
               checkoutTotal: cartTotalAmount
             }
             const checkoutResult = await successOrderService(userState?.user?.token, {orderDetails, checkoutDetails: data});
+            // return checkoutResult
             if(checkoutResult.data.msg == "successful"){
-              cartDispatch(clearCartAction())
-              checkoutDispatch(checkoutSuccessAction())
-              userDispatch(setUserAction(checkoutResult.data.updatedUser))
-              navigate("/success", {
-                replace: true,
-                state: {
-                  //...values
-                  ...checkoutResult.data
-                }
-              })
+              console.log('ffff === ',checkoutResult)
+              handleSuccessfulCheckout(checkoutResult,userDispatch, cartDispatch, checkoutDispatch, navigate)
             }else {
-              alert(checkoutResult.data.msg);
               checkoutDispatch(checkoutCancelledAction())
             }
         },

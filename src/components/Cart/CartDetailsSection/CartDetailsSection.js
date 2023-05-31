@@ -11,6 +11,8 @@ import { NotificationContext } from "../../../contexts/NotificationContext"
 import { handleOnlineCheckout } from "../../../utils/checkout/handleOnlineCheckout"
 import { handleCodCheckout } from "../../../utils/checkout/handleCodCheckout"
 import { setUserAction, successCheckoutOrderUpdateAction } from "../../../actions/userActions"
+import { validateCheckoutInputs } from "../../../utils/checkout/validateCheckoutInputs"
+import { performCheckout } from "../../../utils/checkout/performCheckout"
 
 export const CartDetailsSection = () => {
   const { cartState,cartDispatch } = useContext(CartContext)
@@ -27,63 +29,8 @@ export const CartDetailsSection = () => {
   const cartTotalAmount = Number(cartState.cartItemsTotal)
 
   const handleCheckout = async () => {
-    if(checkoutState.isLoading || userState.isLoading){
-      showNotification("Some work is in progress", "error")
-      return
-    }
-    if(Object.keys(checkoutState.shippingAddress).length === 0){
-      showNotification("Select shipping address.", "error")
-      return 
-    }
-    if(checkoutState.paymentMethod === ""){
-      showNotification("Select payment method.", "error")
-      return
-    }
-    checkoutDispatch(checkoutSuccessRequestAction())
-    try {
-      let checkoutResult
-      if(checkoutState.paymentMethod === "online"){
-        checkoutResult = await handleOnlineCheckout(
-          userState, 
-          cartState,
-          checkoutState, 
-          cartTotalAmount, 
-          logoImg, 
-          userDispatch,
-          cartDispatch,
-          checkoutDispatch,
-          navigate)
-      }else {
-        checkoutResult = await handleCodCheckout(
-          checkoutDispatch, 
-          userState, 
-          cartState,
-          checkoutState, 
-          cartTotalAmount, 
-          cartDispatch,
-          userDispatch,
-          navigate)
-      }
-      // if(checkoutResult.data.msg == "successful"){
-      //   console.log({checkoutResult})
-      //   cartDispatch(clearCartAction())
-      //   checkoutDispatch(checkoutSuccessAction())
-      //   userDispatch(setUserAction(checkoutResult.data.updatedUser))
-      //   navigate("/success", {
-      //     replace: true,
-      //     state: {
-      //       //...values
-      //       ...checkoutResult.data
-      //     }
-      //   })
-      // }else {
-      //   alert(checkoutResult.msg);
-      // }
-    }catch(error){
-      console.log(error)
-      checkoutDispatch(checkoutSuccessFailureAction(error?.message))
-      showNotification(error?.message || "Something went wrong", "error")
-    }
+    if(!validateCheckoutInputs(checkoutState, userState, showNotification))return
+    await performCheckout(checkoutDispatch,checkoutState,userState,cartState,cartTotalAmount,logoImg,userDispatch,cartDispatch,navigate)
   }
 
   return (
