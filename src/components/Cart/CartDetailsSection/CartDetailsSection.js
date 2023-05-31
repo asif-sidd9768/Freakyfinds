@@ -72,8 +72,8 @@ export const CartDetailsSection = () => {
         alert(checkoutResult.data.msg);
       }
     }catch(error){
-      console.log(error)
-      checkoutDispatch(checkoutSuccessFailureAction(error))
+      checkoutDispatch(checkoutSuccessFailureAction(error.response.data.message))
+      showNotification(error.response.data.message, "error")
     }
   }
 

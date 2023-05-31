@@ -24,7 +24,7 @@ export const ProductDetail = () => {
         const response = await addItemToBrowsedService(userState?.user?.token, userState?.user?.user?.id, foundProduct.id)
         userDispatch(updatedBrowsedItemsAction(response.data))
       }catch(error){
-        console.log(error)
+        
       }
     }
     if(foundProduct){

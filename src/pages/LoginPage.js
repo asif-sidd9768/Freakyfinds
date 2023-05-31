@@ -23,12 +23,11 @@ export const LoginPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const handleLogin =  async (values, testCreds=null) => {
-    event.preventDefault()
+  const handleLogin =  async (values) => {
     if(userState.isLoading){
       return
     }
-    const creds = testCreds ? testCreds : values
+    const creds = values
     userDispatch(setUserRequestAction())
     try {
       const response = await loginUser(creds)
@@ -41,8 +40,8 @@ export const LoginPage = () => {
       showNotification(`Welcome, ${response?.data?.user?.name}.`, "success")
       navigate(location?.state?.from?.pathname || "/")
     }catch(error){
-      userDispatch(setUserFailureAction(error))
-      showNotification(error.message, "error")
+      userDispatch(setUserFailureAction(error.response.data.message))
+      showNotification(error.response.data.message, "error")
     }
   }
 

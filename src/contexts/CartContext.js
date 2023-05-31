@@ -32,8 +32,8 @@ export const CartProvider = ({children}) => {
       cartDispatch(addToCartAction(response.data))
       showNotification("ITEM ADDED TO FINDS", "success")
     }catch(error){
-      cartDispatch(addToCartRequestFailure(error))
-      console.log(error)
+      cartDispatch(addToCartRequestFailure(error.response.data.message))
+      showNotification(error.response.data.message, "error")
     }
   }
 
@@ -45,10 +45,10 @@ export const CartProvider = ({children}) => {
     try {
       await deleteCartProduct(userState?.user?.user?.id, cartItemId, userState.user.token) 
       cartDispatch(deleteCartItemAction(cartItemId))
+      showNotification("Item delete from cart", "success")
     }catch(error){
-      showNotification("ITEM REMOVED FROM FINDS", "error")
-      console.log(error)
-      cartDispatch(deleteCartItemFailureAction(error))
+      showNotification(error.response.data.message, "error")
+      cartDispatch(deleteCartItemFailureAction(error.response.data.message))
     }
   }
 
@@ -68,10 +68,8 @@ export const CartProvider = ({children}) => {
         showNotification(`${change.toUpperCase()}D QUANTITY`, "success")
       }
     }catch(error){
-      console.log(error)
-      cartDispatch(cartItemQuantityChangeFailureAction(error))
-      showNotification(`${error?.response?.data?.message}`, "error")
-      console.log(error)
+      cartDispatch(cartItemQuantityChangeFailureAction(error.response.data.message))
+      showNotification(error.response.data.message, "error")
     }
   }
 

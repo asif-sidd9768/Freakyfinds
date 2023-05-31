@@ -26,7 +26,8 @@ export const AddressList = ({addressData}) => {
       userDispatch(setUserAction(response.data))
       showNotification("Address deleted!", "success")
     }catch(error){
-      setUserFailureAction(error)
+      setUserFailureAction(error.response.data.message)
+      showNotification(error.response.data.message, "error")
     }
   }
 

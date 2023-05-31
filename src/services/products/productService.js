@@ -7,6 +7,5 @@ export const getAllProducts = async () => {
     const response = await axios.get(`${RESOURCE.API_URL}/api/product/all-products`)
     return response
   }catch(error){
-    console.error(error)
   }
 }

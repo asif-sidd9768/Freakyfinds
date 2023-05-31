@@ -34,23 +34,23 @@ export const WishlistProvider = ({children}) => {
       wishlistDispatch(addToWishlistAction(product))
       showNotification("ITEM ADDED TO WISHLIST", "success")
     }catch(error){
-      wishlistDispatch(addToWishlistFailureAction(error))
-      console.log(error)
+      wishlistDispatch(addToWishlistFailureAction(error.response.data.message))
+      showNotification(error.response.data.message, "error")
     }
   }
 
-  const handleRemoveFromWishlist = async (product) => {
+  const handleRemoveFromWishlist = async (productId) => {
     if(wishlistState.isLoading){
       return
     }
     wishlistDispatch(deleteFromWishlistRequestAction())
     try{
-      const response = await deleteProductFromWishlistService(userState?.user?.token, userState?.user?.user?.id, product.id)
-      wishlistDispatch(deleteFromWishlistAction(product.id))
-      showNotification("ITEM REMOVED FROM WISHLIST", "error")
+      const response = await deleteProductFromWishlistService(userState?.user?.token, userState?.user?.user?.id, productId)
+      wishlistDispatch(deleteFromWishlistAction(productId))
+      showNotification("ITEM REMOVED FROM WISHLIST", "success")
     }catch(error){
-      wishlistDispatch(deleteFromWishlistFailureAction(error))
-      console.log(error)
+      wishlistDispatch(deleteFromWishlistFailureAction(error.response.data.message))
+      showNotification(error.response.data.message, "error")
     }
   }
 

@@ -30,8 +30,8 @@ export const AddressForm = () => {
       showNotification("Address added!", "success")
       resetForm()
     }catch(error){
-      userDispatch(setUserFailureAction(error))
-      console.log(error)
+      userDispatch(setUserFailureAction(error.response.data.message))
+      showNotification(error.response.data.message, "error")
       resetForm()
     }
     // Do whatever you need to do with the form values

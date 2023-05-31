@@ -45,8 +45,8 @@ export const RegisterForm = () => {
       navigate(location?.state?.from?.pathname || "/")
       resetForm()
     }catch(error){
-      userDispatch(registerUserFailureAction(error))
-      showNotification(error.message, "error")
+      userDispatch(registerUserFailureAction(error.response.data.message))
+      showNotification(error.response.data.message, "error")
       resetForm()
     }
   }
