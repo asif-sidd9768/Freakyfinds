@@ -8,6 +8,6 @@ export const AuthenticatedRoutes = ({isSignedIn,children}) => {
   return isSignedIn ? (
     children
   ) : (
-    <Navigate to="/login" state={{from:location}} />
+    <Navigate to="/login" state={{from:location}} replace/>
   )
 }

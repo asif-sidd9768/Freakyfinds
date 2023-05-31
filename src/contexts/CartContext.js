@@ -24,7 +24,7 @@ export const CartProvider = ({children}) => {
       navigate("/login", {
         state: {from:location}
       })
-      showNotification("Login/Register to add.", "error")
+      return
     }
     cartDispatch(addToCartRequestAction())
     try {
