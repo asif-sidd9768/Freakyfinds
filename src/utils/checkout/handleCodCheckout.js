@@ -8,7 +8,10 @@ export const handleCodCheckout = async (
   userState, 
   cartState,
   checkoutState, 
-  cartTotalAmount) => {
+  cartTotalAmount, 
+  cartDispatch,
+  userDispatch,
+  navigate) => {
     checkoutDispatch(addCartItemsToCheckoutAction(cartState.cartItems))
     const orderDetails = {
       ...checkoutState, 

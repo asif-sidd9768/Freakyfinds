@@ -44,7 +44,6 @@ export const CartDetailsSection = () => {
       let checkoutResult
       if(checkoutState.paymentMethod === "online"){
         checkoutResult = await handleOnlineCheckout(
-          checkoutDispatch, 
           userState, 
           cartState,
           checkoutState, 

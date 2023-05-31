@@ -5,13 +5,16 @@ import { createOrderService, loadScript, successOrderService } from "../../servi
 import { RESOURCE } from "../strings";
 
 export const handleOnlineCheckout = async (
-  checkoutDispatch, 
   userState, 
   cartState,
   checkoutState, 
+  cartTotalAmount, 
+  logoImg, 
   userDispatch,
   cartDispatch,
-  cartTotalAmount, logoImg, navigate) => {
+  checkoutDispatch,
+  navigate) => {
+      console.log(cartTotalAmount)
       checkoutDispatch(addCartItemsToCheckoutAction(cartState.cartItems))
       const res = await loadScript()
       if (!res) {
