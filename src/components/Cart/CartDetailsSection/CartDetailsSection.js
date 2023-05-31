@@ -60,7 +60,6 @@ export const CartDetailsSection = () => {
           cartState,
           checkoutState, 
           cartTotalAmount, 
-          logoImg, 
           cartDispatch,
           userDispatch,
           navigate)
