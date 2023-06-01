@@ -1,13 +1,10 @@
 import { useContext } from "react"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { addToCartAction } from "../../../../actions/cartActions"
 import { isItemInCart } from "../../../../utils/products/checItemInCart"
 import { CartContext } from "../../../../contexts/CartContext"
 import { RESOURCE } from "../../../../utils/strings"
 import { NavLink, useNavigate } from "react-router-dom"
-import { UserContext } from "../../../../contexts/UserContext"
-import { NotificationContext } from "../../../../contexts/NotificationContext"
 
 export const FeaturedProductCard = (pr) => {
   const { cartState, cartDispatch, handleAddToCart } = useContext(CartContext)

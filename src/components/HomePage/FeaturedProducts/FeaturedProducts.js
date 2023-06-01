@@ -3,6 +3,8 @@ import { ProductContext } from "../../../contexts/ProductContext"
 import { FeaturedProductCard } from "./FeaturedProductCard/FeaturedProductCard"
 
 import "./FeaturedProducts.css"
+import Skeleton from "react-loading-skeleton"
+import { SkeletonCards } from "../../SkeletonCards/SkeletonCards"
 
 export const FeaturedProducts = () => {
   const { productState } = useContext(ProductContext)
@@ -13,9 +15,15 @@ export const FeaturedProducts = () => {
       <p className="featured-products-tagline">Power up with our featured products!</p>
       <div className="featured-products-container">
         {
-          featuredProducts.map(pr => 
-            <FeaturedProductCard key={pr.id} {...pr} />
-          )
+          productState.isLoading ? (
+            <SkeletonCards cardCount={4} />
+          ): <>
+            {
+              featuredProducts.map(pr => 
+                <FeaturedProductCard key={pr.id} {...pr} />
+              )
+            }
+          </>
         }
       </div>
     </div>

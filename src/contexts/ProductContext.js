@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { initialStateProducts, productsReducers } from "../reducers/ProductsReducer";
-import { setProducts, setProductsFailureAction } from "../actions/productActions";
+import { setProducts, setProductsFailureAction, setProductsRequestAction } from "../actions/productActions";
 import { getAllProducts } from "../services/products/productService";
 import { NotificationContext } from "./NotificationContext";
 
@@ -11,6 +11,7 @@ export const ProductProvider = ({children}) => {
   
   useEffect(() => {
     async function loadProducts (){
+      productDispatch(setProductsRequestAction())
       try {
         const response = await getAllProducts()
         productDispatch(setProducts(response.data))

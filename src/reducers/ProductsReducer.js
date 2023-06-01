@@ -13,6 +13,8 @@ export const initialStateProducts = {
 }
 export const productsReducers = (state, action) => {
   switch(action.type){
+    case "SET_PRODUCTS_REQUEST":
+      return {...state, isLoading: true}
     case "SET_PRODUCTS":
       // const categories = action.payload.reduce((acc, curr) => ([...acc, !])))
       return {...state, products: action.payload, categories: [...new Set(action.payload.map(pr => pr.category))], isLoading: false}

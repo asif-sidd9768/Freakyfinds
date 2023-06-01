@@ -36,7 +36,7 @@ export const ProductDetail = () => {
       <div className="product-detail-heading">
         <p className="product-detail-heading-text">{foundProduct.title} </p>
       </div>
-      <div className="product-detail-container">
+      <div className="product-detail-container">        
         <ImageSection className="product-detail-image-section" product={foundProduct} />
         <DetailSection className="product-detail-detail-section" product={foundProduct} />
       </div>

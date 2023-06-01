@@ -24,6 +24,13 @@ export const ProductListCard = (product) => {
   return (
     <div className="product-list-card-container">
       <div className="product-list-card-image-container">
+        {/* {
+          !productState.isLoading ? (
+            <img className="product-list-card-image" src={image} alt={title} />
+          ) : (
+            <Skeleton width={200} height={200} />
+          )
+        } */}
         <img className="product-list-card-image" src={image} />
         <span className={`product-list-card-category product-list-card-category-${category}`}>{category}</span>
         <span className="product-list-card-rating"><i className="fa-solid fa-star"></i> {rating.rate}</span>
