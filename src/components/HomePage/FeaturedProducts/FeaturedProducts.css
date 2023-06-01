@@ -102,6 +102,14 @@
   background-color: rgb(30, 30, 28);
 }
 
+.skeleton-mobile {
+  display: block;
+}
+
+.skeleton-not-mobile {
+  display: none;
+}
+
 .featured-product-btn-container {
   margin: 0.5rem 0;
 }
@@ -109,6 +117,16 @@
 .featured-product-btn:hover {
   background-color: var(--text-color);
   color: beige;
+}
+
+@media screen and (width >= 576px) {
+  .skeleton-mobile {
+    display: none;
+  }
+  
+  .skeleton-not-mobile {
+    display: inline-block;
+  }
 }
 
 @media screen and (width >= 1024px) {

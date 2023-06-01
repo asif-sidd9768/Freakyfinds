@@ -23,9 +23,9 @@ export const productsReducers = (state, action) => {
     case "SET_PRODUCT_CATEGORY_FILTER": 
       return {...state, filters: {...state.filters, category: action.payload}}
     case "SET_PRODUCT_PRICE_FILTER":
-      return {...state, filters: {...state.filters, price: action.payload, rating: ""}}
+      return {...state, filters: {...state.filters, price: action.payload}}
     case "SET_PRODUCT_RATING_FILTER":
-      return {...state, filters: {...state.filters, rating: action.payload, price: ""}}
+      return {...state, filters: {...state.filters, rating: action.payload}}
     case "SET_PRODUCT_SALE_FILTER":
       return {...state, filters: {...state.filters, sale: action.payload} }
     case "SET_PRODUCT_SEARCH_FILTER":

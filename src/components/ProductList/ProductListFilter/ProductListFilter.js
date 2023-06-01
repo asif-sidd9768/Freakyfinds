@@ -1,8 +1,10 @@
-import { useContext, useEffect } from "react"
-import "./ProductListFilter.css"
+import { useContext } from "react"
+
 import { ProductContext } from "../../../contexts/ProductContext"
 import { productFilterRemoveAction, setProductFilterAction, setProductPriceFilterAction, setProductRatingFilterAction, setProductSaleFilterAction, setProductSearchFilterAction } from "../../../actions/productActions"
 import { NotificationContext } from "../../../contexts/NotificationContext"
+
+import "./ProductListFilter.css"
 
 export const ProductListFilter = () => {
   const { productState, productDispatch } = useContext(ProductContext)
@@ -37,10 +39,12 @@ export const ProductListFilter = () => {
           {productState.filters.category && productState.filters.category !== "all" && <span onClick={() => handleRemoveFilter({category: "all"})} title="remove" className="product-list-filter-remove">x</span>}
         </div>
         <div className="product-list-filter-category-container">
-          <span className="product-list-filter-category-label">SORT BY</span> <select value={productState.filters.rating} onChange={handleRatingFilter} className="product-list-filter-category">
+          <span className="product-list-filter-category-label">FILTER BY</span> <select value={productState.filters.rating} onChange={handleRatingFilter} className="product-list-filter-category">
             <option value="">Rating</option>
-            <option value="lowToHigh">Low to High</option>
-            <option value="highToLow">High to Low</option>
+            <option value="4">4 & above</option>
+            <option value="3">3 & above</option>
+            <option value="2">2 & above</option>
+            <option value="1">1 & above</option>
           </select>
           {productState.filters.rating && <span onClick={() => handleRemoveFilter({rating: ""})} title="remove" className="product-list-filter-remove">x</span>}
         </div>

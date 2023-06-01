@@ -1,9 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom"
-import "./NewMainBanner.css"
+
 import { capitalizeFirstChar } from "../../../utils/capitalizeFirstLetter"
 import { useContext } from "react"
 import { ProductContext } from "../../../contexts/ProductContext"
 import { setProductFilterAction } from "../../../actions/productActions"
+
+import "./NewMainBanner.css"
 
 export const NewMainBanner = () => {
   const { productDispatch } = useContext(ProductContext)
@@ -24,10 +26,6 @@ export const NewMainBanner = () => {
               <button key={index} onClick={() => handleNavigate(category)} className="left-side-text">{capitalizeFirstChar(category)}</button>
             )
           }
-          {/* <NavLink to="men" className="left-side-text">Men</NavLink>
-          <NavLink className="left-side-text">Women</NavLink>
-          <NavLink className="left-side-text">Electronics</NavLink>
-          <NavLink className="left-side-text">Jewelery</NavLink> */}
         </div>
       </div>
       <div className="middle-container">

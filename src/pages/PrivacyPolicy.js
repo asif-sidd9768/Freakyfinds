@@ -16,7 +16,7 @@ export const PrivacyPolicy = () => {
         )
       }
       <div className="privacy-policy-contact-container">
-        <p>Contact Us</p>
+        <p className="privacy-policy-contact-text">Contact Us</p>
         <p>If you have any questions about this Privacy Policy, please contact us.</p>
       </div>
     </div>

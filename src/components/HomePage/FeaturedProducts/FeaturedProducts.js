@@ -1,10 +1,10 @@
 import { useContext } from "react"
+
 import { ProductContext } from "../../../contexts/ProductContext"
 import { FeaturedProductCard } from "./FeaturedProductCard/FeaturedProductCard"
+import { SkeletonCards } from "../../SkeletonCards/SkeletonCards"
 
 import "./FeaturedProducts.css"
-import Skeleton from "react-loading-skeleton"
-import { SkeletonCards } from "../../SkeletonCards/SkeletonCards"
 
 export const FeaturedProducts = () => {
   const { productState } = useContext(ProductContext)
@@ -16,7 +16,9 @@ export const FeaturedProducts = () => {
       <div className="featured-products-container">
         {
           productState.isLoading ? (
-            <SkeletonCards cardCount={4} />
+            <>
+                <SkeletonCards cardCount={4} />
+            </>
           ): <>
             {
               featuredProducts.map(pr => 

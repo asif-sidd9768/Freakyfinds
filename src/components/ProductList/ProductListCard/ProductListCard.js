@@ -1,36 +1,27 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 
 import { CartContext } from "../../../contexts/CartContext"
 import { WishlistContext } from "../../../contexts/WishlistContext"
-import { NavLink, useLocation, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { isItemInCart } from "../../../utils/products/checItemInCart"
 import { RESOURCE } from "../../../utils/strings"
 import { isItemInWishlist } from "../../../utils/wishlist/checkItemInWishlist"
-import { NotificationContext } from "../../../contexts/NotificationContext"
-import { UserContext } from "../../../contexts/UserContext"
+import { HighlightedString } from "../../HighlightedString/HighlightedString"
+import { ProductContext } from "../../../contexts/ProductContext"
 
 import "./ProductListCard.css"
 import "../../../styles.css"
-import { HighlightedString } from "../../HighlightedString/HighlightedString"
-import { ProductContext } from "../../../contexts/ProductContext"
 
 export const ProductListCard = (product) => {
   const { cartState, handleAddToCart } = useContext(CartContext)
   const { productState } = useContext(ProductContext)
   const navigate = useNavigate()
-  const { wishlistState, wishlistDispatch, handleAddToWishlist, handleRemoveFromWishlist } = useContext(WishlistContext)
+  const { wishlistState, handleAddToWishlist, handleRemoveFromWishlist } = useContext(WishlistContext)
   const {id, title, category, price, image, rating, sale, stockQuantity} = product
 
   return (
     <div className="product-list-card-container">
       <div className="product-list-card-image-container">
-        {/* {
-          !productState.isLoading ? (
-            <img className="product-list-card-image" src={image} alt={title} />
-          ) : (
-            <Skeleton width={200} height={200} />
-          )
-        } */}
         <img className="product-list-card-image" src={image} />
         <span className={`product-list-card-category product-list-card-category-${category}`}>{category}</span>
         <span className="product-list-card-rating"><i className="fa-solid fa-star"></i> {rating.rate}</span>

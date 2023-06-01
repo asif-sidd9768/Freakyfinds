@@ -9,42 +9,12 @@ import { ProductListFilter } from "../components/ProductList/ProductListFilter/P
 import { setProductFilterAction } from "../actions/productActions"
 import Skeleton from "react-loading-skeleton"
 import { SkeletonCards } from "../components/SkeletonCards/SkeletonCards"
+import { categoryFilter, getFilteredProducts, priceFilter, ratingFilter } from "../utils/products/filtersHelper"
+import { EmptyList } from "../components/Profile/EmptyList/EmptyList"
 
 export const ProductList =() => {
   const { productState, productDispatch } = useContext(ProductContext)
-
-  let filteredProducts = productState.filters.category === "all" ? 
-  productState.products : 
-  productState.products.filter(({category}) => category.toLowerCase() === productState.filters.category.toLowerCase())
-
-  if(productState.filters.price){
-    filteredProducts = [...filteredProducts].sort((prodA, prodB) => {
-      if(productState.filters.price ===  "lowToHigh"){
-        return prodA.price - prodB.price
-      }else {
-        return prodB.price - prodA.price
-      }
-    })
-  }
-
-  if(productState.filters.rating){
-    filteredProducts = [...filteredProducts].sort((prodA, prodB) => {
-      if(productState.filters.rating ===  "lowToHigh"){
-        return prodA.rating.rate - prodB.rating.rate
-      }else {
-        return prodB.rating.rate - prodA.rating.rate
-      }
-    })
-  }
-
-  if(productState.filters.sale === 'yes'){
-    filteredProducts = [...filteredProducts].filter(({sale}) => sale.onSale)
-  }
-
-  if(productState.filters.searchParam){
-    filteredProducts = [...filteredProducts].filter(({title}) => title.toLowerCase().includes(productState.filters.searchParam.toLowerCase()))
-  }
-
+  const filteredProducts = getFilteredProducts(productState)
   return (
     <div>
       <ProductListFilter />
@@ -55,9 +25,11 @@ export const ProductList =() => {
           ) :
           <>
           {
-            filteredProducts.map(product => 
+            filteredProducts.length > 0 ? filteredProducts.map(product => 
               <ProductListCard key={product.id} {...product} />
-            )
+            ) : <> 
+            <EmptyList text="No products to show check another combination." />
+            </>
           }
           </>
         }

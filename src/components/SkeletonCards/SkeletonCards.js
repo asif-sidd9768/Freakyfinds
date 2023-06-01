@@ -6,7 +6,7 @@ export const SkeletonCards = ({cardCount}) => {
     <>
       {Array.from({ length: cardCount }).map((_, index) => (
         <div key={index} className="skeleton-card">
-          <Skeleton width={200} height={200} />
+          <Skeleton width={175} height={200} />
         </div>
       ))}
     </>
