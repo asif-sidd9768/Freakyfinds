@@ -34,3 +34,22 @@ export const updatedBrowsedItemsAction = (items) => ({
 export const removeUserAction = () => ({
   type:"REMOVE_USER"
 })
+
+export const updateAddressAction = (addressData) => ({
+  type:"UPDATE_EDITING_ADDRESS",
+  payload: addressData
+})
+
+export const setUpdatedAddressRequestAction = () => ({
+  type:"SET_UPDATED_ADDRESS_REQUEST"
+})
+
+export const setUpdatedAddressAction = (updatedData) => ({
+  type:"SET_UPDATED_ADDRESS",
+  payload:updatedData
+})
+
+export const setUpdatedAddressFailureAction = (errorData) => ({
+  type:"SET_UPDATED_ADDRESS_FAILURE",
+  payload: errorData
+})
