@@ -16,23 +16,35 @@
   color: var(--text-color);
 }
 
-.address-list-item-delete-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 1.2rem;
+.address-list-item-btns-container {
+  display: block;
   margin: -0.3rem -0.4rem 0 0;
+  text-align: end;
+}
+
+.address-list-item-btn {
+  font-size: 1.1rem;
   cursor: pointer;
   transition: 0.2s;
   background: none;
   border: none;
 }
 
-.address-list-item-delete-btn:hover:enabled {
+.address-list-item-btn:nth-child(1):hover:enabled {
+  color: orange;
+}
+
+.address-list-item-btn:nth-child(2):hover:enabled {
   color: crimson;
 }
 
 @media screen and (width >= 576px) {
+  .address-list-item-btns-container {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin: -0.3rem -0.4rem 0 0;
+  }
   .address-list-container  {
     margin: 0 0 1rem 0;
   }

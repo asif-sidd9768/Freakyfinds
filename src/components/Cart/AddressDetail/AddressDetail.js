@@ -11,6 +11,8 @@ export const AddressDetail = () => {
   const { userState } = useContext(UserContext)
   const location = useLocation()
 
+  const toggleAddNewAddress = () => setAddNewAddress(!addNewAddress)
+
   return (
     <div className="address-detail-container">
       <p className="address-detail-title">{location.pathname === "/profile" ? "Addresses" : "Delivery Information"}</p>
@@ -21,12 +23,12 @@ export const AddressDetail = () => {
           <p className='address-detail-or-text'>{userState?.user?.user?.addresses.length !== 0 ? "OR" : "No addresses found"}</p>
         </>
       }
-      <span className='address-detail-shipping-add-btn' onClick={() => setAddNewAddress(prevAdd => !prevAdd)}>
+      <span className='address-detail-shipping-add-btn' onClick={toggleAddNewAddress}>
         { addNewAddress ? "Hide address add" : "Click to add new address" }
         <i className={`fa-solid fa-angle-${addNewAddress ? "up" : "down"}`}></i>
       </span>
       {
-        addNewAddress && <AddressForm />
+        addNewAddress && <AddressForm toggleAddNewAddress={toggleAddNewAddress} />
       }
     </div>
   )

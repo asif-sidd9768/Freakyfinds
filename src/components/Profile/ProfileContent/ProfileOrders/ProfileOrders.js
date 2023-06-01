@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
 import "./ProfileOrders.css"
+import { Fragment } from "react"
 
 export const ProfileOrders = ({dataContent}) => {
 
@@ -14,7 +15,7 @@ export const ProfileOrders = ({dataContent}) => {
       }
       {
         dataContent.map(order => 
-          <>
+          <Fragment key={order.id}>
             <div className="profile-orders-cell">
               {order?.paymentDetail?.orderCreationId}
             </div>  
@@ -27,7 +28,7 @@ export const ProfileOrders = ({dataContent}) => {
             <div className="profile-orders-cell">
               ₹{order?.totalCost}
             </div>  
-          </>
+          </Fragment>
         )
       }
       {/* <div className="profile-orders-header">
