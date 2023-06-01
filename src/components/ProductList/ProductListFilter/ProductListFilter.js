@@ -2,33 +2,26 @@ import { useContext, useEffect } from "react"
 import "./ProductListFilter.css"
 import { ProductContext } from "../../../contexts/ProductContext"
 import { productFilterRemoveAction, setProductFilterAction, setProductPriceFilterAction, setProductRatingFilterAction, setProductSaleFilterAction, setProductSearchFilterAction } from "../../../actions/productActions"
+import { NotificationContext } from "../../../contexts/NotificationContext"
 
 export const ProductListFilter = () => {
   const { productState, productDispatch } = useContext(ProductContext)
+  const { showNotification } = useContext(NotificationContext)
 
-  const handleCategoryChange = (event) => {
-    productDispatch(setProductFilterAction(event.target.value))
-  }
+  const createHandler = (actionCreator) => (event) => {
+    if(productState.isLoading){
+      showNotification("Loading the products, Please wait.")
+      return;
+    }
+    productDispatch(actionCreator(event.target.value));
+  };
 
-  const handlePriceFilter = (event) => {
-    productDispatch(setProductPriceFilterAction(event.target.value))
-  }
-
-  const handleRatingFilter = (event) => {
-    productDispatch(setProductRatingFilterAction(event.target.value))
-  }
-
-  const handleSearchFIlter = (event) => {
-    productDispatch(setProductSearchFilterAction(event.target.value))
-  }
-
-  const handleSaleFilter = (event) => {
-    productDispatch(setProductSaleFilterAction(event.target.value))
-  }
-
-  const handleRemoveFilter = (filterData) => {
-    productDispatch(productFilterRemoveAction(filterData))
-  }
+  const handleCategoryChange = createHandler(setProductFilterAction);
+  const handlePriceFilter = createHandler(setProductPriceFilterAction);
+  const handleRatingFilter = createHandler(setProductRatingFilterAction);
+  const handleSearchFilter = createHandler(setProductSearchFilterAction);
+  const handleSaleFilter = createHandler(setProductSaleFilterAction);
+  const handleRemoveFilter = (filterData) => productDispatch(productFilterRemoveAction(filterData))
 
   return (
     <div className="product-list-filters">
@@ -70,7 +63,7 @@ export const ProductListFilter = () => {
         </div>
         <div className="product-list-filter-category-container">
           <span className="product-list-filter-category-label">SEARCH</span> 
-            <input type="text" onChange={handleSearchFIlter} className="product-list-filter-category" placeholder="&#128269; type to find" />
+            <input type="text" onChange={handleSearchFilter} className="product-list-filter-category" placeholder="&#128269; type to find" />
             {productState.filters.searchParam && <span onClick={() => handleRemoveFilter({searchParam: ""})} title="remove" className="product-list-filter-remove">x</span>}
         </div>
       </div>

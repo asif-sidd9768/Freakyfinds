@@ -7,6 +7,8 @@ import { ProductListCard } from "../components/ProductList/ProductListCard/Produ
 import "../styles/ProductList.css"
 import { ProductListFilter } from "../components/ProductList/ProductListFilter/ProductListFilter"
 import { setProductFilterAction } from "../actions/productActions"
+import Skeleton from "react-loading-skeleton"
+import { SkeletonCards } from "../components/SkeletonCards/SkeletonCards"
 
 export const ProductList =() => {
   const { productState, productDispatch } = useContext(ProductContext)
@@ -48,9 +50,16 @@ export const ProductList =() => {
       <ProductListFilter />
       <div className="product-list-container">
         {
-          filteredProducts.map(product => 
-            <ProductListCard key={product.id} {...product} />
-          )
+          productState.isLoading ? (
+            <SkeletonCards cardCount={12} />
+          ) :
+          <>
+          {
+            filteredProducts.map(product => 
+              <ProductListCard key={product.id} {...product} />
+            )
+          }
+          </>
         }
       </div>
     </div>
