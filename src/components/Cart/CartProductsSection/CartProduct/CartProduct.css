@@ -11,9 +11,16 @@
   background: none;
   border: none;
   font-size: 1rem;
-  margin: 1rem 0;
+  margin: 1rem 0.5rem;
   text-decoration: none;
   color: var(--text-color);
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+  transition: 0.2s;
+}
+
+.cart-product-wishlist-btn:hover{
+  box-shadow: 0 4px 0 rgba(0,0,0,0.3);
 }
 
 .cart-product-price-cut {

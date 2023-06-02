@@ -32,7 +32,7 @@ export const ProductListCard = (product) => {
         {
           isItemInWishlist(wishlistState.wishlistItems, id) 
           ? 
-          <span onClick={() => handleRemoveFromWishlist(product)} className="product-list-card-wishlist-added-btn"><i className="fa-solid fa-heart"></i></span>
+          <span onClick={() => handleRemoveFromWishlist(product.id)} className="product-list-card-wishlist-added-btn"><i className="fa-solid fa-heart"></i></span>
           :
           <span onClick={() => handleAddToWishlist(navigate, product)} className="product-list-card-wishlist-btn"><i className="fa-solid fa-heart"></i></span>  
         }

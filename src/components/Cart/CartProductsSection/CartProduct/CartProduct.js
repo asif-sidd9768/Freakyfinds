@@ -1,17 +1,15 @@
 import { useContext } from "react"
 import { CartContext } from "../../../../contexts/CartContext"
-import { NotificationContext } from "../../../../contexts/NotificationContext"
-import { cartItemQuantityChangeAction, cartItemQuantityChangeFailureAction, cartItemQuantityChangeRequestAction, deleteCartItemAction, deleteCartItemRequestAction, deleteCartItemRequestFailure } from "../../../../actions/cartActions"
-import { deleteCartProduct, updateCartProduct } from "../../../../services/user/cartService"
-import { UserContext } from "../../../../contexts/UserContext"
-import { NavLink, useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import "./CartProduct.css"
+import { WishlistContext } from "../../../../contexts/WishlistContext"
+import { isItemInCart } from "../../../../utils/products/checItemInCart"
 
 export const CartProduct = ({product, quantity, id}) => {
-  const { userState } = useContext(UserContext)
-  const { cartState, cartDispatch, handleDeleteFromCart, handleQuantityChange } = useContext(CartContext)
-  const { showNotification } = useContext(NotificationContext)
+  const {handleRemoveFromWishlist} = useContext(WishlistContext)
+  const { cartState, handleAddToCart, handleDeleteFromCart, handleQuantityChange } = useContext(CartContext)
+  const navigate = useNavigate()
   const location = useLocation()
 
   return (
@@ -38,7 +36,10 @@ export const CartProduct = ({product, quantity, id}) => {
             (location.pathname !== "/success") && (location.pathname !== "/profile") && <button disabled={cartState.isLoading} onClick={() => handleDeleteFromCart(id)} className="cart-product-delete-btn"><i className="fa-solid fa-delete-left"></i></button>
           }
           {
-            location.pathname === "/profile" && <NavLink to="/wishlist" className="cart-product-wishlist-btn">Click to see</NavLink>
+            location.pathname === "/profile" && <>
+              <button to="/wishlist" onClick={() => handleAddToCart(navigate, product)} disabled={isItemInCart(cartState.cartItems, product.id)} className="cart-product-wishlist-btn">{isItemInCart(cartState.cartItems,product.id) ? "Already in cart" : "Move to cart"}</button>
+              <button to="/wishlist" onClick={() => handleRemoveFromWishlist(product.id)} className="cart-product-wishlist-btn">Remove from wishlist</button>
+            </>
           }
         </div>
         {location.pathname !== "/profile" && <div className="cart-price">

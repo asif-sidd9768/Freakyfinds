@@ -1,14 +1,11 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import {NavLink} from "react-router-dom"
-import { ProductContext } from "../../contexts/ProductContext"
-
-import logoImg from "../../assets/images/logo-new.png"
 
 import "./Navbar.css"
-import { CartContext } from "../../contexts/CartContext"
 
 export const Navbar = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false)
+  const menuRef = useRef()
 
   const handleWindowSizeChange = () => {
     setIsMobileMenu(false)
@@ -20,6 +17,19 @@ export const Navbar = () => {
         window.removeEventListener('resize', handleWindowSizeChange);
     };
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (isMobileMenu && menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMobileMenu(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenu]);
 
   const handleMenuClose = () => setIsMobileMenu(!isMobileMenu)
 
@@ -53,7 +63,7 @@ export const Navbar = () => {
         <NavLink style={getActiveStyles} className="nav-item" to={`/wishlist`}><i className="fa-solid fa-heart"></i>Wishlist</NavLink>
       </div>
       {
-        isMobileMenu && <div className="menu-mobile-container">
+        isMobileMenu && <div id="menu" ref={menuRef} className="menu-mobile-container">
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/">Home</NavLink>
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/shop">Shop</NavLink>
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/contact-us">Contact</NavLink>

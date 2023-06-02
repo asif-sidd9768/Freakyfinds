@@ -4,9 +4,30 @@
   display: grid;
 }
 
-.product-list-filters {
+.filters-container{
   margin: 1rem 0 0 0;
   text-align: center;
+}
+
+.product-list-filters {
+  display: none;
+  margin: 0 0 2rem 0;
+}
+
+.mobile-filter-toggle {
+  display: block;
+  text-align: end;
+  margin: 0 3rem 0 0;
+}
+
+.mobile-filter-toggle button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.toggle-active {
+  color: teal;
 }
 
 .product-list-filter-category {
@@ -48,7 +69,21 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 767px) {
+  .product-list-filters.show-mobile-filters {
+    display: block;
+  }
+}
+
 @media screen and (width >= 768px) {
+  .mobile-filter-toggle {
+    display: none;
+  }
+
+  .product-list-filters {
+    display: block;
+  }
+
   .product-list-filter-category-container{
     margin: 0 1rem;
   }
