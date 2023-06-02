@@ -29,7 +29,7 @@ export const userReducer = (state, action) => {
     case "REGISTER_USER_FAILURE":
       return {...state, isLoading: false, error:action.payload}
     case "UPDATE_EDITING_ADDRESS":
-      return {...state, editingAddress: {isEditing: !state.editingAddress.isEditing, addressData: action.payload}}
+      return {...state, editingAddress: {isEditing: action.payload.isEditing, addressData: action.payload.addressData}}
     case "SET_UPDATED_ADDRESS_REQUEST":
       return {...state, isLoading: true}
     case "SET_UPDATED_ADDRESS":

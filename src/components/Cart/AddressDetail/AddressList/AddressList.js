@@ -9,11 +9,10 @@ import { NotificationContext } from "../../../../contexts/NotificationContext"
 import { useLocation } from "react-router-dom"
 import { AddressForm } from "../AddressForm/AddressForm"
 
-export const AddressList = ({addressData}) => {
+export const AddressList = ({toggleAddNewAddress}) => {
   const { userState, userDispatch } = useContext(UserContext)
   const { checkoutDispatch } = useContext(CheckoutContext)
   const {showNotification} = useContext(NotificationContext)
-  const [ editingAddress, setEditingAddress ] = useState(false)
   const location = useLocation()
 
   const handleAddressChange = (event, addressData) => {
@@ -25,7 +24,7 @@ export const AddressList = ({addressData}) => {
       showNotification("Some work is in progress", "error")
       return
     }
-    userDispatch(setUserRequestAction())
+    userDispatch(setUserRequestAction()) 
     try {
       const response = await deleteAddressService(userState.user.user.id, addressData, userState.user.token)
       userDispatch(setUserAction(response.data))
@@ -37,7 +36,8 @@ export const AddressList = ({addressData}) => {
   }
 
   const handleAddressEdit = (addressData) => {  
-    userDispatch(updateAddressAction(addressData))
+    toggleAddNewAddress(false)
+    userDispatch(updateAddressAction({isEditing: !userState.editingAddress.isEditing ,addressData}))
   }
 
   return (
