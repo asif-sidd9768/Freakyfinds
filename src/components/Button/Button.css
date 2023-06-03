@@ -1,0 +1,62 @@
+.btn {
+  background: none;
+  border: 1px solid var(--text-color);
+  padding: 8px 20px;
+  transition: 0.2s;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-active {
+  color: var(--text-color);
+}
+
+.btn-active:hover {
+  background-color: var(--text-color);
+  color: beige;
+}
+
+.btn-navigate {
+  background-color: rgb(57, 57, 54);
+  color: beige;
+  font-size: 0.8rem;
+}
+
+.btn-navigate:hover {
+  background-color: rgb(30, 30, 28);
+}
+
+.btn-out-of-stock {
+  cursor:not-allowed;
+  background-color: rgb(153, 150, 150);
+  color: white;
+}
+
+.btn-wishlist {
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  margin: 0.5rem 0 0 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn-wishlist-absolute {
+  margin: 0;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.btn-wishlist-add {
+  transition: 0.2s;
+}
+
+.btn-wishlist-add:hover {
+  color:var(--text-color);
+}
+
+.btn-wishlist-added {
+  color: crimson;
+}

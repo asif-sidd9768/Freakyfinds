@@ -9,6 +9,7 @@ import { isItemInWishlist } from "../../../utils/wishlist/checkItemInWishlist"
 
 import "./DetailSection.css"
 import { DetailSectionStarRating } from "./DetailSectionStarRating/DetailSectionStarRating"
+import { Button, WishlistButton } from "../../Button/Button"
 
 export const DetailSection = ({product}) => {
   const { cartState, handleAddToCart } = useContext(CartContext)
@@ -28,16 +29,20 @@ export const DetailSection = ({product}) => {
         {
           isItemInWishlist(wishlistState.wishlistItems, product.id)
           ?
-          <button onClick={() => handleRemoveFromWishlist(product.id)} className="detail-section-wishlist-added-btn"><i className="fa-solid fa-heart"></i></button>
+          <WishlistButton isAbsolute={false} type="added" onClick={() => handleRemoveFromWishlist(product.id)} />
           :
-          <button onClick={() => handleAddToWishlist(navigate ,product)} className="detail-section-wishlist-btn"><i className="fa-solid fa-heart"></i></button>
+          <WishlistButton isAbsolute={false} type="add" onClick={() => handleAddToWishlist(navigate, product)} />
         }
         {
           isItemInCart(cartState.cartItems, product.id)
           ?
-          <NavLink to="/cart" className="detail-section-cart-added-btn">{RESOURCE.GO_TO_FINDS}</NavLink>
+          <Button type="navigate" text={RESOURCE.GO_TO_FINDS} onClick={() => navigate("/cart")} />
           :
-          <button onClick={() => handleAddToCart(navigate, product)} disabled={product.stockQuantity < 1} className="detail-section-cart-btn">{product.stockQuantity < 1 ? "Out of Stock" : RESOURCE.ADD_TO_FINDS}</button>
+          <Button 
+            type={`${product.stockQuantity < 1 ? "out-of-stock" :"active"}`} 
+            text={product.stockQuantity < 1 ? "Out of Stock" : RESOURCE.ADD_TO_FINDS} 
+            onClick={() => handleAddToCart(navigate, product)}
+          />
         }
       </div>
       <p className="detail-section-description">{product.description}</p>

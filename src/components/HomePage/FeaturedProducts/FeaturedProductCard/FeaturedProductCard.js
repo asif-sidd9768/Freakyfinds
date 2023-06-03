@@ -5,6 +5,7 @@ import { isItemInCart } from "../../../../utils/products/checItemInCart"
 import { CartContext } from "../../../../contexts/CartContext"
 import { RESOURCE } from "../../../../utils/strings"
 import { NavLink, useNavigate } from "react-router-dom"
+import { Button } from "../../../Button/Button"
 
 export const FeaturedProductCard = (pr) => {
   const { cartState, cartDispatch, handleAddToCart } = useContext(CartContext)
@@ -18,13 +19,9 @@ export const FeaturedProductCard = (pr) => {
         {
           isItemInCart(cartState.cartItems, pr.id) 
           ?
-          <NavLink to="/cart" className="featured-product-added-btn">
-            {RESOURCE.GO_TO_FINDS}
-          </NavLink>
+          <Button type="navigate" text={RESOURCE.GO_TO_FINDS} onClick={() => navigate("/cart")} />
           :
-          <button onClick={() => handleAddToCart(navigate, pr)} className="featured-product-btn">
-            {RESOURCE.ADD_TO_FINDS}
-          </button>
+          <Button type="active" text={RESOURCE.ADD_TO_FINDS} onClick={() => handleAddToCart(navigate, pr)} />
         }
       </div>
     </div>

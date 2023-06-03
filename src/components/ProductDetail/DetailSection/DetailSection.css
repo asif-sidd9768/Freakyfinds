@@ -47,66 +47,6 @@
   align-items: center;
 }
 
-.detail-section-wishlist-btn {
-  padding: 6px 8px;
-  font-size: 1.5rem;
-  border: none;
-  background-color: var(--bg-color);
-  cursor: pointer;
-}
-
-.detail-section-wishlist-added-btn {
-  cursor: pointer;
-  padding: 6px 8px;
-  font-size: 1.5rem;
-  border: none;
-  background-color: var(--bg-color);
-  color: crimson;
-}
-
-.detail-section-wishlist-btn i {
-  color: var(--text-secondary-color);
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.detail-section-cart-btn {
-  padding: 12px 16px;
-  border: none;
-  background-color: black;
-  color: white;
-  font-weight: light;
-  cursor: pointer;
-  text-decoration: none;
-  margin: 0 0 0 0.5rem;
-}
-
-.detail-section-cart-btn:disabled{
-  cursor: auto;
-  color: black;
-  background-color: var(--bg-color);
-  font-size: 1rem;
-}
-
-.detail-section-cart-added-btn {
-  padding: 9px 18px;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 0.90rem;
-  border: none;
-  background-color: black;
-  color: white;
-  font-weight: light;
-  text-decoration: none;
-  margin: 0 0 0 0.5rem;
-}
-
-@media screen and (width >= 576px) {
-  .detail-section-wishlist-btn i:hover{
-    color: crimson;
-  }
-}
-
 @media screen and (width >= 768px) {
   .detail-section-divider {
     display: none;
