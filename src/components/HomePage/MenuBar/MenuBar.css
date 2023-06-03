@@ -185,7 +185,7 @@
 
 .menubar-cart-btn {
   position: absolute;
-  right: 33%;
+  right: 30%;
   bottom: 0.2rem;
   display: inline-block;
   margin:  0 -1rem 1rem 0;
@@ -220,7 +220,7 @@
   }
   
   .menubar-cart-btn {
-    right: 32%;
+    right: 28%;
     bottom: 0.2rem;
     font-size: 22px;
     margin:  0 0 1rem 0;
@@ -245,7 +245,7 @@
   }
   
   .menubar-cart-btn {
-    right: 35%;
+    right: 34%;
     bottom: 0;
     font-size: 25px;
   }
