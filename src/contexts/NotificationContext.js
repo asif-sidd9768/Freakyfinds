@@ -6,9 +6,9 @@ export const NotificationContext = createContext()
 export const NotificationProvider = ({children}) => {
   const [notificationState, notificationDispatch] = useReducer(notificationReducer, initialStateNotification)
 
-  const showNotification = (content, type) => {
+  const showNotification = (content, type, showLogin=false) => {
     const id = new Date().getTime();
-    notificationDispatch(setNotificationAction({content, type, id}))
+    notificationDispatch(setNotificationAction({content, type, id, showLogin}))
     setTimeout(() => {
       notificationDispatch(removeNotificationAction(id))
     }, 2000)

@@ -1,8 +1,8 @@
 import "./Button.css"
 
-export const Button = ({type, text, onClick}) => {
+export const Button = ({type, text, onClick, size}) => {
   return (
-    <button disabled={type === "out-of-stock"} onClick={onClick} className={`btn btn-${type}`}>
+    <button disabled={type === "out-of-stock"} onClick={onClick} className={`btn btn-${type} btn-${size}`}>
       {text}
     </button>
   )

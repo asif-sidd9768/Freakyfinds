@@ -45,12 +45,13 @@ export const ProductListCard = (product) => {
             {
               isItemInCart(cartState.cartItems, id) 
               ? 
-              <Button type="navigate" text={RESOURCE.GO_TO_FINDS} onClick={() => navigate("/cart")} />
+              <Button type="navigate" text={RESOURCE.GO_TO_FINDS} onClick={() => navigate("/cart")} size="default" />
               :
               <Button 
                 type={`${stockQuantity < 1 ? "out-of-stock" :"active"}`} 
                 text={stockQuantity < 1 ? "Out of Stock" : RESOURCE.ADD_TO_FINDS} 
-                onClick={() => handleAddToCart(navigate, product)} 
+                onClick={() => handleAddToCart(navigate, product)}
+                size="default" 
               />
             }
         </div>

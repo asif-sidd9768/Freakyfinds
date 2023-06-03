@@ -19,9 +19,9 @@ export const FeaturedProductCard = (pr) => {
         {
           isItemInCart(cartState.cartItems, pr.id) 
           ?
-          <Button type="navigate" text={RESOURCE.GO_TO_FINDS} onClick={() => navigate("/cart")} />
+          <Button type="navigate" text={RESOURCE.GO_TO_FINDS} onClick={() => navigate("/cart")} size="small" />
           :
-          <Button type="active" text={RESOURCE.ADD_TO_FINDS} onClick={() => handleAddToCart(navigate, pr)} />
+          <Button type="active" text={RESOURCE.ADD_TO_FINDS} onClick={() => handleAddToCart(navigate, pr)} size="small" />
         }
       </div>
     </div>

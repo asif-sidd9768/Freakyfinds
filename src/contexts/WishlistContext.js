@@ -23,10 +23,8 @@ export const WishlistProvider = ({children}) => {
     }
 
     if(!userState.user){
-      navigate("/login", {
-        state: {from:location}
-      })
-      // showNotification("Login/Register to add.", "error")
+      showNotification("Please login to add wishlist.", "error", true)
+      return
     }
 
     wishlistDispatch(addToWishlistRequestAction())

@@ -22,9 +22,7 @@ export const CartProvider = ({children}) => {
       return
     }
     if(!userState.user){
-      navigate("/login", {
-        state: {from:location}
-      })
+      showNotification("Please login to add finds.", "error", true)
       return
     }
     cartDispatch(addToCartRequestAction())
