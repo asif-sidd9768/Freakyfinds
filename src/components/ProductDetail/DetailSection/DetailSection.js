@@ -36,12 +36,13 @@ export const DetailSection = ({product}) => {
         {
           isItemInCart(cartState.cartItems, product.id)
           ?
-          <Button type="navigate" text={RESOURCE.GO_TO_FINDS} onClick={() => navigate("/cart")} />
+          <Button type="navigate" text={RESOURCE.GO_TO_FINDS} onClick={() => navigate("/cart")} size="default"  />
           :
           <Button 
             type={`${product.stockQuantity < 1 ? "out-of-stock" :"active"}`} 
             text={product.stockQuantity < 1 ? "Out of Stock" : RESOURCE.ADD_TO_FINDS} 
             onClick={() => handleAddToCart(navigate, product)}
+            size="default" 
           />
         }
       </div>
