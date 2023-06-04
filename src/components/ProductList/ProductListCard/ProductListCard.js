@@ -12,13 +12,20 @@ import { ProductContext } from "../../../contexts/ProductContext"
 import "./ProductListCard.css"
 import "../../../styles.css"
 import { Button, WishlistButton } from "../../Button/Button"
+import { productFilterRemoveAction } from "../../../actions/productActions"
 
 export const ProductListCard = (product) => {
   const { cartState, handleAddToCart } = useContext(CartContext)
+  const { productDispatch } = useContext(ProductContext)
   const { productState } = useContext(ProductContext)
   const navigate = useNavigate()
   const { wishlistState, handleAddToWishlist, handleRemoveFromWishlist } = useContext(WishlistContext)
   const {id, title, category, price, image, rating, sale, stockQuantity} = product
+
+  const handleProductOpen = () => {
+    navigate(`/product/${product.id}`)
+    productDispatch(productFilterRemoveAction({searchParam: ""}))
+  }
 
   return (
     <div className="product-list-card-container">
@@ -41,7 +48,7 @@ export const ProductListCard = (product) => {
       <div className="product-list-card-details-container">
         {sale.onSale && <span className="product-list-card-sale">Sale</span>}
         <div className="product-list-card-details">
-            <NavLink to={`/product/${id}`} className="product-list-card-name"><HighlightedString text={title} substring={productState.filters.searchParam} /></NavLink>
+            <button onClick={handleProductOpen} className="product-list-card-name"><HighlightedString text={title} substring={productState.filters.searchParam} /></button>
             {
               isItemInCart(cartState.cartItems, id) 
               ? 

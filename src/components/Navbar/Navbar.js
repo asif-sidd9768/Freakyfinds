@@ -68,7 +68,7 @@ export const Navbar = () => {
       </div>
       
       <div className="nav-details nav-wishlist">
-        <input onChange={handleSearchFilter} type="text" className="nav-search-bar" placeholder="&#128269; type to find" />
+        <input value={productState.filters.searchParam} onChange={handleSearchFilter} type="text" className="nav-search-bar" placeholder="&#128269; type to find" />
         <NavLink style={getActiveStyles} className="nav-item" to={`/wishlist`}><i className="fa-solid fa-heart"></i>Wishlist</NavLink>
       </div>
       {
