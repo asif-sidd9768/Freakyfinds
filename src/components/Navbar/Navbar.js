@@ -1,13 +1,14 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import {NavLink} from "react-router-dom"
+import {NavLink, useLocation} from "react-router-dom"
 
 import "./Navbar.css"
 import { ProductContext } from "../../contexts/ProductContext"
-import { setProductSearchFilterAction } from "../../actions/productActions"
+import { productFilterRemoveAction, setProductSearchFilterAction } from "../../actions/productActions"
 
 export const Navbar = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false)
   const { productState, productDispatch } = useContext(ProductContext)
+  const location = useLocation()
   const menuRef = useRef()
 
   const handleWindowSizeChange = () => {
@@ -38,6 +39,11 @@ export const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMobileMenu]);
+
+  useEffect(() => {
+    // Clear search parameter when navigating to another route
+    productDispatch(productFilterRemoveAction({searchParam: ""}));
+  }, [location.pathname]);
 
   const handleMenuClose = () => setIsMobileMenu(!isMobileMenu)
 

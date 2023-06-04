@@ -15,12 +15,15 @@ export const NavbarSearch = () => {
     </div>
   }
   return (
-    <div className="search-list-container">
-      {
-        filteredProducts.map(product => 
-          <ProductListCard key={product.id} {...product} />  
-        )
-      }
+    <div>
+      <p className="search-list-title">Search results</p>
+      <div className="search-list-container">
+        {
+          filteredProducts.map(product => 
+            <ProductListCard key={product.id} {...product} />  
+          )
+        }
+      </div>
     </div>
   )
 }
