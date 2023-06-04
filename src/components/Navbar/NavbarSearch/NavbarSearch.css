@@ -1,0 +1,27 @@
+.search-list-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 2rem;
+}
+
+.search-empty {
+  padding: 2rem;
+}
+
+@media screen and (width >= 576px) {
+  .search-list-container {
+    grid-template-columns: 1fr 1fr;
+  } 
+}
+
+@media screen and (width >= 768px) {
+  .search-list-container {
+    grid-template-columns: repeat(3, 1fr);
+  } 
+}
+
+@media screen and (width >= 1024px) {
+  .search-list-container {
+    grid-template-columns: repeat(4, 1fr);
+  } 
+}

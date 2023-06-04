@@ -25,6 +25,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { AuctionPage } from "./pages/AuctionPage";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
+import { NavbarSearch } from "./components/Navbar/NavbarSearch/NavbarSearch";
 
 export default function App() {
   const { productState } = useContext(ProductContext)
@@ -37,27 +38,35 @@ export default function App() {
         <Navbar/>
       </div>
       <div className="main-app-container">
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ProductList />} />
-          {
-            [...productState.categories].map((route, index) => 
-              <Route key={index} path={`/shop/${route}`} element={<ProductList />} />  
-            )
-          }
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/profile" element={<AuthenticatedRoutes isSignedIn={userState.user}><ProfilePage /></AuthenticatedRoutes>} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/return-policy" element={<ReturnPolicy />} />
-          <Route path="/success" element={<AuthenticatedRoutes isSignedIn={userState.user}> <CheckoutSuccess /></AuthenticatedRoutes>} />
-          <Route path="/contact-us" element={<ContactPage />} />
-          <Route path="/auction" element={<AuctionPage />}/>
-          <Route path="/product/:productId" element={<ProductDetail />} />
-          <Route path="/wishlist" element={<AuthenticatedRoutes isSignedIn={userState.user}><WishlistPage /></AuthenticatedRoutes>} />
-          <Route path="/cart" element={<AuthenticatedRoutes isSignedIn={userState.user}><CartPage /></AuthenticatedRoutes>} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        {
+          productState.filters.searchParam ? 
+          <>
+            <NavbarSearch />
+          </> : 
+          <>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/shop" element={<ProductList />} />
+              {
+                [...productState.categories].map((route, index) => 
+                  <Route key={index} path={`/shop/${route}`} element={<ProductList />} />  
+                )
+              }
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/profile" element={<AuthenticatedRoutes isSignedIn={userState.user}><ProfilePage /></AuthenticatedRoutes>} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/return-policy" element={<ReturnPolicy />} />
+              <Route path="/success" element={<AuthenticatedRoutes isSignedIn={userState.user}> <CheckoutSuccess /></AuthenticatedRoutes>} />
+              <Route path="/contact-us" element={<ContactPage />} />
+              <Route path="/auction" element={<AuctionPage />}/>
+              <Route path="/product/:productId" element={<ProductDetail />} />
+              <Route path="/wishlist" element={<AuthenticatedRoutes isSignedIn={userState.user}><WishlistPage /></AuthenticatedRoutes>} />
+              <Route path="/cart" element={<AuthenticatedRoutes isSignedIn={userState.user}><CartPage /></AuthenticatedRoutes>} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </>
+        }
       </div>
       <div>
         <MenuBar />

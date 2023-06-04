@@ -45,7 +45,7 @@
 }
 
 .product-list-filter-category-label {
-  width: 85px;
+  width: 100px;
   color: rgb(148, 148, 136);
   display: inline-block;
   text-align: start;
@@ -81,7 +81,7 @@
   }
 
   .product-list-filters {
-    display: block;
+    display: inline-block;
   }
 
   .product-list-filter-category-container{

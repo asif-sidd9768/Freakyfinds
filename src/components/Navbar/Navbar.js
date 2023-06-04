@@ -2,13 +2,21 @@ import { useContext, useEffect, useRef, useState } from "react"
 import {NavLink} from "react-router-dom"
 
 import "./Navbar.css"
+import { ProductContext } from "../../contexts/ProductContext"
+import { setProductSearchFilterAction } from "../../actions/productActions"
 
 export const Navbar = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false)
+  const { productState, productDispatch } = useContext(ProductContext)
   const menuRef = useRef()
 
   const handleWindowSizeChange = () => {
     setIsMobileMenu(false)
+  }
+
+  const handleSearchFilter = (event) => {
+    console.log(productState.filters.searchParam)
+    productDispatch(setProductSearchFilterAction(event.target.value))
   }
 
   useEffect(() => {
@@ -60,10 +68,11 @@ export const Navbar = () => {
       </div>
       
       <div className="nav-details nav-wishlist">
+        <input onChange={handleSearchFilter} type="text" className="nav-search-bar" placeholder="&#128269; type to find" />
         <NavLink style={getActiveStyles} className="nav-item" to={`/wishlist`}><i className="fa-solid fa-heart"></i>Wishlist</NavLink>
       </div>
       {
-        isMobileMenu && <div id="menu" ref={menuRef} className="menu-mobile-container">
+        isMobileMenu && <div ref={menuRef} className="menu-mobile-container">
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/">Home</NavLink>
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/shop">Shop</NavLink>
           <NavLink onClick={handleMenuClose} style={getActiveStylesMobile} className="nav-item nav-item-home mobile-menu-item" to="/contact-us">Contact</NavLink>

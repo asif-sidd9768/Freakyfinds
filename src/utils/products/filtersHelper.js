@@ -2,7 +2,7 @@ export const getFilteredProducts = (productState) => {
   const { products, filters } = productState;
 
   return products
-    .filter(({ category, sale, title, rating }) => {
+    .filter(({ category, sale, title, rating, stockQuantity }) => {
       // Category filter
       if (filters.category !== 'all' && category.toLowerCase() !== filters.category.toLowerCase()) {
         return false;
@@ -11,8 +11,8 @@ export const getFilteredProducts = (productState) => {
       if (filters.sale === 'yes' && !sale.onSale) {
         return false;
       }
-      // Search filter
-      if (filters.searchParam && !title.toLowerCase().includes(filters.searchParam.toLowerCase())) {
+      // Stock filter
+      if (filters.inStock === 'yes' && stockQuantity < 1) {
         return false;
       }
       // Rating filter

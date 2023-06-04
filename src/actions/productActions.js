@@ -41,3 +41,8 @@ export const productFilterRemoveAction = (filterData) => ({
   type:"PRODUCT_FILTER_REMOVE",
   payload: filterData
 })
+
+export const setProductStockFilter = (filterData) => ({
+  type:"PRODUCT_STOCK_FILTER",
+  payload: filterData
+})

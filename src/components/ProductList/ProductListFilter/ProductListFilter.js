@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 
 import { ProductContext } from "../../../contexts/ProductContext"
-import { productFilterRemoveAction, setProductFilterAction, setProductPriceFilterAction, setProductRatingFilterAction, setProductSaleFilterAction, setProductSearchFilterAction } from "../../../actions/productActions"
+import { productFilterRemoveAction, setProductFilterAction, setProductPriceFilterAction, setProductRatingFilterAction, setProductSaleFilterAction, setProductSearchFilterAction, setProductStockFilter } from "../../../actions/productActions"
 import { NotificationContext } from "../../../contexts/NotificationContext"
 
 import "./ProductListFilter.css"
@@ -22,8 +22,8 @@ export const ProductListFilter = () => {
   const handleCategoryChange = createHandler(setProductFilterAction);
   const handlePriceFilter = createHandler(setProductPriceFilterAction);
   const handleRatingFilter = createHandler(setProductRatingFilterAction);
-  const handleSearchFilter = createHandler(setProductSearchFilterAction);
   const handleSaleFilter = createHandler(setProductSaleFilterAction);
+  const handleStockFilter = createHandler(setProductStockFilter)
   const handleRemoveFilter = (filterData) => productDispatch(productFilterRemoveAction(filterData))
 
   return (
@@ -71,11 +71,22 @@ export const ProductListFilter = () => {
             {productState.filters.sale && productState.filters.sale !== "no" && <span onClick={() => handleRemoveFilter({sale: "no"})} title="remove" className="product-list-filter-remove">x</span>}
           </div>
           <div className="product-list-filter-category-container">
-            <span className="product-list-filter-category-label">SEARCH</span> 
-              <input type="text" onChange={handleSearchFilter} className="product-list-filter-category" placeholder="&#128269; type to find" />
-              {productState.filters.searchParam && <span onClick={() => handleRemoveFilter({searchParam: ""})} title="remove" className="product-list-filter-remove">x</span>}
+            <span className="product-list-filter-category-label">ONLY STOCK</span> <select defaultValue={productState.filters.inStock} onChange={handleStockFilter} className="product-list-filter-category">
+              <option value="no" className="product-list-filter-category-item">No</option>
+              <option value="yes"  className="product-list-filter-category-item">Yes</option>
+            </select>
+            {productState.filters.inStock && productState.filters.inStock !== "no" && <span onClick={() => handleRemoveFilter({inStock: "no"})} title="remove" className="product-list-filter-remove">x</span>}
           </div>
         </div>
+        {/* <div className="product-list-filter-container">
+          <div className="product-list-filter-category-container">
+            <span className="product-list-filter-category-label">ONLY STOCK</span> <select defaultValue={productState.filters.inStock} onChange={handleStockFilter} className="product-list-filter-category">
+              <option value="no" className="product-list-filter-category-item">No</option>
+              <option value="yes"  className="product-list-filter-category-item">Yes</option>
+            </select>
+            {productState.filters.inStock && productState.filters.inStock !== "no" && <span onClick={() => handleRemoveFilter({inStock: "no"})} title="remove" className="product-list-filter-remove">x</span>}
+          </div>
+        </div> */}
       </div>
     </div>
   )
