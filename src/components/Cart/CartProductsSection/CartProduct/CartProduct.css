@@ -28,3 +28,22 @@
   font-size: 1.1rem;
   margin: 0 0.2rem 0 0;
 }
+
+.cart-product-wishlist-text-btn {
+  display: none;
+}
+
+.cart-product-wishlist-icon-btn {
+  display: inline-block;
+  /* padding: 0.5rem 0 0 0; */
+}
+
+@media screen and (width >= 576px) {
+  .cart-product-wishlist-text-btn {
+    display: inline-block;
+  }
+  
+  .cart-product-wishlist-icon-btn {
+    display: none;
+  }
+}

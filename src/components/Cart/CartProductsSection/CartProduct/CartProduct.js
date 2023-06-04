@@ -5,9 +5,12 @@ import { useLocation, useNavigate } from "react-router-dom"
 import "./CartProduct.css"
 import { WishlistContext } from "../../../../contexts/WishlistContext"
 import { isItemInCart } from "../../../../utils/products/checItemInCart"
+import { WishlistButton } from "../../../Button/Button"
+import { isItemInWishlist } from "../../../../utils/wishlist/checkItemInWishlist"
 
 export const CartProduct = ({product, quantity, id}) => {
   const {handleRemoveFromWishlist} = useContext(WishlistContext)
+  const { wishlistState, handleAddToWishlist } = useContext(WishlistContext)
   const { cartState, handleAddToCart, handleDeleteFromCart, handleQuantityChange } = useContext(CartContext)
   const navigate = useNavigate()
   const location = useLocation()
@@ -22,7 +25,14 @@ export const CartProduct = ({product, quantity, id}) => {
           <p className="cart-product-title">{product.title}</p>
         </div>
         <div className="cart-category">
-          <p className={`cart-product-category cart-product-category-${product.category}`}>{product.category}</p>
+          <p className={`cart-product-category cart-product-category-${product.category}`}>
+            {product.category}             
+          </p>
+          <span className="cart-product-wishlist-text-btn">
+            <button disabled={isItemInWishlist(wishlistState.wishlistItems, product.id)} onClick={() => handleAddToWishlist(navigate, product)} className="cart-product-wishlist-btn">
+              {isItemInWishlist(wishlistState.wishlistItems, product.id) ? "Already in wishlist"  : "Add to wishlist"}
+            </button>
+          </span>
         </div>
         <div className="cart-quantity">
           <div className="cart-product-quantity">
@@ -33,12 +43,22 @@ export const CartProduct = ({product, quantity, id}) => {
             </>}
           </div>
           {
-            (location.pathname !== "/success") && (location.pathname !== "/profile") && <button disabled={cartState.isLoading} onClick={() => handleDeleteFromCart(id)} className="cart-product-delete-btn"><i className="fa-solid fa-delete-left"></i></button>
+            (location.pathname !== "/success") && (location.pathname !== "/profile") && 
+            <div className="cart-product-btn-container">
+              <span className="cart-product-wishlist-icon-btn"><WishlistButton isAbsolute={false} type={isItemInWishlist(wishlistState.wishlistItems, product.id) ? "added" : "add"} onClick={() => {
+                if (!isItemInWishlist(wishlistState.wishlistItems, product.id)) {
+                  handleAddToWishlist(navigate, product);
+                }
+              }} /></span>
+              <button disabled={cartState.isLoading} onClick={() => handleDeleteFromCart(id)} className="cart-product-delete-btn"  >
+                <i className="fa-solid fa-delete-left"></i>
+              </button>
+            </div>
           }
           {
             location.pathname === "/profile" && <>
-              <button to="/wishlist" onClick={() => handleAddToCart(navigate, product)} disabled={isItemInCart(cartState.cartItems, product.id)} className="cart-product-wishlist-btn">{isItemInCart(cartState.cartItems,product.id) ? "Already in cart" : "Move to cart"}</button>
-              <button to="/wishlist" onClick={() => handleRemoveFromWishlist(product.id)} className="cart-product-wishlist-btn">Remove from wishlist</button>
+              <button onClick={() => handleAddToCart(navigate, product)} disabled={isItemInCart(cartState.cartItems, product.id)} className="cart-product-wishlist-btn">{isItemInCart(cartState.cartItems,product.id) ? "Already in cart" : "Move to cart"}</button>
+              <button onClick={() => handleRemoveFromWishlist(product.id)} className="cart-product-wishlist-btn">Remove from wishlist</button>
             </>
           }
         </div>
