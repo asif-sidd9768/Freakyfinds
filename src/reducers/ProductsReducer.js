@@ -7,7 +7,9 @@ export const initialStateProducts = {
     category: "all",
     searchParam: "",
     sale: "no",
-    inStock: "no"
+    inStock: false,
+    moreFilters: false,
+    priceRange: "",
   },
   isLoading: true,
   error: null
@@ -33,6 +35,8 @@ export const productsReducers = (state, action) => {
       return {...state, filters: {...state.filters, searchParam: action.payload}}
     case "PRODUCT_STOCK_FILTER":
       return {...state, filters: {...state.filters, inStock: action.payload}}
+    case "PRODUCT_PRICE_RANGE":
+      return {...state, filters: {...state.filters, priceRange: action.payload}}
     case "PRODUCT_FILTER_REMOVE": {
       return {...state, filters: {...state.filters, ...action.payload}}
     }

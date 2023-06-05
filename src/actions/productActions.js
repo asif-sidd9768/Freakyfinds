@@ -46,3 +46,8 @@ export const setProductStockFilter = (filterData) => ({
   type:"PRODUCT_STOCK_FILTER",
   payload: filterData
 })
+
+export const setProductPriceRangeFilter = (filterData) => ({
+  type:"PRODUCT_PRICE_RANGE",
+  payload: filterData
+})

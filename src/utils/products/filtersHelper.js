@@ -2,7 +2,7 @@ export const getFilteredProducts = (productState) => {
   const { products, filters } = productState;
 
   return products
-    .filter(({ category, sale, title, rating, stockQuantity }) => {
+    .filter(({ category, sale, price, rating, stockQuantity }) => {
       // Category filter
       if (filters.category !== 'all' && category.toLowerCase() !== filters.category.toLowerCase()) {
         return false;
@@ -12,11 +12,16 @@ export const getFilteredProducts = (productState) => {
         return false;
       }
       // Stock filter
-      if (filters.inStock === 'yes' && stockQuantity < 1) {
+      if (!filters.inStock && stockQuantity < 1) {
         return false;
       }
       // Rating filter
       if(filters.rating && rating.rate < filters.rating){
+        return false
+      }
+
+      // Price Range Filter
+      if(filters.priceRange && price > filters.priceRange){
         return false
       }
       return true;

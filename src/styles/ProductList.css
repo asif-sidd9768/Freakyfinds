@@ -5,6 +5,13 @@
   text-align: center;
 }
 
+.product-list-container-empty {
+  padding: 2rem 2rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
 @media screen and (width >= 560px) {
   .product-list-container {
     grid-template-columns: repeat(2, 1fr);
