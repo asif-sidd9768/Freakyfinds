@@ -19,7 +19,7 @@ export const ProductList =() => {
       {
 
       }
-      <div className={`${filteredProducts.length > 0 ? "product-list-container" : "product-list-container-empty" }`}>
+      <div className={`${(filteredProducts.length > 0 || productState.isLoading) ? "product-list-container" : "product-list-container-empty" }`}>
         {
           productState.isLoading ? (
             <SkeletonCards cardCount={12} />
