@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react"
 
 import { ProductContext } from "../../../contexts/ProductContext"
-import { productFilterRemoveAction, setProductFilterAction, setProductPriceFilterAction, setProductPriceRangeFilter, setProductRatingFilterAction, setProductSaleFilterAction, setProductSearchFilterAction, setProductStockFilter } from "../../../actions/productActions"
+import { productFilterRemoveAction, removeProductFilters, setProductFilterAction, setProductPriceFilterAction, setProductPriceRangeFilter, setProductRatingFilterAction, setProductSaleFilterAction, setProductSearchFilterAction, setProductStockFilter } from "../../../actions/productActions"
 import { NotificationContext } from "../../../contexts/NotificationContext"
 
 import "./ProductListFilter.css"
+import { initialStateProducts } from "../../../reducers/ProductsReducer"
 
 export const ProductListFilter = () => {
   const { productState, productDispatch } = useContext(ProductContext)
@@ -29,6 +30,10 @@ export const ProductListFilter = () => {
     productDispatch(setProductPriceRangeFilter(event.target.value))
   }
 
+  const handleClearAllFilters = () => {
+    productDispatch(removeProductFilters())
+  }
+
   const handleCategoryChange = createHandler(setProductFilterAction);
   const handlePriceFilter = createHandler(setProductPriceFilterAction);
   const handleRatingFilter = createHandler(setProductRatingFilterAction);
@@ -41,6 +46,7 @@ export const ProductListFilter = () => {
 
   return (
     <div className="filters-container">
+      {JSON.stringify(productState.filters) !== JSON.stringify(initialStateProducts.filters) && <span onClick={handleClearAllFilters} title="clear all filters" className="filter-remove-btn">CLEAR ALL</span>}
       <div className="mobile-filter-toggle">
         <button className={`${showMobileFilter ? "toggle-active" : ""}`} onClick={() => setShowMobileFilter(prevFilter => !prevFilter)}><i className="fa-solid fa-filter"></i></button>
       </div>

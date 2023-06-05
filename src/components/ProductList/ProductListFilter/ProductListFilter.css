@@ -7,6 +7,26 @@
 .filters-container{
   margin: 1rem 0 1rem 0;
   text-align: center;
+  position: relative;
+}
+
+.filter-remove-btn {
+  position: absolute;
+  right: 60%;
+  /* top: -8px; */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+  text-decoration: underline;
+}
+
+/* .filter-remove-btn::after{
+  content: "clear all";
+  margin: 0 0 0 0.3rem;
+} */
+
+.filter-remove-btn:hover {
+  color: crimson;
 }
 
 .product-list-filters {
@@ -98,13 +118,18 @@
 }
 
 @media screen and (width >= 768px) {
+  .filter-remove-btn {
+    right: 10%;
+    top: -8px;
+    font-size: 1rem;
+  }
+
   .product-list-filter-radio {
     display: flex;
     width: 140px;
     align-items: center;
     justify-content: flex-start;
     text-align: start;
-    /* border-bottom: 2px solid var(--bg-dark-color); */
   }
 
   .mobile-filter-toggle {

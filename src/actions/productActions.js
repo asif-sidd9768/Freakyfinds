@@ -51,3 +51,7 @@ export const setProductPriceRangeFilter = (filterData) => ({
   type:"PRODUCT_PRICE_RANGE",
   payload: filterData
 })
+
+export const removeProductFilters = () => ({
+  type:"REMOVE_PRODUCT_FILTERS"
+})

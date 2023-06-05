@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { cartReducer, initialStateCart } from "../reducers/CartReducer";
 import { addToCartAction, addToCartRequestAction, addToCartRequestFailure, cartItemQuantityChangeAction, cartItemQuantityChangeFailureAction, cartItemQuantityChangeRequestAction, deleteCartItemAction, deleteCartItemFailureAction, deleteCartItemRequestAction } from "../actions/cartActions";
-import { useNavigate } from "react-router-dom";
 import { addProductToCart, deleteCartProduct, updateCartProduct } from "../services/user/cartService";
 import { NotificationContext } from "./NotificationContext";
 import { UserContext } from "./UserContext";
