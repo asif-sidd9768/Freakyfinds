@@ -68,7 +68,8 @@
 }
 
 .product-list-card-name {
-  display: inline-block;
+  width: 100%;
+  display: block;
   padding: 0 0.8rem;
   margin: 0 0 0.5rem 0;
   text-decoration: none;
